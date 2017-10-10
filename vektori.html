@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Let’s program in R</title>
+  <meta name="description" content="R Coursebook">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Let’s program in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Coursebook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Let’s program in R" />
+  
+  <meta name="twitter:description" content="R Coursebook" />
+  
+
+<meta name="author" content="Damir Pintar">
+
+
+<meta name="date" content="2017-10-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="tipovi.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<style type="text/css">
+.showopt {
+  background-color: #004c93;
+  color: #FFFFFF; 
+  width: 140px;
+  height: 4	0px;
+  text-align: center;
+  vertical-align: middle !important;
+  float: right;
+  font-family: sans-serif;
+  font-size:10 pt;
+  border-radius: 8px;
+}
+
+.showopt:hover {
+    background-color: #dfe4f2;
+    color: #004c93;
+}
+
+pre.plot {
+  background-color: white !important;
+}
+</style>
+
+<script>
+ $(document).ready(function() {
+
+  $chunks = $('.fold');
+
+  $chunks.each(function () {
+
+    // add button to source code chunks
+    if ( $(this).hasClass('s') ) {
+      $('pre.r', this).prepend("<div class=\"showopt\">Show solution</div><br style=\"line-height:22px;\"/>");
+      $('pre.r', this).children('code').attr('class', 'folded');
+    }
+
+    // add button to output chunks
+    if ( $(this).hasClass('o') ) {
+      $('pre:not(.r)', this).has('code').prepend("<div class=\"showopt\">Show results</div><br style=\"line-height:22px;\"/>");
+      $('pre:not(.r)', this).children('code:not(r)').addClass('folded');
+
+      // add button to plots
+      $(this).find('img').wrap('<pre class=\"plot\"></pre>');
+      $('pre.plot', this).prepend("<div class=\"showopt\">Show figure</div><br style=\"line-height:22px;\"/>");
+      $('pre.plot', this).children('img').addClass('folded');
+
+    }
+  });
+
+  // hide all chunks when document is loaded
+  $('.folded').css('display', 'none')
+
+  // function to toggle the visibility
+  $('.showopt').click(function() {
+    var label = $(this).html();
+    if (label.indexOf("Show") >= 0) {
+      $(this).html(label.replace("Show", "Hide"));
+    } else {
+      $(this).html(label.replace("Hide", "Show"));
+    }
+    $(this).siblings('code, img').slideToggle('fast', 'swing');
+  });
+});
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>(“Introduction to programming language R” course book)</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#foreword"><i class="fa fa-check"></i>Foreword</a></li>
+</ul></li>
+<li class="part"><span><b>I Basic elements of R</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#general-facts-about-r"><i class="fa fa-check"></i><b>1.1.1</b> General facts about R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#r-alternatives"><i class="fa fa-check"></i><b>1.1.2</b> R alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#installing-software-support"><i class="fa fa-check"></i><b>1.2</b> Installing Software Support</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#overview-of-the-development-interface-rstudio"><i class="fa fa-check"></i><b>1.3</b> Overview of the development interface * RStudio *</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#interactive-console"><i class="fa fa-check"></i><b>1.3.1</b> Interactive console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#writing-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Writing R scripts</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#r-markdown"><i class="fa fa-check"></i><b>1.3.3</b> * R Markdown *</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#how-to-use-this-coursebook"><i class="fa fa-check"></i><b>1.4</b> How to use this coursebook?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tipovi.html"><a href="tipovi.html"><i class="fa fa-check"></i><b>2</b> Basic data types and operators</a><ul>
+<li class="chapter" data-level="2.1" data-path="tipovi.html"><a href="tipovi.html#basic-data-types"><i class="fa fa-check"></i><b>2.1</b> Basic data types</a></li>
+<li class="chapter" data-level="2.2" data-path="tipovi.html"><a href="tipovi.html#operators"><i class="fa fa-check"></i><b>2.2</b> Operators</a></li>
+<li class="chapter" data-level="2.3" data-path="tipovi.html"><a href="tipovi.html#missing-unknown-and-non-existent-values"><i class="fa fa-check"></i><b>2.3</b> Missing, unknown, and non-existent values</a></li>
+<li class="chapter" data-level="" data-path="tipovi.html"><a href="tipovi.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vektori.html"><a href="vektori.html"><i class="fa fa-check"></i><b>3</b> Vectors, matrices and lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="vektori.html"><a href="vektori.html#vector"><i class="fa fa-check"></i><b>3.1</b> Vector</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vektori.html"><a href="vektori.html#create-a-vector"><i class="fa fa-check"></i><b>3.1.1</b> Create a vector</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vektori.html"><a href="vektori.html#operator"><i class="fa fa-check"></i><b>3.1.2</b> Operator <code>[</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="vektori.html"><a href="vektori.html#principle-of-vectorization-and-recycling"><i class="fa fa-check"></i><b>3.1.3</b> Principle of vectorization and recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vektori.html"><a href="vektori.html#index-vectors"><i class="fa fa-check"></i><b>3.2</b> Index vectors</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="vektori.html"><a href="vektori.html#location-indexing"><i class="fa fa-check"></i><b>3.2.1</b> Location Indexing</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vektori.html"><a href="vektori.html#conditional-indexing"><i class="fa fa-check"></i><b>3.2.2</b> Conditional indexing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vektori.html"><a href="vektori.html#label-based-indexing"><i class="fa fa-check"></i><b>3.2.3</b> Label-based indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vektori.html"><a href="vektori.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.3</b> Matrices and arrays</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="vektori.html"><a href="vektori.html#matrix-splicing"><i class="fa fa-check"></i><b>3.3.1</b> Matrix splicing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vektori.html"><a href="vektori.html#lists"><i class="fa fa-check"></i><b>3.4</b> Lists</a></li>
+<li class="chapter" data-level="" data-path="vektori.html"><a href="vektori.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Let’s program in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vektori" class="section level1">
+<h1><span class="header-section-number">3</span> Vectors, matrices and lists</h1>
+<hr />
+<div id="vector" class="section level2">
+<h2><span class="header-section-number">3.1</span> Vector</h2>
+<p>The vector is one of the main “complex” types of data in the language R, in the sense that it contains more values of the same type. It is similar to the term “array” in the C language. But there is one important difference here, which is necessarily adopted since it is one of the most important characteristics of the language R - in R (almost) each variable type is actually a vector. Even the variables and constants we used in the previous lesson were actually single-element vectors. This has far-reaching consequences to be discussed in detail below, and to begin with, we will first get acquainted with the syntax of creating and managing vectors.</p>
+<div id="create-a-vector" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Create a vector</h3>
+<p>The new vector(having more than one element) is created using the <code>c</code> (from * combine *) function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># numeric vector</span>
+m &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+
+<span class="co"># logic vector</span>
+v &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T)
+
+<span class="co"># character vector</span>
+names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Ana&quot;</span>)</code></pre></div>
+<p>So, simply said, the vector is arranged with a set of elements of the <strong>same type</strong>. If we create a new vector with elements of different types of data, R will automatically convert all elements into the “strongest” type, which will eventually become the type of vector itself (the term “stronger” type in this context means the type option to store all the information “stored in weaker” type, and in general the conversion goes in the direction of <em>logic -&gt; numeric -&gt; character</em> type).</p>
+<hr />
+<p><strong>Exercise 2.11 - creating vectors </strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a new vector `x` with four arbitrary elements of the following types:</span>
+<span class="co"># logical, real, character and integer</span>
+
+<span class="co"># print the vector content and its class screen</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a new vector `x` with four arbitrary elements of the following types:</span>
+<span class="co"># logical, realistic, character and integer</span>
+x &lt;-<span class="st"> </span><span class="kw">c</span>(T, <span class="fl">1.25</span>, <span class="st">&quot;Ivo&quot;</span>, 10L)
+
+<span class="co"># print the vector content and its class on screen</span>
+x
+<span class="kw">class</span>(x)</code></pre></div>
+<pre><code>## [1] &quot;TRUE&quot; &quot;1.25&quot; &quot;Ivo&quot;  &quot;10&quot;  
+## [1] &quot;character&quot;</code></pre>
+</div>
+<hr />
+<p>The vector can be explicitly converted to another type with the help of already familiar functions <code>as.&lt;type_name&gt;</code>. If the conversion is impossible to implement, the element will be converted to <code>NA</code> with a suitable warning.</p>
+<hr />
+<p><strong>Exercise 2.12 - explicit vector type conversion</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, T, 2L)
+y &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L)
+z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.25</span>, <span class="ot">TRUE</span>, <span class="st">&quot;Ana&quot;</span>)
+
+<span class="co"># Consider a possible result and then try to make the following conversions</span>
+<span class="co"># vector `x` in numeric type</span>
+<span class="co"># vector `y` in character type</span>
+<span class="co"># vector `z` in a whole type</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Consider a possible result and then try to make the following conversions</span>
+<span class="co"># vector `x` in numeric type</span>
+<span class="co"># vector `y` in character type</span>
+<span class="co"># vector `z` in a whole type</span>
+<span class="kw">as.numeric</span>(x)
+<span class="kw">as.character</span>(y)
+<span class="kw">as.integer</span>(z)</code></pre></div>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>## [1] 1 1 2
+## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;
+## [1]  1 NA NA</code></pre>
+</div>
+<p>Can you answer the question - why in the last example did the value <code>TRUE</code> not become <code>1L</code> but <code>NA</code> instead? Try to print the <code>z</code> vector and notice the results of the implicit conversion you might have neglected (which converts the <code>TRUE</code> logical value to a string of <code>&quot;TRUE&quot;</code> that can no longer be ‘returned’ to the numeric value <code>1L</code>).</p>
+<hr />
+<p>With the <code>c</code> function we can also connect multiple vectors to one:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)
+c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="co"># variable can be called &quot;c&quot; in spite of the function c()</span>
+
+d &lt;-<span class="st"> </span><span class="kw">c</span>(a, b, c) <span class="co"># d is now c(1, 2, 3, 4, 5, 6, 7, 8)</span></code></pre></div>
+<hr />
+<p>In addition to the <code>c</code> function, R also offers additional convenient ways of creating new vectors:</p>
+<ul>
+<li><code>:</code> - “range” operator, giving the range from upper to lower bound, both included</li>
+<li><code>seq</code> - sequence function, similar to the range operator but with additional options</li>
+<li><code>rep</code> - replicate function, repeats the provided elements provided number of times</li>
+</ul>
+<hr />
+<p><strong>Exercise 2.13 - vector creation helper functions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the results of the following commands</span>
+
+<span class="co"># 1: 5</span>
+<span class="co"># rep(c(1, 2, 3), times = 3)</span>
+<span class="co"># rep(c(1, 2, 3), each = 3)</span>
+<span class="co"># seq(1, 5, by = 0.5)</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the results of the following commands</span>
+
+<span class="dv">1</span>:<span class="st"> </span><span class="dv">5</span>
+<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">times =</span> <span class="dv">3</span>)
+<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">each =</span> <span class="dv">3</span>)
+<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)</code></pre></div>
+<pre><code>## [1] 1 2 3 4 5
+## [1] 1 2 3 1 2 3 1 2 3
+## [1] 1 1 1 2 2 2 3 3 3
+## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
+</div>
+<hr />
+<p>Vectors can also be created by means of functions corresponding to the names of the vector types (<code>numeric</code>,<code>character</code>, etc.) whereby as a parameter we specify the desired length of the vector. This is often done as a “preparation” of the vector for subsequent filling up of real values, ie, a kind of reservation of the place in memory. What is interesting is the fact that we can also create an “empty” vector of a certain type that is still a vector, with only the length of zero (for which, for example, with the function <code>c</code> we can add elements later).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">2</span>) <span class="co"># vector is filled with &quot;null&quot; elements, in this case (0, 0)</span>
+y &lt;-<span class="st"> </span><span class="kw">character</span>(<span class="dv">5</span>)
+z &lt;-<span class="st"> </span><span class="kw">integer</span>(<span class="dv">0</span>) <span class="co"># &quot;empty&quot; vector!</span>
+z &lt;-<span class="st"> </span><span class="kw">c</span>(z, <span class="dv">1</span>) <span class="co"># add to the vector the element 1 (actually &quot;merge empty vector and element 1&quot;)</span></code></pre></div>
+<p>Finally, to check if some vector contains a certain element we can use the operator <code>%in%</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">4</span> %in%<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>) <span class="co"># returns FALSE</span>
+<span class="st">&quot;d&quot;</span> %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>) <span class="co"># returns TRUE</span></code></pre></div>
+<p>Let’s see now how to access some vector elements</p>
+<hr />
+</div>
+<div id="operator" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Operator <code>[</code></h3>
+<p>The vector element is accessed through the index operator <code>[</code>]`, with the help of which we can modify the vector elements:</p>
+<div class="fold o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)
+a[<span class="dv">1</span>] <span class="co"># prints a value of 2</span>
+a[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># element on the 2nd place becomes 5</span>
+a[<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="dv">7</span> <span class="co"># at the 5th place is added 7, and the &quot;hole&quot; is filled with NA</span>
+a</code></pre></div>
+<pre><code>## [1] 2
+## [1]  2  5  6 NA  7</code></pre>
+</div>
+<p>Notice a somewhat unusual fact - <em>the first element of the vector in R has the index 1, not 0!</em> This is an important difference compared to the indexing of elements in other programming languages. The reason for this specificity is simple - R is primarily considered as a language for data analysis, especially in tabular form, and in practice it is much easier to count rows or columns in order they appear in a data set than to do constantly “add 1”.</p>
+<p>The example above actually shows a very simplified case for retrieving vector elements and modifying them. One of the specifics of the language R is the so called <em>vectorization</em>, that is, the principle that R often works “more things at once” - not so much in terms of parallel execution, but in terms of declaring what we want to do. Specifically, in the case of vector indexing, we rarely retrieve or modify elements one by one, but rather we include a greater number of elements at once using the principle of <em>vectorization</em> and <em>recycling</em>. Understanding these terms is crucial for learning the R language, so we will explain them in detail below.</p>
+<hr />
+</div>
+<div id="principle-of-vectorization-and-recycling" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Principle of vectorization and recycling</h3>
+<p>The notion of <em>vectorization</em> or more precisely <em>vectorized operations and functions</em> simply means that the operations work on multiple elements at once. If we ask R to make an operation or function over a vector of values, R will perform the function or operation over each element separately and return the vector as a result. Likewise, if we carry out the binary operation between two vectors, it will be performed over the “paired” or “aligned” elements of both vectors (suppose for now that the vectors are of the same length).</p>
+<hr />
+<p><strong>Exercise 2.14 - vectorization principle </strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(-<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>)
+a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">3</span>
+b &lt;-<span class="st"> </span><span class="dv">4</span>:<span class="dv">6</span>
+
+
+<span class="co"># call the abs function to calculate the absolute value</span>
+<span class="co"># over the vector `x` and print the result</span>
+
+
+<span class="co"># add vectors `a` and` b` with operator `+`</span>
+<span class="co"># and print the result</span>
+
+
+<span class="co"># multiply vectors `a` and` b` with operator `*`</span>
+<span class="co"># and print the result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># call the abs function to calculate the absolute value</span>
+<span class="co"># over the vector `x` and print the result</span>
+<span class="kw">abs</span>(x)
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># add vectors `a` and` b` with operator `+`</span>
+<span class="co"># and print the result</span>
+a +<span class="st"> </span>b
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># multiply vectors `a` and` b` with operator `*`</span>
+<span class="co"># and print the result</span>
+a *<span class="st"> </span>b</code></pre></div>
+<pre><code>##  [1] 5 4 3 2 1 0 1 2 3 4 5
+## -----------
+## [1] 5 7 9
+## -----------
+## [1]  4 10 18</code></pre>
+</div>
+<hr />
+<p>Carefully consider the results of the previous task. If necessary, sketch the vector <code>a</code> and<code>b</code> on the paper with the vertically loaded elements and notice how to R does the “pairing” of the elements. Notice that we are not talking about “vector operations” here in a strict mathematical sense, but about aligning the elements of two vectors and performing simple operations over each of these pairs. This is especially evident in the last example where there is no “multiplication of vectors” in some of the mathematical interpretations, but rather simple multiplication of the parallel elements of the two vectors.</p>
+<p>What if the vectors are not of the same length? R in this case uses <em>principle of recycling</em>.</p>
+<p><strong>The Recycle Principle </strong> states that when the vectors are uneven, the shorter vector is “recycled” as many times as needed to reach the longer length of the vector. The most common scenarios of using this principle are operations where on one side we have a vector with multiple elements and on the other a single element vector. What we should avoid is a recycling scenario where the length of a “big” vector is not a multiple of the “small” length - R will still recycle a shorter vector, only it will have to be “cut off”, which will result in an appropriate warning.</p>
+<hr />
+<p><strong>Exercise 2.15 - recycle principle </strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)
+c &lt;-<span class="st"> </span><span class="kw">rep</span> (<span class="dv">5</span>, <span class="dv">3</span>)
+
+<span class="co"># duplicate vector `a` and print the result</span>
+
+<span class="co"># divide vector `a` with vector` b` and print the result</span>
+
+<span class="co"># multiply vectors `a` and` c` and print the result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)
+c &lt;-<span class="st"> </span><span class="kw">rep</span> (<span class="dv">5</span>, <span class="dv">3</span>)
+
+<span class="co"># duplicate vector `a` and print the result</span>
+<span class="dv">2</span> *<span class="st"> </span>a
+
+<span class="co"># divide vector `a` with vector` b` and print result</span>
+a /<span class="st"> </span>b
+
+<span class="co"># multiply vectors `a` and` c` and print the result</span>
+a *<span class="st"> </span>c</code></pre></div>
+<pre><code>## Warning in a * c: longer object length is not a multiple of shorter object
+## length</code></pre>
+<pre><code>## [1] 2 4 6 8
+## [1] 1 1 3 2
+## [1]  5 10 15 20</code></pre>
+</div>
+<hr />
+<p>Now we can finally demystify the difference between “scalar” and “vector” logic operators.</p>
+<ul>
+<li><p><em>Scala </em> logical operators are intended for use with single-element vectors, they return unique values of <code>TRUE</code> or <code>FALSE</code> and are suitable for use in various conditional terms.</p></li>
+<li><p><em>Vector</em> logical operators use standard R’s vectorization and recycling principles, ie, they are intended to work with logical vectors and as a result give a logical vector</p></li>
+</ul>
+<hr />
+<p><strong>Exercise 2.16 - scalar and vector logical operators</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, F)
+b &lt;-<span class="st"> </span><span class="kw">c</span>(T, T, F)
+
+<span class="co"># apply scalar and vector version of logical operator &quot;or&quot;</span>
+<span class="co"># over the `a` and` b` vectors and print the result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># apply scalar and vector version of logical operator &quot;or&quot;</span>
+<span class="co"># over the `a` and` b` vectors and print the result</span>
+
+a ||<span class="st"> </span>b
+a |<span class="st"> </span>b</code></pre></div>
+<pre><code>## [1] TRUE
+## [1]  TRUE  TRUE FALSE</code></pre>
+</div>
+<p>We see that the scalar version will “use” only the first pair of logic vector elements. This means we can use it in theory in conditional logic instructions, although there is no justified reason for it, and R will in this case warnus to address the fact that we are probably using the “wrong” operator.</p>
+<hr />
+<p>The next example with the comparison operators may initially seem trivial, but it is important to pay special attention to the results we get since they will have a very important implications later on. So let’s take a look at what happens in the vectorization of the parallel operators.</p>
+<hr />
+<p><strong>Exercise 2.17 - vectorization of parallel operators </strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>
+y &lt;-<span class="st"> </span><span class="kw">seq</span>(-<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>)
+
+<span class="co"># print x and y</span>
+
+<span class="co"># print the result of the x &gt; y command and explain the result</span>
+
+<span class="co"># print the result of the x &lt; 3 command and explain the result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print x and y</span>
+x
+y
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+
+<span class="co"># print the result of the x &gt; y command and explain the result</span>
+x&gt;<span class="st"> </span>y
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print the result of the x &lt; 3 command and explain the result</span>
+x &lt;<span class="st"> </span><span class="dv">3</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5
+## [1] -10  -5   0   5  10
+## -----------
+## [1]  TRUE  TRUE  TRUE FALSE FALSE
+## -----------
+## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+</div>
+<hr />
+<p>Thus, by vectorizing the comparison operators over the vectors (or combinations of vectors and scalars), as a result we get logical vectors. The interpretation of these results is crucial - it actually answers the question “on what indexes is the condition fulfilled by this expression”? In other words, the results actually represent a template that describes how to filter elements of a vector. This is the basic foundation of the so-called. <em>logical Indexing</em>, which is one of the indexing methods that we will learn below.</p>
+<hr />
+</div>
+</div>
+<div id="index-vectors" class="section level2">
+<h2><span class="header-section-number">3.2</span> Index vectors</h2>
+<p>We have already learned that a vector can be retrieved through a numerical index (and we did not forget the fact that the first element has an index 1). This concept can be expanded by taking multiple elements from the vector at once. which is often referred to as “slicing”.</p>
+<p>The basic principle of choosing multiple elements at once is simple - we only need to specify the indexes of the elements we want. R offers three basic ways of crawling:</p>
+<ul>
+<li>integer- or location- based indexing</li>
+<li>conditional or boolean-based indexing</li>
+<li>label-based indexing</li>
+</ul>
+<p>Which indexing we choose depends on whether we want to access the elements depending on their location, name, or condition, and each type of indexing essentially amounts to the use of a particular vector type as a parameter for the indexing operator. Such a vector is called an “index vector” because of its role.</p>
+<p>Let’s get to know each of the types of indexing in detail.</p>
+<hr />
+<div id="location-indexing" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Location Indexing</h3>
+<p><em>Location Indexing</em> is the generalization of an already familiar indexing principle where we state the ordered numbers (indices) of elements we are interested in. If we want more elements, we simply put their indices “packed” into a numeric vector.</p>
+<p>Try solving the next task by using the appropriate numeric vectors as indexing parameters.</p>
+<hr />
+<p><strong>Exercise 2.18 - location-based indexing</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># print the first element of x</span>
+
+<span class="co"># print the first three vector elements x</span>
+
+<span class="co"># print the first, fifth, and seventh elements of the vector x</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first element of x</span>
+x[<span class="dv">1</span>]
+
+<span class="co"># print the first three vector elements x</span>
+x[<span class="dv">1</span>:<span class="dv">3</span>]
+
+<span class="co"># print the first, fifth, and seventh elements of the vector x</span>
+x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>)]</code></pre></div>
+<pre><code>## [1] 1
+## [1] 1 2 3
+## [1] 1 5 7</code></pre>
+</div>
+<hr />
+<p>Thus, the location index vector is nothing other than the ordinary numeric vector we use together with the index operator to determine which elements of another vector we want to “keep”.</p>
+<p>Let’s look at some of the features of the location index vector:</p>
+<hr />
+<p><strong>Exercise 2.19 - location indexing (2)</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># answer the following questions with the help of an appropriate example</span>
+
+<span class="co"># what does index 0 return?</span>
+
+<span class="co"># what does a negative index return?</span>
+
+<span class="co"># what happens if you use an index outside of vector boundaries</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># answer the following questions with the help of an appropriate example</span>
+
+<span class="co"># what does index 0 return?</span>
+x[<span class="dv">0</span>]
+
+<span class="co"># what does a negative index return?</span>
+x[-<span class="dv">1</span>]
+
+<span class="co"># what happens if you use an index outside of vector boundaries</span>
+x[<span class="dv">20</span>]</code></pre></div>
+<pre><code>## integer(0)
+## [1]  2  3  4  5  6  7  8  9 10
+## [1] NA</code></pre>
+</div>
+<hr />
+<p>Indexing is not only used to retrieve elements. By combining the indexing operator and the assignment operator we can change the vector elements (also by the principle of “multiple elements at once”:</p>
+<hr />
+<p><strong>Exercise 2.20 - location-based indexing and assignment</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># set all vector elements of `a` from the second to the eighth place to zero</span>
+<span class="co"># print vector `a`</span>
+
+b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">20</span>
+b [<span class="dv">2</span> *<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+
+<span class="co"># Consider what the vector `b` looks like after the above command</span>
+<span class="co"># print the vector `b` and explain the result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># set all vector elements of `a` from the second to the eighth place to zero</span>
+<span class="co"># print vector `a`</span>
+a [<span class="dv">2</span>:<span class="dv">8</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+a
+
+b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">20</span>
+b [<span class="dv">2</span> *<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+
+<span class="co"># Consider what the vector `b` looks like after the above command</span>
+<span class="co"># print the vector `b` and explain the result</span>
+b</code></pre></div>
+<pre><code>##  [1]  1  0  0  0  0  0  0  0  9 10
+##  [1]  1 NA  3 NA  5 NA  7 NA  9 NA 11 12 13 14 15 16 17 18 19 20</code></pre>
+</div>
+<hr />
+</div>
+<div id="conditional-indexing" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Conditional indexing</h3>
+<p>If we carefully considered the results obtained with examples with vectorized comparison operators then we can very well grasp the way <em>conditional indexing</em> works. The principle is simple - for the index vector we set a logical vector of the same length as the vector whose elements we want to retrieve. The logic vector elements determine which elements are retained (the positions where the value is <code>TRUE</code>) and which we reject (positions where the value is <code>FALSE</code>).</p>
+<hr />
+<p><strong>Exercise 2.21 - conditional indexing</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># create a logical vector `y` of length 10 with an arbitrary combination of</span>
+<span class="co"># TRUE and FALSE values</span>
+
+<span class="co"># index the vector `x` with the` y` vector, print and explain the result</span>
+
+
+<span class="co"># print all vector elements `x` which are less or equal to 5</span>
+<span class="co"># use the appropriate expression as a logical index vector</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># create a logical vector `y` of length 10 with an arbitrary combination of</span>
+<span class="co"># TRUE and FALSE values</span>
+
+y &lt;-<span class="kw">c</span>(T, T, F, T, F, F, F, T, F, T)
+
+<span class="co"># index the vector `x` with the` y` vector, print and explain the result</span>
+x[y]
+
+<span class="co"># print all vector elements `x` which are less or equal to 5</span>
+<span class="co"># use the appropriate expression as a logical index vector</span>
+x[x &lt;=<span class="st"> </span><span class="dv">5</span>]</code></pre></div>
+<pre><code>## [1]  1  2  4  8 10
+## [1] 1 2 3 4 5</code></pre>
+</div>
+<hr />
+<p>The last command, while simple, is one of the key principles for filtering elements in the language R. The combination of the index operator and the conditional expression represents a concise but very powerful vector filtering mechanism.</p>
+<p>Let’s try this principle in a few more examples.</p>
+<hr />
+<p><strong>Exercise 2.22 - conditional indexing</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">seq</span> (<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">7</span>)
+students &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Petra&quot;</span>, <span class="st">&quot;Marijana&quot;</span>, <span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Tomislav&quot;</span>, <span class="st">&quot;Tin&quot;</span>)
+
+<span class="co"># print all even, and then all odd vector elements of `y`</span>
+
+<span class="co"># print all vector elements from `students` which represent 3-letter names</span>
+<span class="co"># (note: we use the `nchar` function to count the characters in R)</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">seq</span> (<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">7</span>)
+students &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Petra&quot;</span>, <span class="st">&quot;Marijana&quot;</span>, <span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Tomislav&quot;</span>, <span class="st">&quot;Tin&quot;</span>)
+
+<span class="co"># print all even, and then all odd vector elements of `y`</span>
+y[y %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>]
+y[y %%<span class="st"> </span><span class="dv">2</span> !=<span class="st"> </span><span class="dv">0</span>]
+
+<span class="co"># print all vector elements from `students` which represent 3-letter names</span>
+<span class="co"># (note: we use the `nchar` function to count the characters in R)</span>
+students [<span class="kw">nchar</span>(students) ==<span class="st"> </span><span class="dv">3</span>]</code></pre></div>
+<pre><code>## [1]  8 22 36 50 64 78 92
+## [1]  1 15 29 43 57 71 85 99
+## [1] &quot;Ivo&quot; &quot;Ana&quot; &quot;Tin&quot;</code></pre>
+</div>
+<hr />
+<p>If the concept of conditional indexing with the help of conditional expressions is still unclear, one of the things that can help is to sketch the intermediate results - simply print the result of the expression within the square bracket of the index operator and then consider how that result affects the final solution.</p>
+<hr />
+</div>
+<div id="label-based-indexing" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Label-based indexing</h3>
+<p><em>label-based indexing</em> works on the principle of explicitly naming the elements we want to “keep”. In order to be able to use this type of indexing we must meet the necessary prerequisite - vector elements must have predefined “names”.</p>
+<p>The vectors we used so far did not have named elements. Each element had its predefined <em>position</em> within the vector and its value but did not have any special additional identifiers. Programming language R allows you to attach names to vector elements in a very simple way - using a combination of the <code>names</code> function, the assignment operator, and the character vector with selected names. We need to make sure that the vector name is of the same length as the original vector!</p>
+<hr />
+<p><strong>Exercise 2.23 - label-based indexing</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">165</span>, <span class="dv">173</span>, <span class="dv">185</span>, <span class="dv">174</span>, <span class="dv">190</span>)
+<span class="kw">names</span> (height) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Marica&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Josip&quot;</span>, <span class="st">&quot;Ivana&quot;</span>, <span class="st">&quot;Stipe&quot;</span>)
+
+<span class="co"># print the vector `height`</span>
+
+
+<span class="co"># print the height of Pero and Josip</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">165</span>, <span class="dv">173</span>, <span class="dv">185</span>, <span class="dv">174</span>, <span class="dv">190</span>)
+<span class="kw">names</span> (height) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Marica&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Josip&quot;</span>, <span class="st">&quot;Ivana&quot;</span>, <span class="st">&quot;Stipe&quot;</span>)
+
+<span class="co"># print the vector `height`</span>
+height
+
+<span class="co"># print the height of Pero and Josip</span>
+height [<span class="kw">c</span>(<span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Josip&quot;</span>)]</code></pre></div>
+<pre><code>## Marica   Pero  Josip  Ivana  Stipe 
+##    165    173    185    174    190 
+##  Pero Josip 
+##   173   185</code></pre>
+</div>
+<hr />
+<p>We see that label-based indexing needs a corresponding character vector as the index parameter.</p>
+<p>(NOTE: A more careful reader will notice an unusual fact in the program code - function call is used as a <code>lvalue</code>! Answer to the question why this works may require a little more knowledge of the internal functioning of the R language and for now it is enough to say that here it’s actually calling a function called <code>names&lt;-</code> which is “hidden” behind a much more intuitive and easy-to-understand syntax).</p>
+<p>If for some reason we want to delete the names of vector elements, simply forward <code>NULL</code> to <code>names</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">names &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
+<p>This will conclude the story of the index vectors. We learned different ways of creating a vector and getting and modifying its elements. Now is the time to try to add the additional “dimension” to the vectors - let’s get to know the matrices and the arrays.</p>
+<hr />
+</div>
+</div>
+<div id="matrices-and-arrays" class="section level2">
+<h2><span class="header-section-number">3.3</span> Matrices and arrays</h2>
+<p>The matrices and the arrays are simply - multidimensional vectors. <em>Matrix</em> is a vector of two dimensions, that is, a vector that organizes elements in “rows” and “columns”. <em>Array</em> is a vector with three or more dimensions. While matrices are used relatively often in practice, the arrays are somewhat more limited to specific scenarios. Because of this fact in this chapter we will mainly deal with matrices, although the concepts presented are very easily applicable to arrays.</p>
+<p>What is common to the matrices and arrays, which is a well-known fact to readers with programmatic experience, is that their multidimensionality is actually virtual. Both the matrix and the array are actually one-dimensional vectors with the attribute of dimensionality, and with this attribute the language R maps our multidimensional indexing to the “real” index of the element of the one dimensional vector. This fact does not limit us - we can still in most cases treat the matrix as if it is actually two-dimensional, and knowledge of one-dimensional nature can only give us additional flexibility in working with the matrices.</p>
+<p>There are several ways to create a new matrix:</p>
+<ul>
+<li>With the help of the <code>matrix</code> function to which we forward the one-dimensional vector and the desired number of rows and columns through the <code>nrow</code> and <code>ncol</code> parameters</li>
+<li>“manually” by setting dimensions of a one dimensional vector using the <code>dim</code> function and associating a two-element numeric vector with matrix dimensions</li>
+<li>“binding” rows or columns together with functions <code>rbind</code> (<em>row-bind</em>) and<code>cbind</code> (<em>column-bind</em>)</li>
+</ul>
+<p>We will demonstrate these ways in the following examples.</p>
+<hr />
+<p><strong>Exercise 2.24 - matrix function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">12</span>
+
+<span class="co"># create a matrix with 3 rows and 4 columns using the `matrix` function</span>
+<span class="co"># print the result on the screen</span>
+
+<span class="co"># repeat the procedure but add the parameter `byrow = T` to the calling function</span>
+<span class="co"># print the result on the screen and compare it to the previous result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a matrix with 3 lines and 4 columns using the `matrix` function</span>
+<span class="co"># print the result on the screen</span>
+<span class="kw">matrix</span> (x, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)
+
+<span class="co"># repeat the procedure but add the parameter `byrow = T` to the calling function</span>
+<span class="co"># print the result on the screen and compare it to the previous result</span>
+<span class="kw">matrix</span> (x, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">byrow =</span> T)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12</code></pre>
+</div>
+<hr />
+<p>Note that unless explicitly requested otherwise, the R matrix is filled by columns. This is done because of the similarity of the matrix with the tabular representation of the data most often analyzed by looking at individual columns. But since we often feel that filling by the rows is more “natural”, we must not forget the very useful parameter of <code>byrow</code>.</p>
+<hr />
+<p><strong>Exercise 2.25 - dim function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># print the result of call of the `dim` function to the vector` m`</span>
+
+<span class="co"># use the `dim` function to vector` m` with the assigment of the vector c(2, 5)</span>
+
+<span class="co"># print `m` and comment the result</span>
+
+<span class="co"># print the call results of `nrow` and` ncol` on the matrix `m`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+
+<span class="co"># print the result of call of the `dim` function to the vector` m`</span>
+<span class="kw">dim</span> (m)
+
+<span class="co"># use the `dim` function to vector` m` with the assigment of the vector c(2, 5)</span>
+<span class="kw">dim</span> (m) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)
+
+<span class="co"># print `m` and comment the result</span>
+m
+
+<span class="co"># print the call results of `nrow` and` ncol` on the matrix `m`</span>
+<span class="kw">nrow</span>(m)
+<span class="kw">ncol</span>(m)</code></pre></div>
+<pre><code>## NULL
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10
+## [1] 2
+## [1] 5</code></pre>
+</div>
+<hr />
+<p>We see that the “ordinary” vector does not actually have a dimension, which is manifested by the <code>NULL</code> values we get as a result. By invoking the function <code>dim</code> we can add the attribute <code>dim</code> so it formally becomes a matrix (or array in general case). Exact dimensions are those that define how elements are organized in rows and columns, and by setting dimensions we need to be careful that they match the current number of elements. Once the matrix has dimensions added, we can retrieve them again by using the <code>dim</code> function, or just the number of rows or columns with the <code>nrow</code> and <code>ncol</code> functions.</p>
+<p>The resulting matrix is like the one in the previous example filled in by the columns. Since here we do not have the opportunity to use the <code>byrow</code> parameter, one of the ways to get a matrix filled by rows is to transpose the resulting result with the <code>t</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">t</span> (m) <span class="co"># transpose the matrix and store it back in the variable `m`</span></code></pre></div>
+<p>Finally, a matrix can be created by “gluing” rows and columns with the help of <code>rbind</code> and<code>cbind</code>. This is also a convenient way to add new rows and columns to an existing matrix.</p>
+<hr />
+<p><strong>Exercise 2.26 - functions ‘rbind’ and ‘cbind’</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+b &lt;-<span class="st"> </span><span class="dv">5</span>:<span class="dv">8</span>
+c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.0</span>)
+
+<span class="co"># create a matrix `m` in which vectors `a` and `b` will be columns</span>
+
+<span class="co"># add a new row to the top of the matrix `m` with vector elements` c`</span>
+<span class="co"># print matrix `m`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+b &lt;-<span class="st"> </span><span class="dv">5</span>:<span class="dv">8</span>
+c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.0</span>)
+
+<span class="co"># create a matrix `m` in which vectors` a` and `b` will be columns</span>
+m &lt;-<span class="st"> </span><span class="kw">cbind</span> (a, b)
+
+
+<span class="co"># add a new row to the top of the matrix `m` with vector elements` c`</span>
+<span class="co"># print matrix `m`</span>
+m &lt;-<span class="st"> </span><span class="kw">rbind</span> (c, m)
+m</code></pre></div>
+<pre><code>##   a b
+## c 0 0
+##   1 5
+##   2 6
+##   3 7
+##   4 8</code></pre>
+</div>
+<hr />
+<div id="matrix-splicing" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Matrix splicing</h3>
+<p>All the learned principles for “cutting” the vector using index vectors can be applied on matrices. The differences are as follows:</p>
+<ul>
+<li>we index each dimension individually</li>
+<li>first we index the lines, then the columns, and divide the index vectors by comma</li>
+<li>If we want “all rows” or “all columns” we simply omit this index vector( but we still use a comma)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># assume that `m &#39;is a matrix of 3 x 5, with column names from `a` to `e`</span>
+
+m[<span class="dv">1</span>, <span class="dv">2</span>:<span class="dv">5</span>] <span class="co"># first line, all columns from second to fifth</span>
+m[<span class="kw">c</span>(F, T, T), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)] <span class="co"># second and third rows, columns `a` and` b`</span>
+m[,] <span class="co"># all rows and all columns (same as just `m`)</span></code></pre></div>
+<p>In practice, the matrix usually uses location-based and label-based indexing; conditional indexing is not too practical because of the two-dimensional nature of the matrix (although it is feasible, we just have to keep in mind that the logic index vector lengths correspond to the corresponding dimension).</p>
+<p>One of the things we need to keep in mind is the R-language tendency to “help” us by simplifying the result. Thus, the result of a row cutting operation that leaves only one row or column will automatically become a vector, ie lose the dimension attribute. This sometimes does not suit us, especially if we are working on scripts that expect a matrix further down the line, even though it has the dimension of rows or columns 1. In this case, we need to set an additional parameter <code>drop = F</code> for indexing. This often seems quite unattractive, which is why there are many R-language packages that “repair” this, that is to say, try to leave the results consistent. But the <code>drop</code> parameter set to<code>FALSE</code> should be taken into account, as it will appear in other places in a similar function.</p>
+<hr />
+<p><strong>Exercise 2.27 - matrix splicing</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span> (<span class="dv">1</span>:<span class="dv">30</span>, <span class="dv">6</span>, <span class="dv">5</span>, T)
+<span class="kw">colnames</span> (m) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+
+<span class="co"># print all elements of the matrix m from the second to the fourth line</span>
+<span class="co"># and from the third to the fifth column</span>
+
+<span class="co"># set all elements in column &quot;c&quot; to zero</span>
+<span class="co"># and then print the first two lines of matrix `m`</span>
+
+<span class="co"># print only column &quot;d&quot;</span>
+
+<span class="co"># rewrite column &quot;d&quot;, but add the `drop = FALSE` parameter when indexing</span>
+<span class="co"># Separate the parameter with a comma (as if it was a &quot;third&quot; indexing dimension)</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span> (<span class="dv">1</span>:<span class="dv">30</span>, <span class="dv">6</span>, <span class="dv">5</span>, T)
+<span class="kw">colnames</span> (m) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+
+<span class="co"># print all elements of the matrix `m` from the second to the fourth line</span>
+<span class="co"># and from the third to the fifth column</span>
+m [<span class="dv">2</span>:<span class="dv">4</span>, <span class="dv">3</span>:<span class="dv">5</span>]
+
+<span class="co"># set all elements in column &quot;c&quot; to zero</span>
+<span class="co"># and then print the first two lines of matrix `m`</span>
+m [, <span class="st">&quot;c&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+m [<span class="dv">1</span>:<span class="dv">2</span>]
+
+<span class="co"># print only column &quot;d&quot;</span>
+m [, <span class="st">&quot;d&quot;</span>]
+
+<span class="co"># rewrite column &quot;d&quot;, but add the `drop = FALSE` parameter when indexing</span>
+<span class="co"># Separate the parameter with a comma (as if it was a &quot;third&quot; indexing dimension)</span>
+m [, <span class="st">&quot;d&quot;</span>, drop =<span class="st"> </span>F]</code></pre></div>
+<pre><code>##       c  d  e
+## [1,]  8  9 10
+## [2,] 13 14 15
+## [3,] 18 19 20
+## [1] 1 6
+## [1]  4  9 14 19 24 29
+##       d
+## [1,]  4
+## [2,]  9
+## [3,] 14
+## [4,] 19
+## [5,] 24
+## [6,] 29</code></pre>
+</div>
+<hr />
+<p>Here we will finish the story of the matrices. These structures are very useful in solving linear algebra tasks, so it is often convenient to look at the documentation of the R language to see which functions and operators are available to us for such a job. Similarly, some of the principles of matrix management will be useful in managing the so-called “data frames” - one of the most useful data structures in R.</p>
+<p>Finally, although we will not deal in detail with the arrays, we will show the example of the program code that creates a three-dimensional array and then uses standard cutting principles we encountered with the vectors and matrices.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myArray &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">1</span>:<span class="dv">24</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)) <span class="co"># array of dimension 2 x 3 x 4</span>
+
+myArray[, <span class="dv">1</span>:<span class="dv">2</span>, <span class="dv">3</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="co"># print all rows, first and second columns</span>
+                                        <span class="co"># 3rd &quot;layer,&quot; with array type retention</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="lists" class="section level2">
+<h2><span class="header-section-number">3.4</span> Lists</h2>
+<p>The list is an element in R used as a “universal container” of any data. Unlike the vector (ie, the concept of vector as we initially defined it), the list may contain different types of data or, more often, sets of different types of data.</p>
+<p>We create the list with the <code>list</code> function by which we add a string of names of elements and their content. These elements can be anything, even other lists.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>:<span class="dv">100</span>, <span class="dt">c =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="dv">2</span>))</code></pre></div>
+<p>Try to create your own list in the following example.</p>
+<hr />
+<p><strong>Exercise 2.28 - list creation</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a new list called `stuff` that will have the following elements</span>
+<span class="co"># element called `numbers&#39; with integers from 1 to 3</span>
+<span class="co"># element called `letters&#39; with letters &#39;A&#39; and &#39;B&#39;</span>
+<span class="co"># nameless element with logical vector `c(T, F)`</span>
+<span class="co"># element called `titles&#39; with the concent of &#39;Mr&#39;, &#39;Mrs&#39; and &#39;Ms&#39;</span>
+
+
+<span class="co"># print the `stuff` variable</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stuff &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">numbers =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),
+                 <span class="dt">letters =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),
+                 <span class="kw">c</span>(T, F),
+                 <span class="dt">titles =</span> <span class="kw">c</span>(<span class="st">&quot;Mr&quot;</span>, <span class="st">&quot;Mrs&quot;</span>, <span class="st">&quot;Ms&quot;</span>))
+
+
+<span class="co"># print the `stuff` variable</span>
+stuff</code></pre></div>
+<pre><code>## $numbers
+## [1] 1 2 3
+## 
+## $letters
+## [1] &quot;A&quot; &quot;B&quot;
+## 
+## [[3]]
+## [1]  TRUE FALSE
+## 
+## $titles
+## [1] &quot;Mr&quot;  &quot;Mrs&quot; &quot;Ms&quot;</code></pre>
+</div>
+<hr />
+<p>Note that the list keeps the order of elements - the element without the name is shown in index 3.</p>
+<p>The <code>str</code> (“structure”) function allows us to inspect the properties and list contents without printing the entire list. This function is often used by analysts, both for viewing the list and for a quick insight into the already mentioned data frames that we will work with in the next chapter.</p>
+<hr />
+<p><strong>Exercise 2.29 - list structure</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the structure of the `stuff` list</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the structure of the `stuff` list</span>
+<span class="kw">str</span>(stuff)</code></pre></div>
+<pre><code>## List of 4
+##  $ numbers: num [1:3] 1 2 3
+##  $ letters: chr [1:2] &quot;A&quot; &quot;B&quot;
+##  $        : logi [1:2] TRUE FALSE
+##  $ titles : chr [1:3] &quot;Mr&quot; &quot;Mrs&quot; &quot;Ms&quot;</code></pre>
+</div>
+<hr />
+<p>At the beginning of this lesson, we have said that the principle “all is a vector” is very important in R and that the vectors actually have arranged sets of elements of the same type. From this one could conclude that this fact is not valid for the lists - they obviously contain elements of different types. But the real answer is - the lists <em>are</em> actually vectors, and the definition is actually still consistent. That is, all the elements of the list are actually a small single-element lists, so all elements are formally of the same type.</p>
+<hr />
+<p><strong>Exercise 2.30 - list element type </strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first element of the list `stuff`</span>
+
+<span class="co"># check its type</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first element of the list `stuff`</span>
+stuff[<span class="dv">1</span>]
+
+<span class="co"># check its type</span>
+<span class="kw">typeof</span>(stuff[<span class="dv">1</span>])</code></pre></div>
+<pre><code>## $numbers
+## [1] 1 2 3
+## 
+## [1] &quot;list&quot;</code></pre>
+</div>
+<hr />
+<p>So, we’ve proved that the list elements are actually a small list, as seen from printing the item itself, as well as checking its type. It may seem that the elements above created lists should be vectors, since we have created the list by “stacking” different vectors, however in the process of list creation all these elements are wrapped in single-element lists.</p>
+<p>Often we do not want to work with a list element as a “small list”, but want to have it in its “original” form. For this we use the operator <code>[[</code>, ie the operator of “double angular brackets”.</p>
+<hr />
+<p><strong>Exercise 2.31 - operator [[</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first element of the list `stuff` using the operator `[[`</span>
+
+
+<span class="co"># check its type</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first element of the list `stuff` using the operator `[[`</span>
+stuff[[<span class="dv">1</span>]]
+
+<span class="co"># check its type</span>
+<span class="kw">typeof</span>(stuff[[<span class="dv">1</span>]])</code></pre></div>
+<pre><code>## [1] 1 2 3
+## [1] &quot;double&quot;</code></pre>
+</div>
+<hr />
+<p>The aforementioned operator is most often used to retrieve the selected element of the list defined by the number or (if defined) by the element name. In this approach, we must use the syntax such as <code>list[[name_element]]</code> symbol, which is somewhat clumsy for typing. Because of this, R offers an alternative way of accessing the list elements by their name using the <code>$</code> operator, ie <code>list$name_element</code>.</p>
+<hr />
+<p><strong>Exercise 2.32 - operator ‘$’</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the `letters` element of the `stuff` list</span>
+<span class="co"># using `[[` the operator </span>
+
+
+<span class="co"># print the `letters` element of the `stuff` list</span>
+<span class="co"># using the `$` operator </span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the `letters` element of the `stuff` list</span>
+<span class="co"># using `[[` the operator </span>
+stuff[[<span class="st">&quot;letters&quot;</span>]]
+
+<span class="co"># print the `letters` element of the `stuff` list</span>
+<span class="co"># using the `$` operator </span>
+stuff$letters</code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot;
+## [1] &quot;A&quot; &quot;B&quot;</code></pre>
+</div>
+<hr />
+<p>The lists are an extremely popular type of object in R, as they represent a universal template for more complex data structures, including more complex objects in the narrower sense (as we will see later). The list is also the “foundation” for the most popular and most commonly used element of the R-language: the data frame - which we will learn in the next lesson.</p>
+<p>Finally, we learn how to add an element to the list. This is easiest to do using the aforementioned operator <code>$</code> - such as <code>list$newElement &lt;- newElementContents</code>. The element is deleted by assigning the value <code>NULL</code>.</p>
+<hr />
+<p><strong>Exercise 2.33 - adding list elements</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># in the `stuff` list add the `evenNumbers` element which contains</span>
+<span class="co"># all even numbers from 1 to 100</span>
+
+<span class="co"># delete the third element from the list</span>
+
+
+<span class="co"># print the `stuff` list</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># in the `stuff` list add the `evenNumbers` element which contains</span>
+<span class="co"># all even numbers from 1 to 100</span>
+stuff$evenNumbers &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">100</span>, <span class="dv">2</span>)
+
+<span class="co"># delete the third element from the list</span>
+stuff[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span>
+
+<span class="co"># print the `stuff` list</span>
+<span class="kw">print</span>(stuff)</code></pre></div>
+<pre><code>## $numbers
+## [1] 1 2 3
+## 
+## $letters
+## [1] &quot;A&quot; &quot;B&quot;
+## 
+## $titles
+## [1] &quot;Mr&quot;  &quot;Mrs&quot; &quot;Ms&quot; 
+## 
+## $evenNumbers
+##  [1]   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34
+## [18]  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64  66  68
+## [35]  70  72  74  76  78  80  82  84  86  88  90  92  94  96  98 100</code></pre>
+</div>
+<hr />
+<p>In the next lesson, we will finally get to know the often-mentioned data frames as the most popular and most commonly used data structures of the language R.</p>
+<hr />
+</div>
+<div id="exercises-1" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>Create the following vectors:</li>
+</ol>
+<ul>
+<li>(11, 12, 13,…, 99)</li>
+<li>(0, 0, 0, 0, … , 0) (100 zeris)</li>
+<li>(0, 0.1, 0.2, …., 1.0)</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>What is the sum of all numbers from 101 to 1001, if we skip all numbers divisible by 10? Use the <code>sum</code> function.</p></li>
+<li><p>Create a 3 x 3 matrix by performing the following commands (the sample function will be done in one of the following lessons):</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we create a matrix of 3x3 randomly selected elements from 1 to 100</span>
+<span class="kw">set.seed</span>(<span class="dv">1234</span>)
+m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dv">9</span>, T)), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> T)</code></pre></div>
+<p>Calculate the inverse matrix with the <code>solve</code> function. Make sure the multiplication of the original and inverse matrix result with the unit matrix (use the <code>% *%</code> operator to multiply the matrices).</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Initialize the <code>stuff</code> list used in the lesson. Do the following:</li>
+</ol>
+<ul>
+<li>print the class of the second element of the list</li>
+<li>print the element in the third place of the element of the list named <code>letters</code></li>
+<li>check the length of the element called <code>titles</code> and add the title ‘Prof’ to the last position</li>
+<li>check if the number <code>4</code> is contained in the first element of the list</li>
+<li>add a new list of three vectors <code>a</code>,<code>b</code> and <code>c</code> which all contain elements (1,2,3) to the last place of the list,</li>
+</ul>
+<hr />
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> <img alt = "Creative Commons License" style = "border-width:0" src = "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /> </a> <br /> <span xmlns: dct = "http://purl.org/ dc / terms / "property =" dct: title "> Program in Ru &lt;/ span&gt; by <a xmlns: cc =" http://creativecommons.org/ns# "href =" https: //www.fer. unizg.hr/en/damir.pintar "property =" cc: attributionName "rel =" cc: attributionURL "> Damir Pintar </a> is licensed under <a rel =" license "href =" http: // creativecommons .org / licenses / by-nc-nd / 4.0 / "> Creative Commons Attribution-NonCommercial-NoDerivative 4.0 International License </a> <br /> Based on a work at <a xmlns: dct =" http: // purl.org/dc/terms/ "href =" https://ratnip.github.io/FER_OPJR/ "rel =" dct: source "> https://ratnip.github.io/FER_OPJR/ </a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tipovi.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed",
+"edit": null,
+"download": null,
+"search": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

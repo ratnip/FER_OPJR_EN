@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Let’s program in R</title>
+  <meta name="description" content="R Coursebook">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Let’s program in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Coursebook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Let’s program in R" />
+  
+  <meta name="twitter:description" content="R Coursebook" />
+  
+
+<meta name="author" content="Damir Pintar">
+
+
+<meta name="date" content="2017-10-25">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="vektori.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<style type="text/css">
+.showopt {
+  background-color: #004c93;
+  color: #FFFFFF; 
+  width: 140px;
+  height: 4	0px;
+  text-align: center;
+  vertical-align: middle !important;
+  float: right;
+  font-family: sans-serif;
+  font-size:10 pt;
+  border-radius: 8px;
+}
+
+.showopt:hover {
+    background-color: #dfe4f2;
+    color: #004c93;
+}
+
+pre.plot {
+  background-color: white !important;
+}
+</style>
+
+<script>
+ $(document).ready(function() {
+
+  $chunks = $('.fold');
+
+  $chunks.each(function () {
+
+    // add button to source code chunks
+    if ( $(this).hasClass('s') ) {
+      $('pre.r', this).prepend("<div class=\"showopt\">Show solution</div><br style=\"line-height:22px;\"/>");
+      $('pre.r', this).children('code').attr('class', 'folded');
+    }
+
+    // add button to output chunks
+    if ( $(this).hasClass('o') ) {
+      $('pre:not(.r)', this).has('code').prepend("<div class=\"showopt\">Show results</div><br style=\"line-height:22px;\"/>");
+      $('pre:not(.r)', this).children('code:not(r)').addClass('folded');
+
+      // add button to plots
+      $(this).find('img').wrap('<pre class=\"plot\"></pre>');
+      $('pre.plot', this).prepend("<div class=\"showopt\">Show figure</div><br style=\"line-height:22px;\"/>");
+      $('pre.plot', this).children('img').addClass('folded');
+
+    }
+  });
+
+  // hide all chunks when document is loaded
+  $('.folded').css('display', 'none')
+
+  // function to toggle the visibility
+  $('.showopt').click(function() {
+    var label = $(this).html();
+    if (label.indexOf("Show") >= 0) {
+      $(this).html(label.replace("Show", "Hide"));
+    } else {
+      $(this).html(label.replace("Hide", "Show"));
+    }
+    $(this).siblings('code, img').slideToggle('fast', 'swing');
+  });
+});
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>(“Introduction to programming language R” course book)</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#foreword"><i class="fa fa-check"></i>Foreword</a></li>
+</ul></li>
+<li class="part"><span><b>I Basic elements of R</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#general-facts-about-r"><i class="fa fa-check"></i><b>1.1.1</b> General facts about R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#r-alternatives"><i class="fa fa-check"></i><b>1.1.2</b> R alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#installing-software-support"><i class="fa fa-check"></i><b>1.2</b> Installing Software Support</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#overview-of-the-development-interface-rstudio"><i class="fa fa-check"></i><b>1.3</b> Overview of the development interface * RStudio *</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#interactive-console"><i class="fa fa-check"></i><b>1.3.1</b> Interactive console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#writing-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Writing R scripts</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#r-markdown"><i class="fa fa-check"></i><b>1.3.3</b> * R Markdown *</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#how-to-use-this-coursebook"><i class="fa fa-check"></i><b>1.4</b> How to use this coursebook?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tipovi.html"><a href="tipovi.html"><i class="fa fa-check"></i><b>2</b> Basic data types and operators</a><ul>
+<li class="chapter" data-level="2.1" data-path="tipovi.html"><a href="tipovi.html#basic-data-types"><i class="fa fa-check"></i><b>2.1</b> Basic data types</a></li>
+<li class="chapter" data-level="2.2" data-path="tipovi.html"><a href="tipovi.html#operators"><i class="fa fa-check"></i><b>2.2</b> Operators</a></li>
+<li class="chapter" data-level="2.3" data-path="tipovi.html"><a href="tipovi.html#missing-unknown-and-non-existent-values"><i class="fa fa-check"></i><b>2.3</b> Missing, unknown, and non-existent values</a></li>
+<li class="chapter" data-level="" data-path="tipovi.html"><a href="tipovi.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vektori.html"><a href="vektori.html"><i class="fa fa-check"></i><b>3</b> Vectors, matrices and lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="vektori.html"><a href="vektori.html#vector"><i class="fa fa-check"></i><b>3.1</b> Vector</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vektori.html"><a href="vektori.html#create-a-vector"><i class="fa fa-check"></i><b>3.1.1</b> Create a vector</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vektori.html"><a href="vektori.html#operator"><i class="fa fa-check"></i><b>3.1.2</b> Operator <code>[</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="vektori.html"><a href="vektori.html#principle-of-vectorization-and-recycling"><i class="fa fa-check"></i><b>3.1.3</b> Principle of vectorization and recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vektori.html"><a href="vektori.html#index-vectors"><i class="fa fa-check"></i><b>3.2</b> Index vectors</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="vektori.html"><a href="vektori.html#location-indexing"><i class="fa fa-check"></i><b>3.2.1</b> Location Indexing</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vektori.html"><a href="vektori.html#conditional-indexing"><i class="fa fa-check"></i><b>3.2.2</b> Conditional indexing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vektori.html"><a href="vektori.html#label-based-indexing"><i class="fa fa-check"></i><b>3.2.3</b> Label-based indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vektori.html"><a href="vektori.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.3</b> Matrices and arrays</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="vektori.html"><a href="vektori.html#matrix-splicing"><i class="fa fa-check"></i><b>3.3.1</b> Matrix splicing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vektori.html"><a href="vektori.html#lists"><i class="fa fa-check"></i><b>3.4</b> Lists</a></li>
+<li class="chapter" data-level="" data-path="vektori.html"><a href="vektori.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="okviri.html"><a href="okviri.html"><i class="fa fa-check"></i><b>4</b> Data frames and factors</a><ul>
+<li class="chapter" data-level="4.1" data-path="okviri.html"><a href="okviri.html#data-frames"><i class="fa fa-check"></i><b>4.1</b> Data frames</a></li>
+<li class="chapter" data-level="4.2" data-path="okviri.html"><a href="okviri.html#selecting-rows-and-columns"><i class="fa fa-check"></i><b>4.2</b> Selecting rows and columns</a></li>
+<li class="chapter" data-level="4.3" data-path="okviri.html"><a href="okviri.html#adding-and-deleting-rows-and-columns"><i class="fa fa-check"></i><b>4.3</b> Adding and deleting rows and columns</a></li>
+<li class="chapter" data-level="4.4" data-path="okviri.html"><a href="okviri.html#factors"><i class="fa fa-check"></i><b>4.4</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="okviri.html"><a href="okviri.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Let’s program in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="okviri" class="section level1">
+<h1><span class="header-section-number">4</span> Data frames and factors</h1>
+<hr />
+<div id="data-frames" class="section level2">
+<h2><span class="header-section-number">4.1</span> Data frames</h2>
+<p>As already mentioned, the data frame is by far the most popular element of the programming language R. The language R’s primary fnction is data analysis, and the data frame is actually an object representation of the data set we intend to analyze. In other words, the data frame is an object similar in function to a sheet in <em>Microsoft Excel</em> or a table in a relational database. Almost every session in R is oriented around manipulating data frames - but while in <em>Excel</em> we manage the table with the help of a graphical interface, and in relational database via the query language <em>SQL</em>, in R we manage data programatically through the data frames.</p>
+<p>Take for example the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>zipCode</th>
+<th>cityName</th>
+<th>avgSalKn</th>
+<th>population</th>
+<th>cityTax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10000</td>
+<td>Zagreb</td>
+<td>6359.00</td>
+<td>790017</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>51000</td>
+<td>Rijeka</td>
+<td>5418.00</td>
+<td>128384</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>21000</td>
+<td>Split</td>
+<td>5170.00</td>
+<td>167121</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>31000</td>
+<td>Osijek</td>
+<td>4892.00</td>
+<td>84104</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td>20000</td>
+<td>Dubrovnik</td>
+<td>5348.00</td>
+<td>28434</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>This data set that contains certain parameters related to cities in the Republic of Croatia (these valuesdo not necessarily correspond to the current state but are used only for demonstration). We can easily imagine how to write this data in <em>Excel</em> or create a relational table of names, for example, where we store the data. Let’s show now how to manipulate the same information within the R language, ie let’s try to create a data frame that will contain this data.</p>
+<hr />
+<p>In the last lesson we noted that the list as a complex type which serves as a kind of “template” with the help of which we can collect a number of different objects within the same structure. The data frame is in fact nothing but a list - that is, a “container” that can contain other data containers of different types. But while the “list” is actually a <em>universal</em> container, ie we do not have the limitations about stuff we place into it, the data frame has certain restrictions.</p>
+<p>The most important limit imposed by the data frame is that <strong>each element within the data frame must have the same number of elements</strong>. Why is that so? Let’s imagine a list in which each element has the same number of sub-elements. If each element is sketched vertically, with subelements written one below another, then these sub-elements will be “aligned” by the rows, which means that we have achieved classical data organization in columns (list elements) and rows (aligned sub-elements). Thus, this restriction directly imposes a “tabular” or “matrix” list structure with clearly defined rows and columns, which actually allows us to manage the data frame by using not only list methods, but also methods primarily intended for matrices.</p>
+<hr />
+<p>There are several ways to create data frames, and we’ll show two of the most frequently encountered scenarios in practice:</p>
+<ul>
+<li>Programatic creation via the <code>data.frame</code> function</li>
+<li>Load data from an external source using the <code>read.csv</code> function</li>
+</ul>
+<p>Let’s see both of these cases. First, we will create a data frame programatically.</p>
+<hr />
+<p><strong>Exercise 4.1 - creating data frames programatically</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">51000</span>, <span class="dv">21000</span>, <span class="dv">31000</span>, <span class="dv">2000</span>)
+cityName =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Zagreb&quot;</span>, <span class="st">&quot;Rijeka&quot;</span>, <span class="st">&quot;Split&quot;</span>, <span class="st">&quot;Osijek&quot;</span>, <span class="st">&quot;Dubrovnik&quot;</span>)
+avgSalKn =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6359</span>., <span class="dv">5418</span>., <span class="dv">5170</span>., <span class="dv">4892</span>., <span class="dv">5348</span>.)
+population =<span class="st"> </span><span class="kw">c</span>(<span class="dv">790017</span>, <span class="dv">128384</span>, <span class="dv">167121</span>, <span class="dv">84104</span>, <span class="dv">28434</span>)
+cityTax =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">10</span>)
+
+<span class="co"># create a new data frame using the `data.frame` function</span>
+<span class="co"># name the variable `cities`</span>
+<span class="co"># use the same syntax as when creating a list</span>
+<span class="co"># use the names of the variables for names of list elements</span>
+
+
+<span class="co"># print the variable `cities`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">51000</span>, <span class="dv">21000</span>, <span class="dv">31000</span>, <span class="dv">2000</span>)
+cityName =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Zagreb&quot;</span>, <span class="st">&quot;Rijeka&quot;</span>, <span class="st">&quot;Split&quot;</span>, <span class="st">&quot;Osijek&quot;</span>, <span class="st">&quot;Dubrovnik&quot;</span>)
+avgSalKn =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6359</span>., <span class="dv">5418</span>., <span class="dv">5170</span>., <span class="dv">4892</span>., <span class="dv">5348</span>.)
+population =<span class="st"> </span><span class="kw">c</span>(<span class="dv">790017</span>, <span class="dv">128384</span>, <span class="dv">167121</span>, <span class="dv">84104</span>, <span class="dv">28434</span>)
+cityTax =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">10</span>)
+
+<span class="co"># create a new data frame using the `data.frame` function</span>
+<span class="co"># name the variable `cities`</span>
+<span class="co"># use the same syntax as when creating a list</span>
+<span class="co"># use the names of the variables for names of list elements</span>
+
+cities &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">zipCode =</span> zipCode,
+                      <span class="dt">cityName =</span> cityName,
+                      <span class="dt">avgSalKn =</span> avgSalKn,
+                      <span class="dt">population =</span> population,
+                      <span class="dt">cityTax =</span> cityTax)
+
+<span class="co"># print the variable `cities`</span>
+cities</code></pre></div>
+<pre><code>##   zipCode  cityName avgSalKn population cityTax
+## 1   10000    Zagreb     6359     790017      18
+## 2   51000    Rijeka     5418     128384      15
+## 3   21000     Split     5170     167121      10
+## 4   31000    Osijek     4892      84104      13
+## 5    2000 Dubrovnik     5348      28434      10</code></pre>
+</div>
+<hr />
+<p>If you like, try creatint the upper data frame again, but with different numbers of vector element numbers that make up the columns. This operation will result in an error with a appropriate message and the data frame will not be created - R tries to keep the matrix nature of the frame always preserved.</p>
+<p>A little note regarding terminology: the “data frame” is often referred to as simply a “frame” or a “table”. Likewise, we often use the “column”, “variable” or “attribute” terms for the vertical data frame elements, while referring to the horizontal frame elements as “rows” or “observations”. These terms are in line with the standard way of referencing the table elements and the statistical terms referring to the datasets. If there is a chance of ambiguity from the context, the term that clearly describes the referenced element will be used.</p>
+<hr />
+<p>Let’s try to load the table from an external source now. Although R allows different forms of external data, we will assume that the data is obtained in a standard “CSV form” (CSV - <em>comma-separated values</em>). This form is one of the most popular data storage methods in a pure text format that has the advantage of being easy to create manually, and most data management tools implement logic to import/export data as a CSV file.</p>
+<p>Below we can see an example of a CSV file that matches the data frame created in the previous example. Suppose the file is named <code>cities.csv</code>. The data is separated by a comma (no spaces!), Every observation in your line, and the optional first line represents the column names.</p>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode,cityName,avgSalKn,population,cityTax
+<span class="dv">10000</span>,Zagreb,<span class="fl">6359.00</span>,<span class="dv">790017</span>,<span class="dv">18</span> 
+<span class="dv">51000</span>,Rijeka,<span class="fl">5418.00</span>,<span class="dv">128384</span>,<span class="dv">15</span>
+<span class="dv">21000</span>,Split,<span class="fl">5170.00</span>,<span class="dv">167121</span>,<span class="dv">10</span>
+<span class="dv">31000</span>,Osijek,<span class="fl">4892.00</span>,<span class="dv">84104</span>,<span class="dv">13</span> 
+<span class="dv">20000</span>,Dubrovnik,<span class="fl">5348.00</span>,<span class="dv">28434</span>,<span class="dv">10</span></code></pre></div>
+<hr />
+<p>One of the potential problems with CSV files is that they use the comma as separator (<em>delimiter</em>) of column elements, and in certain languages, as a standard, a “decimal comma” is used instead of a decimal point. Because of this fact, there is an “alternative” CSV standard that uses a semi-colon as a separator so that our CSV file in this case looks like this (let’s call it <code>citiesAlt.csv</code>):</p>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode;cityName;avgSalKn;population;cityTax
+<span class="dv">10000</span>;Zagreb;<span class="dv">6359</span>,<span class="dv">00</span>;<span class="dv">790017</span>;<span class="dv">18</span> 
+<span class="dv">51000</span>;Rijeka;<span class="dv">5418</span>,<span class="dv">00</span>;<span class="dv">128384</span>;<span class="dv">15</span>
+<span class="dv">21000</span>;Split;<span class="dv">5170</span>,<span class="dv">00</span>;<span class="dv">167121</span>;<span class="dv">10</span>
+<span class="dv">31000</span>;Osijek;<span class="dv">4892</span>,<span class="dv">00</span>;<span class="dv">84104</span>;<span class="dv">13</span> 
+<span class="dv">20000</span>;Dubrovnik;<span class="dv">5348</span>,<span class="dv">00</span>;<span class="dv">28434</span>;<span class="dv">10</span></code></pre></div>
+<hr />
+<p>Since the decimal point is a standard in the Republic of Croatia, in working with CSV files we have to be careful which of the two standard records is used. Luckily, the R language offers support functions for both standards, so we do not have to adapt the input files specifically, just be careful what function we will choose.</p>
+<p>Suppose we have these two files in the workbook:</p>
+<ul>
+<li><code>cities.csv</code></li>
+<li><code>citiesAlt.csv</code></li>
+</ul>
+<p>(If we do not have these files available, we can easily create them with the help of plain text editors (eg <em>Notepad</em> or <em>gedit</em>) and copying the above rows.)</p>
+<hr />
+<p>To create data frames from CSV files we use the following functions: - <code>read.csv</code> - for “normal” CSV files with a comma as separator - <code>read.csv2</code> - for an alternative CSV standard that use semi-colons</p>
+<p>The main input parameter of these functions is the path to the CSV file that we load. Functions also have a rich set of additional parameters that allow them to be adapted to different scenarios, and if we get some of the “exotic” forms of CSV files, it is worth looking at the <code>read.table</code> function which is very flexible with respect to the number of different parameters and data load settings. Functions <code>read.csv</code> and<code>read.csv2</code> are actually derived from the <code>read.table</code> function by defaulting certain parameters to standard CSV features.</p>
+<hr />
+<p>Some of the parameters and associated values of <code>read.csv</code> (or <code>read.table</code>) functions that are useful to know are:</p>
+<ul>
+<li><code>header = FALSE</code> - for files without a header</li>
+<li><code>sep = &quot;#&quot;</code> - for files that use some more “exotic” separator, in this case <code>#</code></li>
+<li><code>na.strings = 'NULL'</code> - the term used in the dataset to represent the missing values that will become <code>NA</code> in R</li>
+<li><code>nrows = 2000</code> - maximum number of lines to be read, in this case 2000</li>
+<li><code>stringsAsFactors = F</code> - preventing automatic creation of factor columns (which we will learn in the lesson below)</li>
+<li><code>encoding = 'UTF-8'</code> - for non-ASCII text encoding standards (especially if we are working with Croatian speaking area data using diacritical characters)</li>
+</ul>
+<p>Let’s try to load data from available CSV files now. This data will not require special parameters, and will only be loaded by providing the path to the associated files (one that uses the comma and the other that uses the semi-colon as a separator).</p>
+<hr />
+<p><strong>Exercise 4.2 - reading CSV files</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load data from files `cities.csv` and` citiesAlt.csv`</span>
+<span class="co"># save data in variables called `cities2` and` cities3` </span>
+
+<span class="co"># print `cities2` and` cities3` </span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load data from files `cities.csv` and` citiesAlt.csv`</span>
+<span class="co"># save data in variables called `cities2` and` cities3` </span>
+cities2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cities.csv&quot;</span>)
+cities3 &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;citiesAlt.csv&quot;</span>)
+
+<span class="co"># print `cities2` and` cities3` </span>
+cities2
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+cities3 </code></pre></div>
+<pre><code>##   zipCode  cityName avgSalKn population cityTax
+## 1   10000    Zagreb     6359     790017      18
+## 2   51000    Rijeka     5418     128384      15
+## 3   21000     Split     5170     167121      10
+## 4   31000    Osijek     4892      84104      13
+## 5   20000 Dubrovnik     5348      28434      10
+## -----------
+##   zipCode  cityName avgSalKn population cityTax
+## 1   10000    Zagreb     6359     790017      18
+## 2   51000    Rijeka     5418     128384      15
+## 3   21000     Split     5170     167121      10
+## 4   31000    Osijek     4892      84104      13
+## 5   20000 Dubrovnik     5348      28434      10</code></pre>
+</div>
+<hr />
+<p>Let’s look at some useful functions for working with data frames, ie tables. A good part of them is already known from experience in working with lists and matrices:</p>
+<ul>
+<li><code>nrow</code> - number of lines</li>
+<li><code>ncol</code> or<code>length</code> - the number of columns (since the frame behaves both as a matrix and as a list)</li>
+<li><code>dim</code> - table dimensions</li>
+<li><code>names</code> - column names</li>
+<li><code>head</code> - prints several rows from the beginning of the table</li>
+<li><code>tail</code> - prints several rows from the end of the table</li>
+<li><code>str</code> - prints table structure</li>
+<li><code>summary</code> - summarizes the statistical information about table columns</li>
+</ul>
+<p>Let’s try some of these functions:</p>
+<hr />
+<p><strong>Exercise 4.3 - working with data frames</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the dimensions of the data frame `cities`</span>
+
+
+<span class="co"># print the table structure of `cities`</span>
+
+
+<span class="co"># print the first few rows of the data frame `cities`</span>
+
+
+<span class="co"># print summarized statistical information about  `cities` </span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the dimensions of the data frame `cities`</span>
+<span class="kw">dim</span>(cities)
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print the table structure of `cities`</span>
+<span class="kw">str</span>(cities)
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print the first few rows of the data frame `cities`</span>
+<span class="kw">head</span>(cities)
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print summarized statistical information about  `cities` </span>
+<span class="kw">summary</span>(cities)</code></pre></div>
+<pre><code>## [1] 5 5
+## -----------
+## &#39;data.frame&#39;:    5 obs. of  5 variables:
+##  $ zipCode   : num  10000 51000 21000 31000 2000
+##  $ cityName  : Factor w/ 5 levels &quot;Dubrovnik&quot;,&quot;Osijek&quot;,..: 5 3 4 2 1
+##  $ avgSalKn  : num  6359 5418 5170 4892 5348
+##  $ population: num  790017 128384 167121 84104 28434
+##  $ cityTax   : num  18 15 10 13 10
+## -----------
+##   zipCode  cityName avgSalKn population cityTax
+## 1   10000    Zagreb     6359     790017      18
+## 2   51000    Rijeka     5418     128384      15
+## 3   21000     Split     5170     167121      10
+## 4   31000    Osijek     4892      84104      13
+## 5    2000 Dubrovnik     5348      28434      10
+## -----------
+##     zipCode           cityName    avgSalKn      population    
+##  Min.   : 2000   Dubrovnik:1   Min.   :4892   Min.   : 28434  
+##  1st Qu.:10000   Osijek   :1   1st Qu.:5170   1st Qu.: 84104  
+##  Median :21000   Rijeka   :1   Median :5348   Median :128384  
+##  Mean   :23000   Split    :1   Mean   :5437   Mean   :239612  
+##  3rd Qu.:31000   Zagreb   :1   3rd Qu.:5418   3rd Qu.:167121  
+##  Max.   :51000                 Max.   :6359   Max.   :790017  
+##     cityTax    
+##  Min.   :10.0  
+##  1st Qu.:10.0  
+##  Median :13.0  
+##  Mean   :13.2  
+##  3rd Qu.:15.0  
+##  Max.   :18.0</code></pre>
+</div>
+<hr />
+</div>
+<div id="selecting-rows-and-columns" class="section level2">
+<h2><span class="header-section-number">4.2</span> Selecting rows and columns</h2>
+<p>We’ve already said that data frames behave both as matrices and as lists, which is a feature we often use when selecting rows and columns of data frames. Specifically, we use the following:</p>
+<ul>
+<li>for selecting rows and columns: two-dimensional indexing with the help of index vectors</li>
+<li>for select a column: operator <code>$</code></li>
+</ul>
+<p>Here we are actually quite flexible - we can, for example, first get certain matrix rows with the help of location indexing and then only single column with the help of <code>$</code>. In practice, one of the most common combinations is the conditional selection of rows with the named selection of columns (<em>SQL</em> experts will recognize this as a standard combination of <em>WHERE</em> and <em>SELECT</em>).</p>
+<p>Let’s try to apply our knowledge of index vectors, matrices, and lists.</p>
+<hr />
+<p><strong>Exercise 4.4 - selecting rows and columns</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the table `cities` (for reference)</span>
+
+<span class="co"># print the first three rows, the third and fifth column</span>
+
+<span class="co"># print column &quot;cityTax&quot;</span>
+
+<span class="co"># print zipCodes and city names of all cities which </span>
+<span class="co"># have cityTax greater than 12% and a population of more than 100,000</span></code></pre></div>
+<div class="fold s o">
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the table `cities` (for reference)</span>
+cities
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print the first three rows, the third and fifth column</span>
+
+cities[<span class="dv">1</span>:<span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)]
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print column &quot;cityTax&quot;</span>
+cities$cityTax
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print zipCodes and city names of all cities which </span>
+<span class="co"># have cityTax greater than 12% and a population of more than 100,000</span>
+cities[cities$cityTax &gt;<span class="st"> </span><span class="dv">12</span> &amp;<span class="st"> </span>cities$population &gt;<span class="st"> </span><span class="dv">100000</span>, <span class="kw">c</span>(<span class="st">&quot;zipCode&quot;</span>, <span class="st">&quot;cityName&quot;</span>)]</code></pre></div>
+<pre><code>##   zipCode  cityName avgSalKn population cityTax
+## 1   10000    Zagreb     6359     790017      18
+## 2   51000    Rijeka     5418     128384      15
+## 3   21000     Split     5170     167121      10
+## 4   31000    Osijek     4892      84104      13
+## 5    2000 Dubrovnik     5348      28434      10
+## -----------
+##   cityName cityTax
+## 1   Zagreb      18
+## 2   Rijeka      15
+## 3    Split      10
+## -----------
+## [1] 18 15 10 13 10
+## -----------
+##   zipCode cityName
+## 1   10000   Zagreb
+## 2   51000   Rijeka</code></pre>
+<hr />
+<p>Notice the similarity between the last expression and SQL query:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SELECT zipCode, cityName
+FROM cities
+WHERE cities.cityTax &gt;<span class="st"> </span><span class="dv">12</span> AND cities.population &gt;<span class="st"> </span><span class="dv">100000</span></code></pre></div>
+<p>Choosing columns and rows is not difficult if we are well acquainted with index vector knowledge, but as it can be seen in the last example of syntax, it is often not too readable (as compared to, for example, the SQL syntax that performs the same job). For this reason, there are different R extensions that greatly facilitate this work, which we will elaborate in detail in one of the future lessons.</p>
+<hr />
+</div>
+<div id="adding-and-deleting-rows-and-columns" class="section level2">
+<h2><span class="header-section-number">4.3</span> Adding and deleting rows and columns</h2>
+<p>To add and delete rows and columns, remember that the data frame is a kind of hybrid of a matrix and a list, ie if we know how to add rows and columns to a matrix or add new elements in a list, then we can add data to the data frame in an equivalent way. When working with data frames, adding new columns is a bit more common than adding rows.</p>
+<p>As we have said, we add columns to the data frame in the same way as we add list elements - while paying attention that the added column has the same number of elements as the other columns. New columns are often derived from existing columns to create new binary indicators, the results of arithmetic data expressions using other columns, etc.</p>
+<hr />
+<p><strong>Exercise 4.5 - adding new columns to a data frame</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add the logical column` highCityTax` to the  `cities` table</span>
+<span class="co"># which will indicate whether the cityTax is greater than 12%</span>
+
+
+<span class="co"># assume the following (imaginary) way of calculating city tax income</span>
+<span class="co"># - cities have about 60% of working population</span>
+<span class="co"># - each worker pays a tax that is roughly equal to 10% of net salary</span>
+<span class="co"># - income from city tax per worker is (cityTaxa percentage)*(tax income)</span>
+<span class="co">#</span>
+<span class="co"># add a `monthlyTaxIncome` column which will use the average salary, city tax </span>
+<span class="co"># rate and population to estimate hte monthly tax income of the cities</span>
+<span class="co"># (in million Kns)</span>
+<span class="co"># i broja stanovnika procijeniti koliki prihod pojedino cities dobija od cityTaxa </span>
+<span class="co"># round up to two decimals ( using the `round` function,</span>
+<span class="co">#  .e.g. : round(100.12345, 2) ==&gt;  100.12  )</span>
+
+
+<span class="co"># print `cities`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add the logical column` highCityTax` to the  `cities` table</span>
+<span class="co"># which will indicate whether the cityTax is greater than 12%</span>
+cities$highCityTax &lt;-<span class="st"> </span>cities$cityTax &gt;<span class="st"> </span><span class="dv">12</span>
+
+
+<span class="co"># assume the following (imaginary) way of calculating city tax income</span>
+<span class="co"># - cities have about 60% of working population</span>
+<span class="co"># - each worker pays a tax that is roughly equal to 10% of net salary</span>
+<span class="co"># - income from city tax per worker is (cityTaxa percentage)*(tax income)</span>
+<span class="co">#</span>
+<span class="co"># add a `monthlyTaxIncome` column which will use the average salary, city tax </span>
+<span class="co"># rate and population to estimate hte monthly tax income of the cities</span>
+<span class="co"># (in million Kns)</span>
+<span class="co"># i broja stanovnika procijeniti koliki prihod pojedino cities dobija od cityTaxa </span>
+<span class="co"># round up to two decimals ( using the `round` function,</span>
+<span class="co">#  .e.g. : round(100.12345, 2) ==&gt;  100.12  )</span>
+cities$monthlyTaxIncome&lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">0.6</span> *<span class="st"> </span>cities$population *<span class="st"> </span><span class="fl">0.01</span> *<span class="st"> </span>
+<span class="st">                          </span>cities$avgSalKn  *<span class="st"> </span><span class="fl">0.01</span> *<span class="st"> </span>cities$cityTax /<span class="st"> </span><span class="fl">1e6</span> , <span class="dv">2</span>)
+
+
+<span class="co"># print `cities`</span>
+cities</code></pre></div>
+<pre><code>##   zipCode  cityName avgSalKn population cityTax highCityTax
+## 1   10000    Zagreb     6359     790017      18        TRUE
+## 2   51000    Rijeka     5418     128384      15        TRUE
+## 3   21000     Split     5170     167121      10       FALSE
+## 4   31000    Osijek     4892      84104      13        TRUE
+## 5    2000 Dubrovnik     5348      28434      10       FALSE
+##   monthlyTaxIncome
+## 1             5.43
+## 2             0.63
+## 3             0.52
+## 4             0.32
+## 5             0.09</code></pre>
+</div>
+<hr />
+<p>You can also add rows and columns similar to adding rows and columns to a matrix - with the <code>rbind</code> and<code>cbind</code> functions. For <code>rbind</code> we usually add a new data frame with rows that have the appropriate order and type of elements, while we can add a completely new vector with <code>cbind</code>, keeping in mind that the number of elements corresponds to the number of rows of the original data frame.</p>
+<p>Let’s try these functions on small “artificial” data frames to better demonstrate their functionality.</p>
+<hr />
+<p><strong>Exercise 4.6 - data frames and <code>rbind</code>/<code>cbind</code> functions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="dt">c =</span> <span class="kw">c</span>(T, F, T))
+df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">c =</span> <span class="dv">3</span>)
+
+<span class="co"># make a data frame which has `df1` and `df2` as rows</span>
+<span class="co"># name it `df12`</span>
+
+
+<span class="co"># add a `firstNames` columns containing names Ivo, Ana, Pero and Stipe</span>
+<span class="co"># use `cbind`</span>
+
+<span class="co"># print `df12`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="dt">c =</span> <span class="kw">c</span>(T, F, T))
+df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">c =</span> <span class="dv">3</span>)
+
+<span class="co"># make a data frame which has `df1` and `df2` as rows</span>
+<span class="co"># name it `df12`</span>
+df12 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2)
+
+<span class="co"># add a `firstNames` columns containing names Ivo, Ana, Pero and Stipe</span>
+<span class="co"># use `cbind`</span>
+df12 &lt;-<span class="st"> </span><span class="kw">cbind</span>(df12, <span class="dt">firstNames =</span> <span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Stipe&quot;</span>))
+
+<span class="co"># print `df12`</span>
+df12</code></pre></div>
+<pre><code>##   a b c firstNames
+## 1 1 A 1        Ivo
+## 2 2 B 0        Ana
+## 3 3 C 1       Pero
+## 4 1 A 3      Stipe</code></pre>
+</div>
+<hr />
+<p>For <em>deleting rows and columns</em> we can also use the same methods for managing the matrices and lists. Specifically:</p>
+<ul>
+<li>deleting rows and columns can be done by using two-dimensional indexing of rows and columns that we want to “keep”</li>
+<li>deleting columns can be done by assigning the value <code>NULL</code> to the selected column</li>
+</ul>
+<p>Let’s try this in the example. ***</p>
+<p><strong>Exercise 4.7 - deleting rows and columns</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># delete the first row and second column from `df12`</span>
+<span class="co"># use the indexing method</span>
+
+
+<span class="co"># delete the `firstNames` column by using the `NULL` method</span>
+
+
+<span class="co"># print `df12`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># delete the first row and second column from `df12`</span>
+<span class="co"># use the indexing method</span>
+df12 &lt;-<span class="st"> </span>df12[-<span class="dv">1</span>, -<span class="dv">4</span>]    
+
+<span class="co"># delete the `firstNames` column by using the `NULL` method</span>
+df12$firstNames &lt;-<span class="st"> </span><span class="ot">NULL</span>
+
+<span class="co"># print `df12`</span>
+df12</code></pre></div>
+<pre><code>##   a b c
+## 2 2 B 0
+## 3 3 C 1
+## 4 1 A 3</code></pre>
+</div>
+<hr />
+<p>Data frames will continue to be dealt with in the chapter on data management, where we will learn how to work with frameworks with far more data than the examples we have used in this lesson, and how to work with additional packages that significantly facilitate frequently used data actions in data frameworks. Below we will deal with another new (and slightly controversial) data structure.</p>
+<hr />
+</div>
+<div id="factors" class="section level2">
+<h2><span class="header-section-number">4.4</span> Factors</h2>
+<p><strong>Factors</strong> in R are actually the type of data that represents what is referred to in statistics as a <strong>nominal</strong> or <strong>categorical</strong> variable. Namely, the attribute of some observation often takes on a value from a set of previously known categories (eg gender, age category, education, city of birth, political party preference, etc.). Categories are often identified by a unique set of characters, and in the process of analyzing them we often spend various aggregations and groupings (for example, in a sports race we can calculate the average time depending on gender or age category) or we share a set of data depending on the category.</p>
+<p>Factors in R are often the subject of discussion since it is a construct that can facilitate data processing but also cause problems, especially if we are not aware that at some point we are working with a factor (this scenario is actually easily avoided, as we will explain at the end of this chapter).</p>
+<hr />
+<p>To begin with, we will show you what factors are, with the help of a simple example. Let’s imagine that the next character vector describes the blood pressure level in ten patients:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,
+          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)</code></pre></div>
+<p>This is obviously a “categorical” variable since it can take one of three discrete values - <code>low</code>, <code>normal</code> and <code>high</code>. Thus, this vector is a typical candidate for “factorizing”, ie for converting to a <code>factor</code> class object. We create these vectors by using the <code>factor</code> function to which we forward the character vector of category names as a parameter.</p>
+<hr />
+<p><strong>Exercise 4.8 - factorizing a character vector</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,
+          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)
+
+<span class="co"># print the variable `bloodPressure`</span>
+
+<span class="co"># print its class</span>
+
+<span class="co"># create a variable `bloodPressure.f` by factorizing</span>
+<span class="co"># the variable `bloodPressure`</span>
+
+<span class="co"># print the variable `bloodPressure.f`</span>
+
+<span class="co"># print its class</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,
+          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)
+
+
+<span class="co"># print the variable `bloodPressure`</span>
+bloodPressure
+
+<span class="co"># print its class</span>
+<span class="kw">class</span>(bloodPressure)
+
+
+
+<span class="co"># create a variable `bloodPressure.f` by factorizing</span>
+<span class="co"># the variable `bloodPressure`</span>
+bloodPressure.f &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure)
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># print the variable `bloodPressure.f`</span>
+bloodPressure.f
+
+<span class="co"># print its class</span>
+<span class="kw">class</span>(bloodPressure.f)</code></pre></div>
+<pre><code>##  [1] &quot;low&quot;    &quot;high&quot;   &quot;high&quot;   &quot;normal&quot; &quot;normal&quot; &quot;low&quot;    &quot;high&quot;  
+##  [8] &quot;low&quot;    &quot;normal&quot; &quot;normal&quot;
+## [1] &quot;character&quot;
+## -----------
+##  [1] low    high   high   normal normal low    high   low    normal normal
+## Levels: high low normal
+## [1] &quot;factor&quot;</code></pre>
+</div>
+<hr />
+<p>We see that the factor print was given an additional attribute <code>Levels</code>. This means that its actually a categorical variable with lsited exact categories it is allowed to take. If we try to add a new value to a factor that is not present in the current categories (e.g., “very high”) we get a warning, and instead of the category we have specified, a new item will have the value of <code>NA</code>.</p>
+<p>This is sometimes not the scenario we want. If we know in advance that the character vector we categorize does not contain all the possible categories that may generally appear, we have the option of adding the <code>levels</code> parameter in which we will explicitly specify a series of&quot; possible “categories with the help of the vector vector.</p>
+<hr />
+<p><strong>Exercise 4.9 - using the <code>levels</code> attribute</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add an 11th element to `bloodPressure.f` called &quot;very low&quot; </span>
+
+<span class="co"># print the variable `bloodPressure.f`</span>
+
+<span class="co"># create a variable `bloodPressure.f2` by factorizing</span>
+<span class="co"># the variable `bloodPressure`</span>
+<span class="co"># add the `levels` attribute which will also contain</span>
+<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
+
+<span class="co"># add an 11th element to `bloodPressure.f2` called &quot;very low&quot; </span>
+
+<span class="co"># print the variable `bloodPressure.f2`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add an 11th element to `bloodPressure.f` called &quot;very low&quot; </span>
+bloodPressure.f[<span class="dv">11</span>] &lt;-<span class="st"> &quot;very low&quot;</span></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 11, value = &quot;very low&quot;): invalid factor
+## level, NA generated</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the variable `bloodPressure.f`</span>
+bloodPressure.f
+
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># create a variable `bloodPressure.f2` by factorizing</span>
+<span class="co"># the variable `bloodPressure`</span>
+<span class="co"># add the `levels` attribute which will also contain</span>
+<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
+bloodPressure.f2 &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure,
+        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;very low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;very high&quot;</span>))
+
+<span class="co"># add an 11th element to `bloodPressure.f2` called &quot;very low&quot; </span>
+bloodPressure.f2[<span class="dv">11</span>] &lt;-<span class="st"> &quot;very low&quot;</span>
+
+<span class="co"># print the variable `bloodPressure.f2`</span>
+bloodPressure.f2</code></pre></div>
+<pre><code>##  [1] low    high   high   normal normal low    high   low    normal normal
+## [11] &lt;NA&gt;  
+## Levels: high low normal
+## -----------
+##  [1] low      high     high     normal   normal   low      high    
+##  [8] low      normal   normal   very low
+## Levels: very low low normal high very high</code></pre>
+</div>
+<hr />
+<p>What is the advantage of using factors? Why not leave the variables in the original, “character” form? The reason for the factoring of categorical columns, ie variables, is that certain statistical and visualization functions “know” how to correctly interpret and use factors and treat them differently from ordinary “character” columns. For this reason, it is a very good long-term strategy that, at the beginning of R’s learning, we are used to factorizing columns that are really categorical variables (but we also note that we must not factorize columns that are not categorical variables, which can happen if we are not careful).</p>
+<p>One of the frequently asked questions about the category variables is - how are individual categories represented? The answer to this question is provided by the <code>table</code> function to which we pass the selected factor.</p>
+<hr />
+<p><strong>Exercise 4.10 - the <code>table</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print how are the categories represented in `bloodPressure.f2`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print how are the categories represented in `bloodPressure.f2`</span>
+<span class="kw">table</span>(bloodPressure.f2)</code></pre></div>
+<pre><code>## bloodPressure.f2
+##  very low       low    normal      high very high 
+##         1         3         4         3         0</code></pre>
+</div>
+<p>The <code>table</code> function does not necessarily require a factor and will work even with the character vector. But in that case, we would not get information about categories that were not represented at all.</p>
+<hr />
+<p>The categorical variable in our examples actually has the so-called ordinal nature. Ordinal category variables means that the categories have a natural order (“low” blood pressure is lower than “normal” which in turn is lower than “high”). If desired, this fact can be “embedded” in the initialization factor by simply adding the <code>order</code> parameter set to <code>TRUE</code>. The advantage of the ordinal factor is that it allows us to compare factor values with the help of comparative operators.</p>
+<hr />
+<p><strong>Exercise 4.11 - ordinal factor</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a variable `bloodPressure.f3` by factorizing</span>
+<span class="co"># the variable `bloodPressure`</span>
+<span class="co"># add the `levels` attribute which will also contain</span>
+<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
+<span class="co"># also set the `order` paramater to `TRUE`</span>
+<span class="co"># watch out for category ordering!</span>
+
+
+<span class="co"># print the variable `bloodPressure.f3`</span>
+
+
+<span class="co"># check if it is in fact the ordinal factor now</span>
+<span class="co"># use the `is.ordered` function</span>
+
+
+<span class="co"># check if the first patient has lower blood pressure</span>
+<span class="co"># than the third</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a variable `bloodPressure.f3` by factorizing</span>
+<span class="co"># the variable `bloodPressure`</span>
+<span class="co"># add the `levels` attribute which will also contain</span>
+<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
+<span class="co"># also set the `order` paramater to `TRUE`</span>
+<span class="co"># watch out for category ordering!</span>
+bloodPressure.f3 &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure,
+        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;very low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;very high&quot;</span>),
+        <span class="dt">order =</span> <span class="ot">TRUE</span>)
+
+
+<span class="co"># print the variable `bloodPressure.f3`</span>
+bloodPressure.f3
+
+
+<span class="co"># check if it is in fact the ordinal factor now</span>
+<span class="co"># use the `is.ordered` function</span>
+<span class="kw">is.ordered</span>(bloodPressure.f3)
+
+
+<span class="co"># check if the first patient has lower blood pressure</span>
+<span class="co"># than the third</span>
+bloodPressure.f3[<span class="dv">1</span>] &lt;<span class="st"> </span>bloodPressure.f3[<span class="dv">3</span>]</code></pre></div>
+<pre><code>##  [1] low    high   high   normal normal low    high   low    normal normal
+## Levels: very low &lt; low &lt; normal &lt; high &lt; very high
+## [1] TRUE
+## [1] TRUE</code></pre>
+</div>
+<hr />
+<p>We have already seen that in R “everything is a vector” - numbers are one-dimensional numeric vectors, matrices are vectors with added dimension parameter, lists are vectors of small lists, data frames are lists with added restrictions. We may wonder - what are factors?</p>
+<p>The implementation of a factor is actually a coded or enumerated set of values of initially defined character sequences, along with their associated code table. Simplifiedly, vector factorization includes:</p>
+<ul>
+<li>a “listing” of all detected categories (or ones set with the <code>levels</code> parameter)</li>
+<li>assigning numeric values in the order of each category (eg: “low” -&gt; <code>1</code>, “normal” -&gt; <code>2</code> etc.)</li>
+<li>“packing” together a newly created numeric vector and the associated “code table”</li>
+</ul>
+<p>Although these steps R works out automatically, the internal factor structure can be determined by converting the factor into a pure numeric or pure character type.</p>
+<hr />
+<p><strong>Exercise 4.12 - internal structure of a factor</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print `bloodPressure.f3` converted to character</span>
+
+<span class="co"># print `bloodPressure.f3` converted to numeric</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print `bloodPressure.f3` converted to character</span>
+<span class="kw">as.character</span>(bloodPressure.f3)
+
+<span class="co"># print `bloodPressure.f3` converted to numeric</span>
+<span class="kw">as.numeric</span>(bloodPressure.f3)</code></pre></div>
+<pre><code>##  [1] &quot;low&quot;    &quot;high&quot;   &quot;high&quot;   &quot;normal&quot; &quot;normal&quot; &quot;low&quot;    &quot;high&quot;  
+##  [8] &quot;low&quot;    &quot;normal&quot; &quot;normal&quot;
+##  [1] 2 4 4 3 3 2 4 2 3 3</code></pre>
+</div>
+<hr />
+<p>By converting the factor to the character type we actually do the operation of inverse factorization, ie, we get the original character vector. On the other hand, by converting the factor into a numerical type, we actually get “pre-coded” numbers that the internal factor is used to represent each category. We may wonder - why would this be useful to us? The answer is - no, this is in practice usually has no direct benefit. Butthis is something which can help us understand a potential big problems which can catch us unaware.</p>
+<p>The above-mentioned “controversy” around the factor as a data type is actually contained in the numerical conversion of factors. It is not actually related to the factors themselves, but rather to some of the default R settings of R when it comes to loading data. Let’s look at the detailed steps that happen during the creation of the data frame from a CSV file and try to figure out where a potential problem arises:</p>
+<ol style="list-style-type: decimal">
+<li>R opens a CSV file</li>
+<li>Based on the read data R tries to determine column types</li>
+<li>all character columns are automatically factorized unless the <code>stringsAsFactors = FALSE</code> parameter is specified</li>
+<li>The final data frame is formed</li>
+</ol>
+<p>Do you see a possible problem? Suppose the following scenario: in a single numeric column, a non-numeric value has somehow ocurred (e.g. a <code>NULL</code> character string due to the missing value in the database). This can be just one value in more than one million rows, but that’s enough for R to classify the column as a “character column”. Since R automatically factorizes the character columns, the numeric column in the final data frame becomes categorical (although the category names are actually numbers). A clumsy analyst (or an automatic script) does not notice that it is a factor, and performs the conversion of said column into a numeric type - and obtains a completely semantically meaningless set of “transcoded” integers that, if not noticed, can be used as input data for further analysis.</p>
+<hr />
+<p>How to avoid this scenario? The procedure is actually very simple:</p>
+<ul>
+<li>When using the <code>read.csv</code> or<code>read.table</code> functions, always use the string <code>stringsAsFactors = FALSE</code></li>
+<li>carefully check <strong>column type data</strong> of loaded data frame</li>
+<li>perform appropriate column conversions</li>
+<li>check the results again</li>
+</ul>
+<p>If we adhere to these steps we will almost never come to the situation which causes us real problems. There are alternate procedures (for example, explicitly telling column types read from a file with the help of <code>colClasses</code> parameters, or using the <code>as.numeric (as.character ())</code> syntax for converting columns to a numeric type that will perform the correct conversion independently of whether it is a character column or a “concealed” factor), but the above steps should in most cases be completely sufficient. The most important thing to remember is the key role of the parameter setting <code>stringsAsFactors = FALSE</code> (which is sometimes described as in literature as “mandatory”, often without any further explanation).</p>
+<hr />
+</div>
+<div id="exercises-2" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>In the folder along with this notebook, locate the file <code>citiesNOHEADER.csv</code> which represents the file that is the same as <code>cities.csv</code> except for the following features:</li>
+</ol>
+<ul>
+<li>column names are missing</li>
+<li>the gap is used as a separator</li>
+</ul>
+<p>Try using the documentation to load the data from this file into the variable ’citiesNH` which will be the same variable as the cities used in the lesson.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>In the folder along with this notebook, locate the file <code>receipt.csv</code> and load it into the <code>receipt</code> variable. Make sure that character sequences are not automatically converted into factors. Print to the screen:</li>
+</ol>
+<ul>
+<li>the number of rows in this table</li>
+<li>the number of columns in the table</li>
+<li>column names</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>For the <code>receipt</code> table, do the following:</li>
+</ol>
+<ul>
+<li>factorize the <code>itemCategory</code> column</li>
+<li>print the code, name and price of all items of the category “sweets and snacks” cheaper than 12 Kn</li>
+<li>print how many products each category has in the receipt</li>
+<li>add a <code>total</code> column that will contain the total price of eacg bought item set using the price and quantity</li>
+<li>calculate the total amount of the account</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>In the folder along with this note find the file <code>citiesNULL.csv</code> which, if loaded without the<code>stringsAsFactors = FALSE</code> parameter, can result in a problematic scenario described in the lesson.</li>
+</ol>
+<p>Try to do the following:</p>
+<ul>
+<li>load the data from this file into the variable <code>citiesNULL</code> where you deliberately omit the string<code>stringsAsFactors = F</code></li>
+<li>add <code>avgSal1</code> column that will represent the result of using the <code>as.numeric</code> function over the <code>avgSalKn</code> column</li>
+<li>add <code>avgSal2</code> column that will represent the result of using the <code>as.character</code> / <code>as.numeric</code> functions over the <code>avgSalKn</code> column (be careful of the order)</li>
+<li>print out <code>citiesNULL</code> and comment the results</li>
+</ul>
+<hr />
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Programirajmo u R-u</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.fer.unizg.hr/en/damir.pintar" property="cc:attributionName" rel="cc:attributionURL">Damir Pintar</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://ratnip.github.io/FER_OPJR/" rel="dct:source">https://ratnip.github.io/FER_OPJR/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vektori.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed",
+"edit": null,
+"download": null,
+"search": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

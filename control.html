@@ -25,7 +25,7 @@
 <meta name="author" content="Damir Pintar">
 
 
-<meta name="date" content="2017-11-09">
+<meta name="date" content="2017-11-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="okviri.html">
-
+<link rel="next" href="packages.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -228,6 +228,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3.3" data-path="control.html"><a href="control.html#conclusion-on-s3-objects"><i class="fa fa-check"></i><b>5.3.3</b> Conclusion on S3 objects</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="control.html"><a href="control.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>6</b> Packages, built-in functions and environments</a><ul>
+<li class="chapter" data-level="6.1" data-path="packages.html"><a href="packages.html#working-with-packages"><i class="fa fa-check"></i><b>6.1</b> Working with packages</a></li>
+<li class="chapter" data-level="6.2" data-path="packages.html"><a href="packages.html#built-in-functions"><i class="fa fa-check"></i><b>6.2</b> Built-in functions</a></li>
+<li class="chapter" data-level="6.3" data-path="packages.html"><a href="packages.html#environments"><i class="fa fa-check"></i><b>6.3</b> Environments</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="user.html"><a href="user.html"><i class="fa fa-check"></i><b>7</b> User Defined Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="user.html"><a href="user.html#how-to-define-a-function"><i class="fa fa-check"></i><b>7.1</b> How to define a function</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="user.html"><a href="user.html#the-copy-on-modify-principle"><i class="fa fa-check"></i><b>7.1.1</b> The “copy-on-modify” principle</a></li>
+<li class="chapter" data-level="7.1.2" data-path="user.html"><a href="user.html#function-as-an-object"><i class="fa fa-check"></i><b>7.1.2</b> Function as an object</a></li>
+<li class="chapter" data-level="7.1.3" data-path="user.html"><a href="user.html#generic-functions-1"><i class="fa fa-check"></i><b>7.1.3</b> Generic functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="user.html"><a href="user.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 </ul>
 
@@ -485,7 +499,7 @@ summary.factor</code></pre></div>
 ## 
 ## function (object, ...) 
 ## standardGeneric(&quot;summary&quot;)
-## &lt;environment: 0x0000000017918f68&gt;
+## &lt;environment: 0x0000000017d806a0&gt;
 ## Methods may be defined for arguments: object
 ## Use  showMethods(&quot;summary&quot;)  for currently available ones.
 ## function (object, maxsum = 100L, ...) 
@@ -506,7 +520,7 @@ summary.factor</code></pre></div>
 ##         c(tt, `NA&#39;s` = sum(nas))
 ##     else tt
 ## }
-## &lt;bytecode: 0x000000002296cfc0&gt;
+## &lt;bytecode: 0x000000002335b548&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p>By understanding the principle of generic functions, we have completed a picture of S3 objects. The most important thing we have to adopt is that in this model functions are not part of the object itself, they are defined separately, and the link between the object and its “method” is only in the function name by which R “links” the generic function and that object. Although this principle is primitive and vulnerable to faults in the hands of inattentive developers, it is easy to use and very effective. Finally, let’s note that this approach is not entirely unique to the language R - similar principles can be found in other programming languages. It is specific to R in that the principle is used openly and almost exclusively.</p>
 <p>Objects and generic functions will be re-visited when we learn to create our own functions, which will enable us to create both the constructors of our objects and their generic functions.</p>
@@ -562,8 +576,8 @@ for (i in a) {
           </div>
         </div>
       </div>
-<a href="okviri.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="okviri.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -610,6 +624,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Let’s program in R</title>
+  <meta name="description" content="R Coursebook">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Let’s program in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Coursebook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Let’s program in R" />
+  
+  <meta name="twitter:description" content="R Coursebook" />
+  
+
+<meta name="author" content="Damir Pintar">
+
+
+<meta name="date" content="2017-11-14">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="packages.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<style type="text/css">
+.showopt {
+  background-color: #004c93;
+  color: #FFFFFF; 
+  width: 140px;
+  height: 4	0px;
+  text-align: center;
+  vertical-align: middle !important;
+  float: right;
+  font-family: sans-serif;
+  font-size:10 pt;
+  border-radius: 8px;
+}
+
+.showopt:hover {
+    background-color: #dfe4f2;
+    color: #004c93;
+}
+
+pre.plot {
+  background-color: white !important;
+}
+</style>
+
+<script>
+ $(document).ready(function() {
+
+  $chunks = $('.fold');
+
+  $chunks.each(function () {
+
+    // add button to source code chunks
+    if ( $(this).hasClass('s') ) {
+      $('pre.r', this).prepend("<div class=\"showopt\">Show solution</div><br style=\"line-height:22px;\"/>");
+      $('pre.r', this).children('code').attr('class', 'folded');
+    }
+
+    // add button to output chunks
+    if ( $(this).hasClass('o') ) {
+      $('pre:not(.r)', this).has('code').prepend("<div class=\"showopt\">Show results</div><br style=\"line-height:22px;\"/>");
+      $('pre:not(.r)', this).children('code:not(r)').addClass('folded');
+
+      // add button to plots
+      $(this).find('img').wrap('<pre class=\"plot\"></pre>');
+      $('pre.plot', this).prepend("<div class=\"showopt\">Show figure</div><br style=\"line-height:22px;\"/>");
+      $('pre.plot', this).children('img').addClass('folded');
+
+    }
+  });
+
+  // hide all chunks when document is loaded
+  $('.folded').css('display', 'none')
+
+  // function to toggle the visibility
+  $('.showopt').click(function() {
+    var label = $(this).html();
+    if (label.indexOf("Show") >= 0) {
+      $(this).html(label.replace("Show", "Hide"));
+    } else {
+      $(this).html(label.replace("Hide", "Show"));
+    }
+    $(this).siblings('code, img').slideToggle('fast', 'swing');
+  });
+});
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>(“Introduction to programming language R” course book)</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#foreword"><i class="fa fa-check"></i>Foreword</a></li>
+</ul></li>
+<li class="part"><span><b>I Basic elements of R</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#general-facts-about-r"><i class="fa fa-check"></i><b>1.1.1</b> General facts about R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#r-alternatives"><i class="fa fa-check"></i><b>1.1.2</b> R alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#installing-software-support"><i class="fa fa-check"></i><b>1.2</b> Installing Software Support</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#overview-of-the-development-interface-rstudio"><i class="fa fa-check"></i><b>1.3</b> Overview of the development interface * RStudio *</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#interactive-console"><i class="fa fa-check"></i><b>1.3.1</b> Interactive console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#writing-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Writing R scripts</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#r-markdown"><i class="fa fa-check"></i><b>1.3.3</b> * R Markdown *</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#how-to-use-this-coursebook"><i class="fa fa-check"></i><b>1.4</b> How to use this coursebook?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tipovi.html"><a href="tipovi.html"><i class="fa fa-check"></i><b>2</b> Basic data types and operators</a><ul>
+<li class="chapter" data-level="2.1" data-path="tipovi.html"><a href="tipovi.html#basic-data-types"><i class="fa fa-check"></i><b>2.1</b> Basic data types</a></li>
+<li class="chapter" data-level="2.2" data-path="tipovi.html"><a href="tipovi.html#operators"><i class="fa fa-check"></i><b>2.2</b> Operators</a></li>
+<li class="chapter" data-level="2.3" data-path="tipovi.html"><a href="tipovi.html#missing-unknown-and-non-existent-values"><i class="fa fa-check"></i><b>2.3</b> Missing, unknown, and non-existent values</a></li>
+<li class="chapter" data-level="" data-path="tipovi.html"><a href="tipovi.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vektori.html"><a href="vektori.html"><i class="fa fa-check"></i><b>3</b> Vectors, matrices and lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="vektori.html"><a href="vektori.html#vector"><i class="fa fa-check"></i><b>3.1</b> Vector</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vektori.html"><a href="vektori.html#create-a-vector"><i class="fa fa-check"></i><b>3.1.1</b> Create a vector</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vektori.html"><a href="vektori.html#operator"><i class="fa fa-check"></i><b>3.1.2</b> Operator <code>[</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="vektori.html"><a href="vektori.html#principle-of-vectorization-and-recycling"><i class="fa fa-check"></i><b>3.1.3</b> Principle of vectorization and recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vektori.html"><a href="vektori.html#index-vectors"><i class="fa fa-check"></i><b>3.2</b> Index vectors</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="vektori.html"><a href="vektori.html#location-indexing"><i class="fa fa-check"></i><b>3.2.1</b> Location Indexing</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vektori.html"><a href="vektori.html#conditional-indexing"><i class="fa fa-check"></i><b>3.2.2</b> Conditional indexing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vektori.html"><a href="vektori.html#label-based-indexing"><i class="fa fa-check"></i><b>3.2.3</b> Label-based indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vektori.html"><a href="vektori.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.3</b> Matrices and arrays</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="vektori.html"><a href="vektori.html#matrix-splicing"><i class="fa fa-check"></i><b>3.3.1</b> Matrix splicing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vektori.html"><a href="vektori.html#lists"><i class="fa fa-check"></i><b>3.4</b> Lists</a></li>
+<li class="chapter" data-level="" data-path="vektori.html"><a href="vektori.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="okviri.html"><a href="okviri.html"><i class="fa fa-check"></i><b>4</b> Data frames and factors</a><ul>
+<li class="chapter" data-level="4.1" data-path="okviri.html"><a href="okviri.html#data-frames"><i class="fa fa-check"></i><b>4.1</b> Data frames</a></li>
+<li class="chapter" data-level="4.2" data-path="okviri.html"><a href="okviri.html#selecting-rows-and-columns"><i class="fa fa-check"></i><b>4.2</b> Selecting rows and columns</a></li>
+<li class="chapter" data-level="4.3" data-path="okviri.html"><a href="okviri.html#adding-and-deleting-rows-and-columns"><i class="fa fa-check"></i><b>4.3</b> Adding and deleting rows and columns</a></li>
+<li class="chapter" data-level="4.4" data-path="okviri.html"><a href="okviri.html#factors"><i class="fa fa-check"></i><b>4.4</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="okviri.html"><a href="okviri.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Flow control and objects</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#flow-control-commands"><i class="fa fa-check"></i><b>5.1</b> Flow control commands</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="control.html"><a href="control.html#conditional-execution-of-commands"><i class="fa fa-check"></i><b>5.1.1</b> Conditional execution of commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#program-loops"><i class="fa fa-check"></i><b>5.2</b> Program Loops</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#loop-repeat"><i class="fa fa-check"></i><b>5.2.1</b> Loop <code>repeat</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#while-loop"><i class="fa fa-check"></i><b>5.2.2</b> <code>while</code> loop</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#for-loop"><i class="fa fa-check"></i><b>5.2.3</b> <code>for</code> loop</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#object-models-in-r-language"><i class="fa fa-check"></i><b>5.3</b> Object models in R language</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#overview-of-the-s3-object-model"><i class="fa fa-check"></i><b>5.3.1</b> Overview of the S3 object model</a></li>
+<li class="chapter" data-level="5.3.2" data-path="control.html"><a href="control.html#generic-functions"><i class="fa fa-check"></i><b>5.3.2</b> Generic functions</a></li>
+<li class="chapter" data-level="5.3.3" data-path="control.html"><a href="control.html#conclusion-on-s3-objects"><i class="fa fa-check"></i><b>5.3.3</b> Conclusion on S3 objects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="control.html"><a href="control.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>6</b> Packages, built-in functions and environments</a><ul>
+<li class="chapter" data-level="6.1" data-path="packages.html"><a href="packages.html#working-with-packages"><i class="fa fa-check"></i><b>6.1</b> Working with packages</a></li>
+<li class="chapter" data-level="6.2" data-path="packages.html"><a href="packages.html#built-in-functions"><i class="fa fa-check"></i><b>6.2</b> Built-in functions</a></li>
+<li class="chapter" data-level="6.3" data-path="packages.html"><a href="packages.html#environments"><i class="fa fa-check"></i><b>6.3</b> Environments</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="user.html"><a href="user.html"><i class="fa fa-check"></i><b>7</b> User Defined Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="user.html"><a href="user.html#how-to-define-a-function"><i class="fa fa-check"></i><b>7.1</b> How to define a function</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="user.html"><a href="user.html#the-copy-on-modify-principle"><i class="fa fa-check"></i><b>7.1.1</b> The “copy-on-modify” principle</a></li>
+<li class="chapter" data-level="7.1.2" data-path="user.html"><a href="user.html#function-as-an-object"><i class="fa fa-check"></i><b>7.1.2</b> Function as an object</a></li>
+<li class="chapter" data-level="7.1.3" data-path="user.html"><a href="user.html#generic-functions-1"><i class="fa fa-check"></i><b>7.1.3</b> Generic functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="user.html"><a href="user.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Let’s program in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="user" class="section level1">
+<h1><span class="header-section-number">7</span> User Defined Functions</h1>
+<hr />
+<p>Although R is an object-oriented programming language, it leans heavily towards the realm of functional programming. This functional paradigm is not new (it dates back to the 1950s), but has recently gained considerable popularity as a kind of complement to object-oriented programming, which might be said was the dominant programming paradigm in the last few decades.</p>
+<p>In order not to delve too deep into the subject of functional programming and its relationship to object-oriented principles, we will list only a few indicative features and guidelines related to these two paradigms.</p>
+<p><strong>Object-oriented programming</strong> in principle, sees the program as a system of <strong>nouns</strong> where the components are realized in the form of objects that encapsulate the attributes of the mentioned noun and the methods that perform certain tasks related to the given noun. Also, object-oriented systems focus on the <strong>controlled change of the components’ state</strong> as a result of the exchange of messages between them.</p>
+<p><strong>Functional programming </strong> sees the program as system of <strong>verbs</strong> where the functions, ie the tasks we want to execute, have priority over the components over which these tasks are executed. Functional programming models the information system through <strong>components that generally do not change their own state</strong>, so that the result of the program is strictly dependent on the inputs, which facilitates testing and maintenance.</p>
+<p>In short, the distinction between object-oriented programming and function programming is often stated as follows: <em>“For object-oriented programming, we create data that contains functions, and in fuctional programming we create functions containing data”</em>.</p>
+<p>We do not have to be too bothered with the features of functional programming to learn R, nor should it be necessary to adopt a completely new programming paradigm. But for successful mastering of R, adapting some of the functional programming concepts can prove to be extremely useful since it will allow us to write a cleaner and more efficient code that will be in accordance with the way in which R is designed as a language.</p>
+<p>In R, the following is true: <em>functions are “first-order” objects</em>, we can <em>reference them with a variable</em> of the selected environment, <em>send them to functions</em> as arguments, <em>receive as return values</em> function and <em>store them in data structures</em>, such as a list. The function in R is simply an “executable” object. A large number of functions - especially those that replace the program loop construct - work on the principle of functional languages where we perform the work in a manner that declaratively specifies which function we want to apply on which data structure, and let the programming language itself perform low-level tasks such as iteration by structure and preparation of the result. Examples of this will be learned soon, and now let’s first get to know the syntax of user defined functions in R.</p>
+<hr />
+<div id="how-to-define-a-function" class="section level2">
+<h2><span class="header-section-number">7.1</span> How to define a function</h2>
+<p>In the general case, the definition of a new function looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">function_name &lt;-<span class="st"> </span>function(input arguments) {
+    function_body
+    return_statement
+}</code></pre></div>
+<p>We can notice that in the function definition we use the operator <code>&lt;-</code>. This is not a coincidence - the definition of a function is nothing else than creating a `function ’object that we then associate with a particular variable; the name of the variable is actually the “name” of the function.</p>
+<p>In R we do not define the types of input and output arguments. Input arguments have the name and optional default value. The function formally returns one value, which is not necessarily restrictive if we want to return more values -we simply encapsulate them in the form of a vector or list. The <code>return</code> keyword is optional - the function returns the result of the last expression in the function, so it is often enough to specify only the variable that represents the return value as the last order of the function.</p>
+<p>Finally, if we want to increase the robustness of the function in such a way that we reject the execution of the logic within a function if certain conditions are not satisfied, we can use the <code>stopifnot</code> function. This function calculates the default logical expression and terminates the function if the specified condition <em>is not true</em>.</p>
+<hr />
+<p><strong>Exercise 7.1 - first user defined function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write the function `parallelMax` which requires two numeric vectors as input</span>
+<span class="co"># and returns a vector of the same size containing the larger </span>
+<span class="co"># between two corresponding elements of the original vectors</span>
+<span class="co"># if one or both vectors aren&#39;t numeric or aren&#39;t the same size</span>
+<span class="co"># the function must throw an error</span>
+<span class="co"># do not use loops!</span>
+
+<span class="co"># execute this new function over the following vector pairs</span>
+<span class="co"># c(T, F, T) i c(1, 2, 3)</span>
+<span class="co"># c(1, 2, 3, 4) i c(5, 6, 7)</span>
+<span class="co"># c(1, 2, 3) i c(0, 4, 2)</span>
+
+<span class="co"># (second part of the exercise should be tested inside the console!)</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write the function `parallelMax` which requires two numeric vectors as input</span>
+<span class="co"># and returns a vector of the same size containing the larger </span>
+<span class="co"># between two corresponding elements of the original vectors</span>
+<span class="co"># if one or both vectors aren&#39;t numeric or aren&#39;t the same size</span>
+<span class="co"># the function must throw an error</span>
+<span class="co"># do not use loops!</span>
+
+parallelMax &lt;-<span class="st"> </span>function(a, b) {
+    <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(a) &amp;&amp;<span class="st"> </span><span class="kw">is.numeric</span>(b) &amp;&amp;<span class="st"> </span><span class="kw">length</span>(a) ==<span class="st"> </span><span class="kw">length</span>(b));
+    <span class="kw">ifelse</span>(a &gt;<span class="st"> </span>b, a, b)
+}</code></pre></div>
+</div>
+<hr />
+<p>When calling a function, we can optionally specify the parameter names, and R will even allow the mixing of named and unnamed parameters (although this is not something we should often use in practice). When R connects the sent values with formal parameters, the named parameters will have priority and will be resolved first, after which the unnamed parameters will be resolved in te order they were provided.</p>
+<p>We can see this in the next exercise, in which we will use the opportunity to showcase a very useful function - <code>paste</code>. This function concatenates character strings with the addition of a space separator (there is an alternative function <code>paste0</code> for joining without spaces).</p>
+<hr />
+<p><strong>Exercise 7.2 - function parameters</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">printABC &lt;-<span class="st"> </span>function(a, b, c) {
+   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A:&quot;</span>, a, <span class="st">&quot;B:&quot;</span>, b, <span class="st">&quot;C:&quot;</span>, c))   
+}
+
+<span class="co"># think before executing - what will be printed with the following command? </span>
+<span class="kw">printABC</span>(<span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">printABC &lt;-<span class="st"> </span>function(a, b, c) {
+   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A:&quot;</span>, a, <span class="st">&quot;B:&quot;</span>, b, <span class="st">&quot;C:&quot;</span>, c))   
+}
+
+<span class="kw">printABC</span>(<span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] &quot;A: 2 B: 1 C: 3&quot;</code></pre>
+</div>
+<hr />
+<p>In practice, we should stick to conventions to first use unnamed parameters, and then named. It is customary to set only those named parameters whose default value does not suit us, whereas strict ordering does not matter (although using the order provided in the function definition will increase the legibility of our code).</p>
+<p>If we want to write a function that receives an arbitrary number of arguments, we use the element <code>...</code>, i.e. the ellipsis. An example of this feature is the built-in <code>paste</code> function which can receive an arbitrary number of character strings. If we use the ellipsis in our functions, we should place them at the end of the list of input arguments, and within the function itself we simply convert it into a list, and then access its parameters in the way that suits us.</p>
+<hr />
+<p><strong>Exercise 7.3 - function with an arbitrary number of parameters</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">printParams &lt;-<span class="st"> </span>function(...) {
+   params &lt;-<span class="st"> </span><span class="kw">list</span>(...)
+   for (p in params) <span class="kw">print</span>(p)
+}
+
+<span class="co"># call the above function with any random parameters</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">printParams</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">5</span>, T, <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(T, F)))</code></pre></div>
+<pre><code>## [1] 1 2 3
+## [1] 5
+## [1] TRUE
+##   x     y
+## 1 1  TRUE
+## 2 2 FALSE</code></pre>
+</div>
+<hr />
+<p>Finally, let’s recall the chapter in which we talked about S3 objects and the fact that R does not have a formal system for creating and using objects, but it is recommended that you use a separate constructor function that replaces the “manual” matching of the object and the declaration of its class. Now that we know how to create our own functions, we can look at how a potential constructor of the ‘Person’ class would look.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># constructor of the `Person` class</span>
+
+Person &lt;-<span class="st"> </span>function(id, surname, weight) {
+
+    <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(id))
+    <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(surname))
+    <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(weight) &amp;&amp;<span class="st"> </span>weight &gt;<span class="st"> </span><span class="dv">0</span>)
+
+    p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id, <span class="dt">surname =</span> surname, <span class="dt">weight =</span> weight)
+    <span class="kw">class</span>(p) &lt;-<span class="st"> &quot;Person&quot;</span>
+
+    p
+}</code></pre></div>
+<p>Let’s try to create a new object of the <code>Person</code> class with the help of this constructor.</p>
+<hr />
+<p><strong>Exercise 7.4 - constructor function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create `john`, a `Person` with the following characeristics:</span>
+<span class="co"># id: 1357135713, surname: Watson, weight: 76</span>
+
+<span class="co"># print `john`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">john &lt;-<span class="st"> </span><span class="kw">Person</span>(<span class="st">&quot;135135713&quot;</span>, <span class="st">&quot;Watson&quot;</span>, <span class="dv">76</span>)
+
+john</code></pre></div>
+<pre><code>## $id
+## [1] &quot;135135713&quot;
+## 
+## $surname
+## [1] &quot;Watson&quot;
+## 
+## $weight
+## [1] 76
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Person&quot;</code></pre>
+</div>
+<hr />
+<p>The advantage of the constructor is additional robustness in the form of exactly defined attribute names, as well as the capabilities of embedding additional checks (eg <code>id</code> and <code>surname</code> must be character strings and the <code>weight</code> must be a number, etc.). If we create our own S3 objects, it is recommended that we define the corresponding constructor functions for them.</p>
+<hr />
+<div id="the-copy-on-modify-principle" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> The “copy-on-modify” principle</h3>
+<p>One of the more common questions raised when learning a new programming language is whether the functions work in “call-by-value” or “call-by-reference” mode. The difference is basically whether the function may change the content of the variables sent at the place of the formal argument or not; <em>call-by-value</em> principle forward only copies of original arguments. On the other hand, the <em>call-by-reference</em> principle makes it so the function receives “references” of the original variables, i.e. it behaves as if the original variables were passed to the function and all changes to them would be reflected in the calling function or program.</p>
+<p>The language R uses a hybrid principle known as <em>copy-on-modify</em>. With this principle, references are forwarded to the function, which allows us to transmit “large” variables without fear of unnecessary copying. But this is only valid if the function does not change the value of the resulting variables - at the moment when the function attempts to make any changes, copying the variable is carried out and the function continues to work on the copy. Because of this it is said that R as such does not support <em>call-by-reference</em> (one reason for introducing “reference class” objects, i.e. “RC object model” into language R, is precisely the introduction of this principle).</p>
+<p>Let’s check the above statements in a following example.</p>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># attempt to change variables from the calling environment</span>
+
+f &lt;-<span class="st"> </span>function(x) {
+    x &lt;-<span class="st"> </span>x +<span class="st"> </span><span class="dv">1</span>
+}
+
+x &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="kw">f</span>(x)
+<span class="kw">print</span>(x)</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<hr />
+<p>The function actually creates a new temporary environment within which it stores “local” variables. In the above example, the <code>f</code> function introduces a new <code>x</code> variable that masks the external variable <code>x</code> so that all changes no longer reflect the value of the external variable.</p>
+<p>It is important to note that the function could access an external variable even without sending it to the function, since by referencing the <code>x</code> variable that does not exist in the local environment the R search function will continue in the parent’s environment, which in this case would be the global environment. Attempting to change this variable would still fail - R would detect an attempt to change the variable and create a local copy of the same name.</p>
+<p>Does this mean that a function can never change variables from the calling environment? Of course not. One way to do this is to send a reference to the environment within which the object we are changing exists (or, alternatively, let the function itself get a reference to the global environment if the variable is there).</p>
+<hr />
+<p><strong>Exercise 7.5 - changing global environment variables</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># implement function `f` which gets a reference to the global environment</span>
+<span class="co"># and increases the &quot;outer&quot; `x` by 1</span>
+
+x &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="co"># call `f(x)` and then print `x`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># implement function `f` which gets a reference to the global environment</span>
+<span class="co"># and increases the &quot;outer&quot; `x` by 1</span>
+f &lt;-<span class="st"> </span>function() {
+  e &lt;-<span class="st"> </span><span class="kw">globalenv</span>()
+  e$x &lt;-<span class="st"> </span>e$x +<span class="st"> </span><span class="dv">1</span>
+}
+
+x &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="co"># call `f(x)` and then print `x`</span>
+<span class="kw">f</span>()
+<span class="kw">print</span>(x)</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+</div>
+<hr />
+<p>A simpler way of solving the above task would be using the <code>&lt;&lt;-</code> operator. This operator’s function is to change the variable of the given name that is located somewhere in the search path. R will follow the search path, and change the first occurrence of the specified variable. If the variable of this name does not exist anywhere in the search path, R will create a new variable in the first environment above the environment of the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># operator `&lt;&lt;-`</span>
+f &lt;-<span class="st"> </span>function(x) {
+    x &lt;-<span class="st"> </span><span class="dv">6</span>
+    x &lt;&lt;-<span class="st"> </span><span class="dv">7</span>
+}
+
+x &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="kw">f</span>()
+x</code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>This operator is potentially unpredictable and we will achieve greater robustness using the <code>assign</code> or<code>$</code>operator with reference to the environment where the variable we want to change is.</p>
+<p>Finally, we must mention one feature of functions in R - the so-called. “lazy evaluation”. This simply means that R will not evaluate the received parameter until it is explicitly used. Up to that moment, this object is so-called. “promise” - R “knows” how to evaluate that object but it will not do so until it really needs it. This increases the efficiency of the language; if a parameter is used only in a conditional branch, then in scenarios when it is not needed it will not consume memory. But equally, we need to be careful because a lazy evaluation can lead to unexpected problems if we do not take into account its existence.</p>
+</div>
+<div id="function-as-an-object" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Function as an object</h3>
+<p>We have already said that R has good support for the so-called “functional programming” which represents a programming paradigm that puts emphasis on designing functions without reliance on objects with interchangeable states. One of the characteristics of such languages are “first class functions”, which means that the language supports the definition of functions in such a way that they are equal objects to all other types of objects - they can be stored in a variable, used as an input argument of another function or as a return value, stored in other data structures, etc.</p>
+<p>Let us show this on a trivial example. We know that R offers the function <code>sum</code> within the <code>base</code> package, and this function calculates the arithmetic sum of the vector elements we send to it as an input parameter. But <code>sum</code> is actually <em>the name of the variable</em> that references the code that implements this function. If we want, we can very easily bind this function to some other variable by which we have effectively changed its name, or - better said - provided an alternative way of calling from a completely different environment.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sum2 &lt;-<span class="st"> </span>sum
+
+<span class="kw">sum2</span>(<span class="dv">1</span>:<span class="dv">10</span>)  <span class="co"># same as sum(1:10)</span></code></pre></div>
+<p>This is easiest to understand in a way that the function is simply an “callable variable”, whereby the “call” refers to the use of a syntax that includes a reference to the function and input arguments framed in parentheses, which will return some value after execution in the R environment.</p>
+<hr />
+<p>The function can also be a return value from another function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">funcCreator &lt;-<span class="st"> </span>function() {
+    f &lt;-<span class="st"> </span>function(x) x +<span class="st"> </span><span class="dv">1</span>
+    <span class="kw">return</span>(f)
+}
+
+newFunc &lt;-<span class="st"> </span><span class="kw">funcCreator</span>() <span class="co"># we get the &quot;add one&quot; function</span>
+<span class="kw">newFunc</span>(<span class="dv">5</span>)  </code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>The function simply creats a new function and returns it to the calling program as it would have done with any other object. The return value is stored in the variable that is now “callable” - if we add brackets and parameters it will be executed in the way it is defined within the function that created it.</p>
+<p>Note that we could use the fact that the function returns the result of the last expression and define the function even shorter:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># shorter definition</span>
+funcCreator &lt;-<span class="st"> </span>function() {
+    function(x) x +<span class="st"> </span><span class="dv">1</span>
+}</code></pre></div>
+<p>These functions are often referred to as “factories” or “generators” of functions, and in contrast to the above example, in practice, the function generator often receives some parameters that determine how the returned function will behave.</p>
+<p>Try to create a function factory that returns the multiplication functions using a pre-set parameter.</p>
+<hr />
+<p><strong>Exercise 7.6 - function factory</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create the `multiplicationFactory` function that creates </span>
+<span class="co"># multiplication functions by the pre-set constant</span>
+
+<span class="co"># use the above function to create the `times2` function</span>
+<span class="co"># which doubles the received number</span>
+
+<span class="co"># call the `times2` function with parameter 3 and print out the result</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create the `multiplicationFactory` function that creates </span>
+<span class="co"># multiplication functions by the pre-set constant</span>
+multiplicationFactory &lt;-<span class="st"> </span>function(x) {
+  function(a) a*x
+}
+
+<span class="co"># use the above function to create the `times2` function</span>
+<span class="co"># which doubles the received number</span>
+times2 &lt;-<span class="st"> </span><span class="kw">multiplicationFactory</span>(<span class="dv">2</span>)
+
+<span class="co"># call the `times2` function with parameter 3 and print out the result</span>
+<span class="kw">times2</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+</div>
+<p>The <code>multiplicationFactory</code> function actually creates a “family” of functions that all provide the multiplication option with the selected number - i.e. parameter selected by the programmer itself. This way of managing functions may be initially confusing, but by using it in practice (which we will show in the next chapter), it is easy to notice the added flexibility and effectiveness of such an approach.</p>
+<hr />
+<p>If we define a function, and do not bind it to some variable, then we created the so-called “anonymous function”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># anonymous function</span>
+function(x) x *<span class="st"> </span>x </code></pre></div>
+<p>We can notice that each function is initially “anonymous”. If we return to the function definition syntax, we see that it is actually a combination of creating an anonymous function and binding it to a new variable. Of course, leaving the function anonymous as we did in the example above does not make much sense, just as it does not make sense to define a vector or list without creating a reference to that object - in that case the created object is not in any way usable because there are no links to it and will be quickly deleted by R within the “garbage collection” routine.</p>
+<p>We can ask ourselves - is there a scenario where the anonymous function is meaningful and useful? Explicit anonymous functions are used when a “disposable” function is needed, for example, as an argument for some other function. If the function we want to send as an argument is easy to define in a single line, and we do not plan to use it afterwards in the program, then it makes no sense to define it separately and assign it its own reference. An example of this will be seen in the <code>apply</code> family of functions.</p>
+<hr />
+<p>At the end of this section, we repeat the most important things - in R, the function is an object like any other, the only specificity is that it is an object that is “executable”, ie, which, using the function call syntax, does some work and returns some value. Even anonymous function can be executed (although only once, since we do not have a reference for future calls).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calling the anonymous function</span>
+(function(x) x +<span class="st"> </span><span class="dv">1</span>)(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<hr />
+</div>
+<div id="generic-functions-1" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Generic functions</h3>
+<p>We have already mentioned generic functions in the chapter on objects, but let’s briefly recall what they are all about. The programming language R is not based on the so-called “message exchange principle” of the object-oriented languages, where, for example, the drawing of the graph might be performed like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the usual OOP principle invokes object methods</span>
+<span class="kw">graph.draw</span>()</code></pre></div>
+<p>but like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># R just calls the method unto an object</span>
+<span class="kw">draw</span>(graph)</code></pre></div>
+<p>In the first case, a graph is an object that implements a special drawing method, and we have to call it in order to get the required graph image. In the second, there is an “external” function that “knows” how to draw a graph. This function is called a “generic function”.</p>
+<hr />
+<p>The properties of the generic function are as follows:</p>
+<ul>
+<li>the function has an intuitive, clearly defined purpose</li>
+<li>expected mode of operation is similar for multiple object types (eg drawing will always result in an image of sorts)</li>
+<li>each type of object requires its own implementation depending on the characteristics of the object (e.g. the way the method of drawing the circle differs from drawing a square)</li>
+</ul>
+<p>The method of implementing generic functions (for S3 objects!) is actually extremely simple, which is probably the reason for their wide acceptance and great popularity in the R community. The process is reduced to three simple steps:</p>
+<ul>
+<li>choose the name of a generic function (eg <code>infoAbout</code>) and declare that it is a generic function
+<ul>
+<li>alternatively, choose one of the existing generic functions</li>
+</ul></li>
+<li>create an object and declare its class (eg <code>Person</code>)</li>
+<li>we implement the function called <code>gen_function_name.class_name</code> (e.g. <code>infoAbout.Person</code>)</li>
+</ul>
+<p>And that’s all! R does not require any additional steps, the above is quite sufficient for R to recognize the new generic function and apply it to all objects for whose class this generic function is implemented in the form <code>gen_function_name.class_name</code> (or <code>gen_function_name.default</code> for all classes for which there is no special implementation).</p>
+<p>In the next exercise, let’s try to implement the generic <code>infoAbout</code> method for the <code>Person</code> class.</p>
+<hr />
+<p><strong>Exercise 7.7 - new generic function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">peter &lt;-<span class="st"> </span><span class="kw">Person</span>(<span class="dt">id =</span> <span class="st">&quot;12345678&quot;</span>, <span class="dt">surname =</span> <span class="st">&quot;Parker&quot;</span>, <span class="dt">weight =</span> <span class="dv">78</span>)
+
+<span class="co"># create a new generic `infoAbout` function using the `UseMethod` function</span>
+infoAbout &lt;-<span class="st"> </span>function(x) <span class="kw">UseMethod</span>(<span class="st">&quot;infoAbout&quot;</span>)
+
+<span class="co"># implement a `infoAbout.Person` function which takes a `Person`</span>
+<span class="co"># and writes the following on screen</span>
+<span class="co"># ID: &lt;id&gt;, surname: &lt;surname&gt;, weight: &lt;weight&gt;</span>
+<span class="co"># use the `paste` function to prepare the printout</span>
+<span class="co"># and `cat` to put it on screen</span>
+
+<span class="co"># implement a `infoAbout.default` function</span>
+<span class="co"># which simply fowards the input parameter to the `cat` function</span>
+
+<span class="co"># call `infoAbout` with `peter` as parameter</span>
+
+<span class="co"># call `infoAbout` with `1:5` as parameter</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># implement a `infoAbout.Person` function which takes a `Person`</span>
+<span class="co"># and writes the following on screen</span>
+<span class="co"># ID: &lt;id&gt;, surname: &lt;surname&gt;, weight: &lt;weight&gt;</span>
+<span class="co"># use the `paste` function to prepare the printout</span>
+<span class="co"># and `cat` to put it on screen</span>
+
+infoAbout.Person &lt;-<span class="st"> </span>function(p) {
+    rez &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;ID:&quot;</span>, p$id, <span class="st">&quot;, surname:&quot;</span>, p$surname, <span class="st">&quot;, weight:&quot;</span>, p$weight, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+    <span class="kw">cat</span>(rez)
+}
+
+<span class="co"># implement a `infoAbout.default` function</span>
+<span class="co"># which simply fowards the input parameter to the `cat` function</span>
+infoAbout.default &lt;-<span class="st"> </span>function(x) <span class="kw">cat</span>(x)
+
+<span class="co"># call `infoAbout` with `peter` as parameter</span>
+<span class="kw">infoAbout</span>(peter)
+
+<span class="co"># call `infoAbout` with `1:5` as parameter</span>
+<span class="kw">infoAbout</span>(<span class="dv">1</span>:<span class="dv">5</span>)</code></pre></div>
+<pre><code>## ID: 12345678 , surname: Parker , weight: 78 
+## 1 2 3 4 5</code></pre>
+</div>
+<hr />
+<p>Of course, we did not necessarily have to create our own function to get the “print” functionality for our new class - it would probably be better to use already existing generic functions such as <code>print</code> or <code>cat</code>.</p>
+<hr />
+<p><strong>Exercise 7.8 - augmenting the existing generic functions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make sure `print` is a generic function</span>
+<span class="co"># (print out its source code by referencing its name)</span>
+
+<span class="co"># augmnet the `print` function so it allows pretty printing</span>
+<span class="co"># of the `Person` class</span>
+<span class="co"># (you may use the already created `infoAbout.Person` class)</span>
+
+<span class="co"># call `print` with `peter` as parameter (or try the autoprint!)</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make sure `print` is a generic function</span>
+<span class="co"># (print out its source code by referencing its name)</span>
+print
+
+<span class="co"># augmnet the `print` function so it allows pretty printing</span>
+<span class="co"># of the `Person` class</span>
+<span class="co"># (you may use the already created `infoAbout.Person` class)</span>
+print.Person &lt;-<span class="st"> </span>infoAbout.Person
+
+
+<span class="co"># call `print` with `peter` as parameter (or try the autoprint!)</span>
+<span class="kw">print</span>(peter)</code></pre></div>
+<pre><code>## function (x, ...) 
+## UseMethod(&quot;print&quot;)
+## &lt;bytecode: 0x0000000014aa6208&gt;
+## &lt;environment: namespace:base&gt;
+## ID: 12345678 , surname: Parker , weight: 78</code></pre>
+</div>
+<hr />
+<p>Finally, we demonstrate the ability of R to list all the currently known implementations of a generic method. To do this we simply use the <code>methods</code> function to which we pass the name of the method concerned. With the same function we can also check which generic functions implementations exist for a particular class. For this we use the <code>class</code> parameter to which we are passing the class name for which we are interested in finding generic functions implemented for it.</p>
+<hr />
+<p><strong>Exercise 7.9 - <code>methods</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all implementations of the `summary` function</span>
+
+<span class="co"># check with generic function implementations exist for the `factor` class</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all implementations of the `summary` function</span>
+<span class="co">#methods(summary)   # try on console!</span>
+
+<span class="kw">cat</span>(<span class="st">&quot;-----------------------</span><span class="ch">\n</span><span class="st">&quot;</span>)
+
+<span class="co"># check with generic function implementations exist for the `factor` class</span>
+<span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;factor&quot;</span>)</code></pre></div>
+<pre><code>## -----------------------
+##  [1] /             [             [[            [[&lt;-          [&lt;-          
+##  [6] +             all.equal     Arith         as.character  as.data.frame
+## [11] as.Date       as.duration   as.interval   as.list       as.logical   
+## [16] as.period     as.POSIXlt    as.vector     as_date       as_datetime  
+## [21] cbind2        coerce        Compare       corresp       droplevels   
+## [26] format        histogram     initialize    is.na&lt;-       is_vector_s3 
+## [31] kronecker     length&lt;-      levels&lt;-      Logic         Math         
+## [36] Ops           plot          print         rbind2        recode       
+## [41] relevel       relist        rep           show          slotsFromS3  
+## [46] summary       Summary       type_sum      xtfrm        
+## see &#39;?methods&#39; for accessing help and source code</code></pre>
+</div>
+<hr />
+</div>
+</div>
+<div id="exercises-5" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>R has a <code>which</code> function which converts a logical vector into a numeric one containing indexes where the original vector has a <code>TRUE</code> value (so <code>c(T, F, F, F, F, T, F, T)</code> becomes <code>c(1, 6, 8)</code>). Create a function which replicates this behaviour.</p></li>
+<li><p>Take the numerical vector <code>x</code> of length <code>n</code>. In statistics, the standardized moment of the k-th order is calculated like this:</p></li>
+</ol>
+<p><span class="math display">\[\frac{1}{n}\sum_{i=1}^n{(x_i - \bar{x})}^{k+1}\]</span></p>
+<p>Create a factory of moment functions (<code>moment(k)</code>) for calculating the standardized central moment of the k-th order.</p>
+<p>Create the functions <code>zero_moment (x)</code> and <code>first_moment (x)</code> with parameter values <code>k</code> set to <code>0</code> and <code>1</code> accordingly.</p>
+<p>Test the functions on vector <code>1:1000</code>. Compare the results given by the <code>sd</code> (standard deviation) function over the vector <code>1: 1000</code> and root of the first moment you have calculated.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Implement a constructor for the class <code>Employee</code> which inherits the <code>Person</code> class defined by the following constructor and print implemenation:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Person &lt;-<span class="st"> </span>function(id, surname, weight) {
+    p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id, <span class="dt">surname =</span> surname, <span class="dt">weight =</span> weight)
+    <span class="kw">class</span>(p) &lt;-<span class="st"> &quot;Person&quot;</span>
+
+    p
+}
+
+print.Person &lt;-<span class="st"> </span>function(p) {
+    rez &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;ID:&quot;</span>, p$id, <span class="st">&quot;, surname:&quot;</span>, p$surname, <span class="st">&quot;, weight:&quot;</span>, p$weight, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+    <span class="kw">cat</span>(rez)
+}</code></pre></div>
+<p><code>Employee</code> has all the attributes of the <code>Person</code> class as well as the <code>superior</code> attribute which represents a reference to a employee who is his/her superior (if such exists, otherwise it should be <code>NA</code>).</p>
+<p>Create two objects of the <code>Employee</code> class (one superior to another) and print them with the <code>print</code> function. Then implement your own version of the generic function <code>print</code> for the <code>Employee</code> class that prints employee data and his/her superior employee data (if it exists, otherwise it prints a message that there is no superior employee). Reprint both employees with the <code>print</code> function.</p>
+<hr />
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Programirajmo u R-u</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.fer.unizg.hr/en/damir.pintar" property="cc:attributionName" rel="cc:attributionURL">Damir Pintar</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://ratnip.github.io/FER_OPJR/" rel="dct:source">https://ratnip.github.io/FER_OPJR/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="packages.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed",
+"edit": null,
+"download": null,
+"search": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

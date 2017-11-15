@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Let’s program in R</title>
+  <meta name="description" content="R Coursebook">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Let’s program in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Coursebook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Let’s program in R" />
+  
+  <meta name="twitter:description" content="R Coursebook" />
+  
+
+<meta name="author" content="Damir Pintar">
+
+
+<meta name="date" content="2017-11-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="user.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<style type="text/css">
+.showopt {
+  background-color: #004c93;
+  color: #FFFFFF; 
+  width: 140px;
+  height: 4	0px;
+  text-align: center;
+  vertical-align: middle !important;
+  float: right;
+  font-family: sans-serif;
+  font-size:10 pt;
+  border-radius: 8px;
+}
+
+.showopt:hover {
+    background-color: #dfe4f2;
+    color: #004c93;
+}
+
+pre.plot {
+  background-color: white !important;
+}
+</style>
+
+<script>
+ $(document).ready(function() {
+
+  $chunks = $('.fold');
+
+  $chunks.each(function () {
+
+    // add button to source code chunks
+    if ( $(this).hasClass('s') ) {
+      $('pre.r', this).prepend("<div class=\"showopt\">Show solution</div><br style=\"line-height:22px;\"/>");
+      $('pre.r', this).children('code').attr('class', 'folded');
+    }
+
+    // add button to output chunks
+    if ( $(this).hasClass('o') ) {
+      $('pre:not(.r)', this).has('code').prepend("<div class=\"showopt\">Show results</div><br style=\"line-height:22px;\"/>");
+      $('pre:not(.r)', this).children('code:not(r)').addClass('folded');
+
+      // add button to plots
+      $(this).find('img').wrap('<pre class=\"plot\"></pre>');
+      $('pre.plot', this).prepend("<div class=\"showopt\">Show figure</div><br style=\"line-height:22px;\"/>");
+      $('pre.plot', this).children('img').addClass('folded');
+
+    }
+  });
+
+  // hide all chunks when document is loaded
+  $('.folded').css('display', 'none')
+
+  // function to toggle the visibility
+  $('.showopt').click(function() {
+    var label = $(this).html();
+    if (label.indexOf("Show") >= 0) {
+      $(this).html(label.replace("Show", "Hide"));
+    } else {
+      $(this).html(label.replace("Hide", "Show"));
+    }
+    $(this).siblings('code, img').slideToggle('fast', 'swing');
+  });
+});
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>(“Introduction to programming language R” course book)</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#foreword"><i class="fa fa-check"></i>Foreword</a></li>
+</ul></li>
+<li class="part"><span><b>I Basic elements of R</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#general-facts-about-r"><i class="fa fa-check"></i><b>1.1.1</b> General facts about R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#r-alternatives"><i class="fa fa-check"></i><b>1.1.2</b> R alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#installing-software-support"><i class="fa fa-check"></i><b>1.2</b> Installing Software Support</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#overview-of-the-development-interface-rstudio"><i class="fa fa-check"></i><b>1.3</b> Overview of the development interface * RStudio *</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#interactive-console"><i class="fa fa-check"></i><b>1.3.1</b> Interactive console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#writing-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Writing R scripts</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#r-markdown"><i class="fa fa-check"></i><b>1.3.3</b> * R Markdown *</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#how-to-use-this-coursebook"><i class="fa fa-check"></i><b>1.4</b> How to use this coursebook?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tipovi.html"><a href="tipovi.html"><i class="fa fa-check"></i><b>2</b> Basic data types and operators</a><ul>
+<li class="chapter" data-level="2.1" data-path="tipovi.html"><a href="tipovi.html#basic-data-types"><i class="fa fa-check"></i><b>2.1</b> Basic data types</a></li>
+<li class="chapter" data-level="2.2" data-path="tipovi.html"><a href="tipovi.html#operators"><i class="fa fa-check"></i><b>2.2</b> Operators</a></li>
+<li class="chapter" data-level="2.3" data-path="tipovi.html"><a href="tipovi.html#missing-unknown-and-non-existent-values"><i class="fa fa-check"></i><b>2.3</b> Missing, unknown, and non-existent values</a></li>
+<li class="chapter" data-level="" data-path="tipovi.html"><a href="tipovi.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vektori.html"><a href="vektori.html"><i class="fa fa-check"></i><b>3</b> Vectors, matrices and lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="vektori.html"><a href="vektori.html#vector"><i class="fa fa-check"></i><b>3.1</b> Vector</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vektori.html"><a href="vektori.html#create-a-vector"><i class="fa fa-check"></i><b>3.1.1</b> Create a vector</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vektori.html"><a href="vektori.html#operator"><i class="fa fa-check"></i><b>3.1.2</b> Operator <code>[</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="vektori.html"><a href="vektori.html#principle-of-vectorization-and-recycling"><i class="fa fa-check"></i><b>3.1.3</b> Principle of vectorization and recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vektori.html"><a href="vektori.html#index-vectors"><i class="fa fa-check"></i><b>3.2</b> Index vectors</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="vektori.html"><a href="vektori.html#location-indexing"><i class="fa fa-check"></i><b>3.2.1</b> Location Indexing</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vektori.html"><a href="vektori.html#conditional-indexing"><i class="fa fa-check"></i><b>3.2.2</b> Conditional indexing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vektori.html"><a href="vektori.html#label-based-indexing"><i class="fa fa-check"></i><b>3.2.3</b> Label-based indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vektori.html"><a href="vektori.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.3</b> Matrices and arrays</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="vektori.html"><a href="vektori.html#matrix-splicing"><i class="fa fa-check"></i><b>3.3.1</b> Matrix splicing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vektori.html"><a href="vektori.html#lists"><i class="fa fa-check"></i><b>3.4</b> Lists</a></li>
+<li class="chapter" data-level="" data-path="vektori.html"><a href="vektori.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="okviri.html"><a href="okviri.html"><i class="fa fa-check"></i><b>4</b> Data frames and factors</a><ul>
+<li class="chapter" data-level="4.1" data-path="okviri.html"><a href="okviri.html#data-frames"><i class="fa fa-check"></i><b>4.1</b> Data frames</a></li>
+<li class="chapter" data-level="4.2" data-path="okviri.html"><a href="okviri.html#selecting-rows-and-columns"><i class="fa fa-check"></i><b>4.2</b> Selecting rows and columns</a></li>
+<li class="chapter" data-level="4.3" data-path="okviri.html"><a href="okviri.html#adding-and-deleting-rows-and-columns"><i class="fa fa-check"></i><b>4.3</b> Adding and deleting rows and columns</a></li>
+<li class="chapter" data-level="4.4" data-path="okviri.html"><a href="okviri.html#factors"><i class="fa fa-check"></i><b>4.4</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="okviri.html"><a href="okviri.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Flow control and objects</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#flow-control-commands"><i class="fa fa-check"></i><b>5.1</b> Flow control commands</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="control.html"><a href="control.html#conditional-execution-of-commands"><i class="fa fa-check"></i><b>5.1.1</b> Conditional execution of commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#program-loops"><i class="fa fa-check"></i><b>5.2</b> Program Loops</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#loop-repeat"><i class="fa fa-check"></i><b>5.2.1</b> Loop <code>repeat</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#while-loop"><i class="fa fa-check"></i><b>5.2.2</b> <code>while</code> loop</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#for-loop"><i class="fa fa-check"></i><b>5.2.3</b> <code>for</code> loop</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#object-models-in-r-language"><i class="fa fa-check"></i><b>5.3</b> Object models in R language</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#overview-of-the-s3-object-model"><i class="fa fa-check"></i><b>5.3.1</b> Overview of the S3 object model</a></li>
+<li class="chapter" data-level="5.3.2" data-path="control.html"><a href="control.html#generic-functions"><i class="fa fa-check"></i><b>5.3.2</b> Generic functions</a></li>
+<li class="chapter" data-level="5.3.3" data-path="control.html"><a href="control.html#conclusion-on-s3-objects"><i class="fa fa-check"></i><b>5.3.3</b> Conclusion on S3 objects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="control.html"><a href="control.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>6</b> Packages, built-in functions and environments</a><ul>
+<li class="chapter" data-level="6.1" data-path="packages.html"><a href="packages.html#working-with-packages"><i class="fa fa-check"></i><b>6.1</b> Working with packages</a></li>
+<li class="chapter" data-level="6.2" data-path="packages.html"><a href="packages.html#built-in-functions"><i class="fa fa-check"></i><b>6.2</b> Built-in functions</a></li>
+<li class="chapter" data-level="6.3" data-path="packages.html"><a href="packages.html#environments"><i class="fa fa-check"></i><b>6.3</b> Environments</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="user.html"><a href="user.html"><i class="fa fa-check"></i><b>7</b> User Defined Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="user.html"><a href="user.html#how-to-define-a-function"><i class="fa fa-check"></i><b>7.1</b> How to define a function</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="user.html"><a href="user.html#the-copy-on-modify-principle"><i class="fa fa-check"></i><b>7.1.1</b> The “copy-on-modify” principle</a></li>
+<li class="chapter" data-level="7.1.2" data-path="user.html"><a href="user.html#function-as-an-object"><i class="fa fa-check"></i><b>7.1.2</b> Function as an object</a></li>
+<li class="chapter" data-level="7.1.3" data-path="user.html"><a href="user.html#generic-functions-1"><i class="fa fa-check"></i><b>7.1.3</b> Generic functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="user.html"><a href="user.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="apply.html"><a href="apply.html"><i class="fa fa-check"></i><b>8</b> ‘Apply’ family of functions</a><ul>
+<li class="chapter" data-level="8.1" data-path="apply.html"><a href="apply.html#what-are-apply-functions"><i class="fa fa-check"></i><b>8.1</b> What are <code>apply</code> functions?</a></li>
+<li class="chapter" data-level="8.2" data-path="apply.html"><a href="apply.html#the-apply-function"><i class="fa fa-check"></i><b>8.2</b> The <code>apply</code> function</a></li>
+<li class="chapter" data-level="8.3" data-path="apply.html"><a href="apply.html#the-lapply-sapply-and-vapply-functions"><i class="fa fa-check"></i><b>8.3</b> The <code>lapply</code>, <code>sapply</code> and <code>vapply</code> functions</a></li>
+<li class="chapter" data-level="8.4" data-path="apply.html"><a href="apply.html#other-functions-from-the-apply-family-and-the-available-alternatives"><i class="fa fa-check"></i><b>8.4</b> Other functions from the <code>apply</code> family and the available alternatives</a></li>
+<li class="chapter" data-level="" data-path="apply.html"><a href="apply.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Let’s program in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="apply" class="section level1">
+<h1><span class="header-section-number">8</span> ‘Apply’ family of functions</h1>
+<hr />
+<div id="what-are-apply-functions" class="section level2">
+<h2><span class="header-section-number">8.1</span> What are <code>apply</code> functions?</h2>
+<p>Very often, knowledge of the basics of the language R is reflected by the skill of using the so-called <code>apply</code> family of functions, available in the<code>base</code> package. These functions are specifically designed to perform repetitive tasks over various data structures, and as such they replace the program logic that would usually be realized in a through program loops. Additionally, these functions typically receive other functions as input arguments and, to a certain extent, encourage the functional programming paradigm.</p>
+<p>The family name comes from the fact that these functions commonly have a suffix “apply”. Some of the functions from this family are:</p>
+<ul>
+<li><code>apply</code></li>
+<li><code>lapply</code></li>
+<li><code>sapply</code></li>
+<li><code>vapply</code></li>
+<li><code>tapply</code>,<code>mapply</code>, <code>rapply</code> …</li>
+</ul>
+<p>All of these functions work in a similar way - they receive a data set, a function that we want to apply to elements of that set, and optional additional parameters, and as the output give a set of function results, most often “packaged” in an appropriate format. The difference is mainly in the types of input and output arguments, as well as specific details about the implementation of the function itself and/or the way results are prepared.</p>
+<p>This family of functions is best learned through examples. We will begin with the “basic” function - <code>apply</code>.</p>
+</div>
+<div id="the-apply-function" class="section level2">
+<h2><span class="header-section-number">8.2</span> The <code>apply</code> function</h2>
+<p>The <code>apply</code> function is the only one that literally shares the name with the family of these functions. It is intended to work with <strong>matrices</strong> (actually with arrays, but since it is relatively rare to use data structures that have more than two dimensions, here we will focus only on matrices).</p>
+<p>The command syntax is as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">apply</span>( &lt;matrix&gt;, &lt;<span class="kw">rows</span> (<span class="dv">1</span>) or <span class="kw">columns</span> (<span class="dv">2</span>)&gt;, &lt;function_name&gt;<span class="st"> </span>)</code></pre></div>
+<p>Or, described in words, to implement the <code>apply</code> function, we:</p>
+<ul>
+<li>choose a matrix</li>
+<li>decide whether to “cut it” by rows or columns</li>
+<li>declare which function we want applied to each row (or column)</li>
+</ul>
+<p>Depending on how function works, as a result we get a matrix or (which is a more frequent case) a vector.</p>
+<p>Let’s try to use this function in a concrete example.</p>
+<hr />
+<p><strong>Exercise 8.1 - the <code>apply</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># print matrix `m`</span>
+
+<span class="co"># use the `apply` function to calculate</span>
+<span class="co"># and print the column sums of the `m` matrix</span>
+
+
+<span class="co"># use the `apply` function to calculate</span>
+<span class="co"># and print the multiplicaton of row elements </span>
+<span class="co"># from the `m` matrix </span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print matrix `m`</span>
+m
+
+<span class="kw">cat</span>(<span class="st">&quot;------------</span><span class="ch">\n</span><span class="st">&quot;</span>)  
+
+<span class="co"># use the `apply` function to calculate</span>
+<span class="co"># and print the column sums of the `m` matrix</span>
+<span class="kw">apply</span>(m, <span class="dv">2</span>, sum)
+
+<span class="kw">cat</span>(<span class="st">&quot;------------</span><span class="ch">\n</span><span class="st">&quot;</span>) 
+
+<span class="co"># use the `apply` function to calculate</span>
+<span class="co"># and print the multiplicaton of row elements </span>
+<span class="co"># from the `m` matrix </span>
+<span class="kw">apply</span>(m, <span class="dv">1</span>, prod)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## ------------
+## [1] 12 15 18
+## ------------
+## [1]   6 120 504</code></pre>
+</div>
+<hr />
+<p>If we want to perform a custom task to the rows/columns, we often use an anonymous function, for example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(m, <span class="dv">1</span>, function(x) x[<span class="dv">1</span>])   <span class="co"># return the first element of each row</span></code></pre></div>
+<hr />
+<p><strong>Exercise 8.2 - the <code>apply</code> function and anonymous functions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for each row of `m` calculate the natural logarithm</span>
+<span class="co"># of the sum of row elements</span>
+<span class="co"># rounded to 2 decimals</span>
+<span class="co"># use the `apply` function</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for each row of `m` calculate the natural logarithm</span>
+<span class="co"># of the sum of row elements</span>
+<span class="co"># rounded to 2 decimals</span>
+<span class="co"># use the `apply` function</span>
+<span class="kw">apply</span>(m, <span class="dv">1</span>, function(x) <span class="kw">round</span>(<span class="kw">log</span>(<span class="kw">sum</span>(x)),<span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 1.79 2.71 3.18</code></pre>
+</div>
+<hr />
+<p>Let’s repeat - <code>apply</code> (and related functions) implicitly * disassembles the input data structure into elements<em>. In the examples above, these elements - rows or columns - are actually numeric vectors. The argument <code>x</code> received by an anonymous function is exactly that vector, or, better said </em>each of these vectors* that are sent one by one. <em>The results of the function are “remembered” and “packed”</em> into the final result.</p>
+<p>Let’s try to program the last example without using the <code>apply</code> function.</p>
+<hr />
+<p><strong>Exercise 8.3 - loop as the alternative to the <code>apply</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for each row of `m` calculate the natural logarithm</span>
+<span class="co"># of the sum of row elements</span>
+<span class="co"># rounded to 2 decimals</span>
+<span class="co"># use the for program loop</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for each row of `m` calculate the natural logarithm</span>
+<span class="co"># of the sum of row elements</span>
+<span class="co"># rounded to 2 decimals</span>
+<span class="co"># use the for program loop</span>
+rez &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="kw">nrow</span>(m))
+for (i in <span class="dv">1</span>:<span class="kw">nrow</span>(m)) rez[i] &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">log</span>(<span class="kw">sum</span>(m[i,])), <span class="dv">2</span>)
+rez</code></pre></div>
+<pre><code>## [1] 1.79 2.71 3.18</code></pre>
+</div>
+<hr />
+<p>If we compare the syntax of the examples with and without using the <code>apply</code> function, we can see how much the syntax which uses <code>apply</code> s actually “cleaner”. If we use loops, we must explicitly specify the logic of passing through the structure, which draws attention away from the job description that we actually want to do.</p>
+<p>What if we want to send to the <code>apply</code> function a function which needs several parameters? For example, let’s say that instead of the upper function that extracts the first line element we want a function with two parameters - the first a vector (matrix row or column), and the second an integer that indicates the index of the element to extract. The answer is simple - just add additional parameters at the end of the function call.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># apply function and input function with multiple parameters</span>
+<span class="kw">apply</span>(m, <span class="dv">1</span>, function(x,y) x[y], <span class="dv">2</span>)  <span class="co"># second element of each row</span></code></pre></div>
+<p>Finally, it should be noted that for similar processing of data in the matrix form, we do not necessarily need to use <code>apply</code> - many popular operations such as adding row or column elements, calculating the average of the elements of the rows and columns, and the like. This has already been implemented through functions such as <code>rowSums</code>,<code>colSums</code>, <code>rowMeans</code>,<code>colMeans</code> and the like. They are easier to use, but specialized - for more flexibility, the most common option is <code>apply</code>.</p>
+<hr />
+</div>
+<div id="the-lapply-sapply-and-vapply-functions" class="section level2">
+<h2><span class="header-section-number">8.3</span> The <code>lapply</code>, <code>sapply</code> and <code>vapply</code> functions</h2>
+<p>The name of the <code>lapply</code> function comes from <em>list apply</em> - i.e. <strong>apply the function to the elements of lists</strong>. To put simply - it is a function that will receive the <strong>list and a function</strong> as the input arguments, apply the functions to <strong>each individual list element</strong> and return again <strong>a new list</strong> as a result.</p>
+<hr />
+<p><strong>Exercise 8.4 - the <code>lapply</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span>:<span class="dv">3</span>, <span class="dt">b =</span> <span class="kw">rep</span>(<span class="kw">c</span>(T, F), <span class="dv">10</span>), <span class="dt">c =</span> LETTERS)
+
+<span class="co"># use the `lapply` function to calculate the length (number of elements)</span>
+<span class="co"># of each element of the `l` list</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># use the `lapply` function to calculate the length (number of elements)</span>
+<span class="co"># of each element of the `l` list</span>
+<span class="kw">lapply</span>(l, length)</code></pre></div>
+<pre><code>## $a
+## [1] 3
+## 
+## $b
+## [1] 20
+## 
+## $c
+## [1] 26</code></pre>
+</div>
+<hr />
+<p>Just like with the <code>apply</code> function, for the<code>lapply</code> function, we often use anonymous functions as a parameter. The following task has no special practical use, but it will help us understand the functionality of the <code>lapply</code> function in combination with a slightly more complex anonymous function.</p>
+<hr />
+<p><strong>Exercise 8.5 - the <code>lapply</code> function and anonymous functions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># process the elements of the `l &#39;list as follows:</span>
+
+<span class="co"># - Calculate the mean value if it is a numerical vector</span>
+<span class="co"># - count the values of TRUE if it is a logical vector</span>
+<span class="co"># - calculate the length of the vector for all other cases</span>
+
+<span class="co"># use the `lapply` function and an anonymous function</span>
+
+<span class="co"># do not forget that anonymous function can also use blocks!</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># process the elements of the `l &#39;list as follows:</span>
+
+<span class="co"># - Calculate the mean value if it is a numerical vector</span>
+<span class="co"># - count the values of TRUE if it is a logical vector</span>
+<span class="co"># - calculate the length of the vector for all other cases</span>
+
+<span class="co"># use the `lapply` function and an anonymous function</span>
+
+<span class="co"># do not forget that anonymous function can also use blocks!</span>
+
+<span class="kw">lapply</span>(l, function(x) {
+    if (<span class="kw">is.numeric</span>(x)) {
+        <span class="kw">mean</span>(x)
+    } else if (<span class="kw">is.logical</span>(x)) {
+        <span class="kw">sum</span>(x)
+    } else <span class="kw">length</span>(x)
+})</code></pre></div>
+<pre><code>## $a
+## [1] 2
+## 
+## $b
+## [1] 10
+## 
+## $c
+## [1] 26</code></pre>
+</div>
+<hr />
+<p>The <code>lapply</code> function is essentially quite simple to use and is very popular due to this fact. But once we use it for a while, we can find it irritating that t it always returns the list as a result, although some other data structure would be more suitable for us - for example a vector, especially if the resulting list has just simple numbers as elements. For this reason, R offers the <code>unlist</code> function to simplify the list to a vector.</p>
+<hr />
+<p><strong>Exercise 8.6 - the <code>unlist</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">b =</span> <span class="dv">10</span>:<span class="dv">20</span>, <span class="dt">c =</span> <span class="dv">100</span>:<span class="dv">200</span>)
+
+<span class="co"># calculate the mean value of the elements of the `l` list</span>
+<span class="co"># print the results as a numeric vector</span>
+<span class="co"># use `lapply` and `unlist`</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the mean value of the elements of the `l` list</span>
+<span class="co"># print the results as a numeric vector</span>
+<span class="co"># use `lapply` and `unlist`</span>
+<span class="kw">unlist</span>(<span class="kw">lapply</span>(l, mean))</code></pre></div>
+<pre><code>##     a     b     c 
+##   5.5  15.0 150.0</code></pre>
+</div>
+<hr />
+<p>The displayed combination of <code>lapply</code> and<code>unlist</code> will give us as a result a one-dimensional vector, which in many cases is what we want. But sometimes some other data structure would suit us - for example, a matrix. In this case we need an additional step in transforming a one-dimensional vector into a matrix using the <code>matrix</code> function, with the number of rows and columns being explicitly assigned.</p>
+<p>The question may arise - why is <code>lapply</code> not able to check the structure of the result it has created and determine the optimal data structure for formatting it (vector, matrix, or list)? That’s exactly the idea behind the <code>sapply</code> function, or <em>simplified list apply</em>. This function first performs <code>lapply</code> internally, and then simplifies the result to a vector, matrix or array, depending on the characteristics of the results obtained.</p>
+<hr />
+<p><strong>Exercise 8.7 - the <code>sapply</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">b =</span> <span class="dv">10</span>:<span class="dv">20</span>, <span class="dt">c =</span> <span class="dv">100</span>:<span class="dv">200</span>)
+
+<span class="co"># calculate the median of elements of the `l` list</span>
+<span class="co"># and collect the results in a numeric vector</span>
+<span class="co"># use the `sapply` function</span>
+
+
+<span class="co"># extract the first and last element of each of the elements of the `l` list</span>
+<span class="co"># use `sapply` and anonymous function</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the median of elements of the `l` list</span>
+<span class="co"># and collect the results in a numeric vector</span>
+<span class="co"># use the `sapply` function</span>
+<span class="kw">sapply</span>(l, median)
+
+<span class="kw">cat</span>(<span class="st">&quot;------------</span><span class="ch">\n</span><span class="st">&quot;</span>) 
+
+<span class="co"># extract the first and last element of each of the elements of the `l` list</span>
+<span class="co"># use `sapply` and anonymous function</span>
+<span class="kw">sapply</span>(l, function(x) <span class="kw">c</span>(x[<span class="dv">1</span>], x[<span class="kw">length</span>(x)]))</code></pre></div>
+<pre><code>##     a     b     c 
+##   5.5  15.0 150.0 
+## ------------
+##       a  b   c
+## [1,]  1 10 100
+## [2,] 10 20 200</code></pre>
+</div>
+<hr />
+<p>Note that as a result in the last example, we received a matrix, but that R formed it “by columns”. If we wanted a matrix with elements arranged in rows, we can not use <code>sapply</code> for this directly, because the matrix is formed internally, without the possibility of forwarding the<code>byrow = T</code> parameter. To obtain such a matrix, one option is already mentioned with the combination of <code>lapply</code>,<code>unlist</code> and <code>matrix</code>, or - more simply - transposing the<code>sapply</code> results using <code>t</code> function (from <em>transpose</em>).</p>
+<hr />
+<p>The <code>sapply</code> function is quite popular due to its simplicity and efficiency, so it is relatively often used in interactive analysis. On the other hand, the use of this function in program scripts is not recommended since its result is unpredictable in the general case - e.g. the script can expect a matrix in the continuation of the code, and the <code>sapply</code> function, due to the specificity of the input data, returns the vector, which can cause unforeseen results, which is not easy to spot later and diagnose where the error occurred.</p>
+<p>If we are developing our own programs in R and want to use <code>sapply</code>, then the better choice will be the<code>vapply</code> function, which works identically to <code>sapply</code>, but uses an additional parameter called <code>FUN.VALUE</code> with which we explicitly define what kind of “simplification” we expect. For example. <code>numeric(3)</code> means that the result of applying the function to each element of the original list should be a numeric vector of three elements. If the result for any list item differs from the expected one, the function will raise an error.</p>
+<hr />
+<p><strong>Exercise 8.8 - the <code>vapply</code> function</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myList &lt;-<span class="st"> </span><span class="kw">list</span>(numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">5</span>), 
+               names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Ana&quot;</span>), 
+               alphabet &lt;-<span class="st"> </span>LETTERS)
+
+
+<span class="co"># think which of the following calls will be successful,</span>
+<span class="co"># and which will throw out the error</span>
+<span class="co"># check the results on the console</span>
+
+<span class="kw">vapply</span>(myList, length, <span class="dt">FUN.VALUE =</span> <span class="kw">numeric</span>(<span class="dv">1</span>))
+<span class="kw">vapply</span>(myList, function(x) <span class="kw">as.character</span>(<span class="kw">c</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>])), <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">2</span>))
+<span class="kw">vapply</span>(myList, function(x) <span class="kw">as.logical</span>(x), <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</code></pre></div>
+<hr />
+<p>Finally, let’s return briefly to <code>lapply</code> and consider one important fact - it is intended for use on lists, and <strong>data frames are actually lists</strong>. In other words, the <code>lapply</code> function is very handy for processing tabular datasets when we want to apply a particular function to the columns of the data frame.</p>
+<p>One of the more frequent operations performed in data analysis is the so-called. “normalization” of the numeric columns of the data frame - i.e. reducing all numerical values to “normal” distribution with the arithmetic mean of 0 and standard deviation of 1. This can be done by reducing each individual value by the arithmetic mean of the column (the <code>mean</code> function) and dividing with standard deviation of the column (function <code>sd</code>). This is a great way to demonstrate the use of <code>lapply</code> with data frames.</p>
+<hr />
+<p><strong>Exercise 8.9 - the <code>lapply</code> function and data frames</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">a =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">b =</span> <span class="kw">seq</span>(<span class="dv">100</span>, <span class="dv">550</span>, <span class="dv">50</span>), 
+                  <span class="dt">c =</span> LETTERS[<span class="dv">1</span>:<span class="dv">10</span>], <span class="dt">d =</span> <span class="kw">rep</span>(<span class="kw">c</span>(T,F), <span class="dv">5</span>), 
+                  <span class="dt">e =</span> -<span class="dv">10</span>:-<span class="dv">1</span>)
+
+<span class="co"># normalize numerical columns using `lapply`</span>
+<span class="co"># do not change the remaining columns</span>
+<span class="co"># round the normalized values to three decimal places</span>
+<span class="co"># save the result in the df variable</span>
+
+<span class="co"># print df</span></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># normalize numerical columns using `lapply`</span>
+<span class="co"># do not change the remaining columns</span>
+<span class="co"># round the normalized values to three decimal places</span>
+<span class="co"># save the result in the df variable</span>
+df &lt;-<span class="st"> </span><span class="kw">lapply</span>(df, function(x) {
+    if (<span class="kw">is.numeric</span>(x)) {
+        <span class="kw">round</span>((x -<span class="st"> </span><span class="kw">mean</span>(x))/<span class="kw">sd</span>(x), <span class="dv">3</span>)
+    } else x })
+
+<span class="co"># print df</span>
+df</code></pre></div>
+<pre><code>## $a
+##  [1] -1.486 -1.156 -0.826 -0.495 -0.165  0.165  0.495  0.826  1.156  1.486
+## 
+## $b
+##  [1] -1.486 -1.156 -0.826 -0.495 -0.165  0.165  0.495  0.826  1.156  1.486
+## 
+## $c
+##  [1] A B C D E F G H I J
+## Levels: A B C D E F G H I J
+## 
+## $d
+##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+## 
+## $e
+##  [1] -1.486 -1.156 -0.826 -0.495 -0.165  0.165  0.495  0.826  1.156  1.486</code></pre>
+</div>
+<hr />
+<p>We see that after using <code>lapply</code> we get a list and that if we want the result in the form of a data frame we need to add another step using the<code>as.data.frame</code> function. If we are looking for a simpler way that immediately gives the data frame as a result, there is one convenient “trick” that we will explain below.</p>
+<p>Let’s look at the solution of the previous problem, and put the following little change in the assignment of the result of the <code>lapply</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[] &lt;-<span class="st"> </span><span class="kw">lapply</span>(...)</code></pre></div>
+<p>In this way, R will not create a “new” variable named <code>df</code>, but rather the<code>lapply</code> result will be entered in the ’all rows and columns of the <code>df</code> data frame. This made it possible for us to get the result in the form of a data frame, which we actually wanted. For this very reason, in R scripts, we will often see a similar syntax (<code>df [] &lt;- lapply ...</code>). Try to modify the above example in the above manner and make sure that the result will be a data frame.</p>
+<p>Another commonly used trick in working with data frames is the following command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(df, class)   </code></pre></div>
+<p>This command actually gives us the answer to the question - which types are the columns of the given data frame? Although there are other ways to get this information, this method is popular both because of the compactness of the results and the independence of additional packages.</p>
+</div>
+<div id="other-functions-from-the-apply-family-and-the-available-alternatives" class="section level2">
+<h2><span class="header-section-number">8.4</span> Other functions from the <code>apply</code> family and the available alternatives</h2>
+<p>In the previous chapters, we have probably listed the most popular members of the <code>apply</code> family. This family has more members, including some who do not have a suffix <em>-apply</em>:</p>
+<ul>
+<li><code>mapply</code>, which works in parallel over multiple data structures</li>
+<li><code>rapply</code>, which recursively applies functions within the structure</li>
+<li><code>tapply</code>, which applies functions over sub-groups within a structure defined by factors</li>
+<li><code>Map</code>, the<code>mapply</code> version, which does not simplify the result</li>
+<li><code>by</code>, the<code>tapply</code> version for data frames</li>
+<li>etc.</li>
+</ul>
+<p>The reason why these functions will not be explained in detail is twofold: firstly, as already mentioned, these functions are in practice applied much less often than the functions we have shown in the previous chapters. Secondly, with the increase in popularity of the language R, a large number of packages are oriented to improve the existing functions of the language R in the sense of easier and more efficient programming, especially when working with data frames.</p>
+<p>If we are looking for convenient alternative functions to those from the <code>apply</code> family, it’s recommended to look at some of the following packages</p>
+<ul>
+<li><code>plyr</code> - an extremely popular package that, among other things, offers a number of functions very similar to <code>apply</code> functions, but derived in a way that they have a consistent signature and explicitly defined input and output formats that are easily read from the function name itself (in particular, the first letters ); so the <code>llply</code> function uses a list as both the input and the output, while<code>mdply</code> needs a matrix as input and outputs a data frame</li>
+<li><code>purrr</code> - a package that replaces the functions of the<code>apply</code> family with functions corresponding to similar functions from other programming languages; since the application of the same function to a number of elements of a data structure in functional languages is often called “mapping”, the set of functions of this package carries the prefix <code>maps_</code>, and the function names often correspond to the expected results (for example<code>map2_lgl</code> means that as a result we expect a logical vector , and the <code>map2_df</code> a data frame)</li>
+<li><code>dplyr</code> - a relatively new package, which in a certain sense represents the successor of the <code>plyr</code> package but oriented almost exclusively toward data frames; the functions of this package are not so much oriented to replace the <code>apply</code> family functions as providing a specific platform for working with data frames in a manner similar to languages oriented precisely for this purpose, such as, for example, the SQL language</li>
+</ul>
+<p>In future lectures we will introduce the <code>dplyr</code> package precisely because this package greatly facilitates and accelerates the data analysis process and is extremely well accepted in the R community.</p>
+<hr />
+</div>
+<div id="exercises-6" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>Take the <code>m</code> matrix created by the following command:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="dv">1</span>:<span class="dv">5</span>, <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="dv">3</span>:<span class="dv">7</span>, <span class="kw">seq</span>(<span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">100</span>))</code></pre></div>
+<p>With the <code>apply</code> function and the new anonymous function, create a vector that will contain the first even element of each row, or zero if the corresponding row does not have even elements.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>The following commands will create a list of 100 elements where each element will be a numeric vector of a random length of 1 to 10.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)
+myList &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">100</span>, <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">1</span>)))</code></pre></div>
+<p>With the help of <code>lapply</code> / <code>sapply</code> (and additional commands if necessary), create:</p>
+<ul>
+<li>the numerical vector <code>v</code> with the lengths of the list elements</li>
+<li>list <code>l</code> with normalized numerical vectors of the original list</li>
+<li>numerical vector <code>ind4</code> with indexes of all list elements containing number 4</li>
+<li>the <code>df5</code> data frame containing columns which have all the elements of the length of 5 from the original list</li>
+</ul>
+<hr />
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Programirajmo u R-u</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.fer.unizg.hr/en/damir.pintar" property="cc:attributionName" rel="cc:attributionURL">Damir Pintar</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://ratnip.github.io/FER_OPJR/" rel="dct:source">https://ratnip.github.io/FER_OPJR/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="user.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed",
+"edit": null,
+"download": null,
+"search": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -446,7 +446,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>We see that the adjusted R-squared measure is relatively low and the average error is quite high, so linear regression is perhaps not the best option this scenario (or maybe the obtained characteristics of the wines are simply not good enough to predict its quality). In spite of this, we will now check how well the model works on unseen observations.</p>
 <p>In order to check the quality of our model, we have to choose the criterion to which we will adhere. For numeric goals we often use the <strong>RMSE</strong> measure (root mean square error):</p>
-<p><span class="math display">\[RMSE = \sqrt{\frac{\sum_{i = 1}^{n}(\widehat{y}_{i} - y_{i})}{n}}\]</span></p>
+<p><span class="math display">\[RMSE = \sqrt{\frac{\sum_{i = 1}^{n}(\widehat{y}_{i} - y_{i})^2}{n}}\]</span></p>
 <p>where <code>n</code> is the number of observations,<span class="math inline">\(\widehat{y}_{i}\)</span> prediction of the observation i and <span class="math inline">\(y_ {i}\)</span> actual value of the target variable of that observation.</p>
 <p>Although there are packages that contain this function, we can easily program it ourselves.</p>
 <p><strong>Zadatak 14.3 - Function for calculating the RMSE measure</strong></p>

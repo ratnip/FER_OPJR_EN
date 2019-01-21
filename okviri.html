@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s program in R</title>
   <meta name="description" content="R Coursebook">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s program in R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Damir Pintar">
 
 
-<meta name="date" content="2017-11-15">
+<meta name="date" content="2019-01-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -116,41 +116,67 @@ pre.plot {
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -250,6 +276,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="apply.html"><a href="apply.html#other-functions-from-the-apply-family-and-the-available-alternatives"><i class="fa fa-check"></i><b>8.4</b> Other functions from the <code>apply</code> family and the available alternatives</a></li>
 <li class="chapter" data-level="" data-path="apply.html"><a href="apply.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="part"><span><b>II Data management and visualizations</b></span></li>
+<li class="chapter" data-level="9" data-path="pipe.html"><a href="pipe.html"><i class="fa fa-check"></i><b>9</b> Pipeline operator and tidy data - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="10" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>10</b> Dates and strings - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="11" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>11</b> Managing data frames with <code>dplyr</code> package - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="12" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>12</b> Visualising data with <code>ggplot2</code> package - UNDER CONSTRUCTION</a></li>
+<li class="part"><span><b>III Machine learning and predictive analytics</b></span></li>
+<li class="chapter" data-level="13" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>13</b> Linear regression analysis - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="14" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html"><i class="fa fa-check"></i><b>14</b> Introduction to Predictive Modeling</a><ul>
+<li class="chapter" data-level="14.1" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#what-is-predictive-modeling"><i class="fa fa-check"></i><b>14.1</b> What is predictive modeling?</a></li>
+<li class="chapter" data-level="14.2" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#creating-training-and-test-datasets"><i class="fa fa-check"></i><b>14.2</b> Creating training and test datasets</a></li>
+<li class="chapter" data-level="14.3" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#classification-predictive-models---knn-classification"><i class="fa fa-check"></i><b>14.3</b> Classification Predictive Models - kNN Classification</a></li>
+<li class="chapter" data-level="14.4" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#package-caret-and-predictive-modeling"><i class="fa fa-check"></i><b>14.4</b> Package <code>caret</code> and predictive modeling</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -334,40 +373,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Let’s see both of these cases. First, we will create a data frame programatically.</p>
 <hr />
-<p><strong>Exercise 4.1 - creating data frames programatically</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">51000</span>, <span class="dv">21000</span>, <span class="dv">31000</span>, <span class="dv">2000</span>)
-cityName =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Zagreb&quot;</span>, <span class="st">&quot;Rijeka&quot;</span>, <span class="st">&quot;Split&quot;</span>, <span class="st">&quot;Osijek&quot;</span>, <span class="st">&quot;Dubrovnik&quot;</span>)
-avgSalKn =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6359</span>., <span class="dv">5418</span>., <span class="dv">5170</span>., <span class="dv">4892</span>., <span class="dv">5348</span>.)
-population =<span class="st"> </span><span class="kw">c</span>(<span class="dv">790017</span>, <span class="dv">128384</span>, <span class="dv">167121</span>, <span class="dv">84104</span>, <span class="dv">28434</span>)
-cityTax =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">10</span>)
-
-<span class="co"># create a new data frame using the `data.frame` function</span>
-<span class="co"># name the variable `cities`</span>
-<span class="co"># use the same syntax as when creating a list</span>
-<span class="co"># use the names of the variables for names of list elements</span>
-
-
-<span class="co"># print the variable `cities`</span></code></pre></div>
+<p><strong>Zadatak 4.1 - creating data frames programatically</strong></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">zipCode =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">51000</span>, <span class="dv">21000</span>, <span class="dv">31000</span>, <span class="dv">2000</span>)</a>
+<a class="sourceLine" id="cb129-2" data-line-number="2">cityName =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Zagreb&quot;</span>, <span class="st">&quot;Rijeka&quot;</span>, <span class="st">&quot;Split&quot;</span>, <span class="st">&quot;Osijek&quot;</span>, <span class="st">&quot;Dubrovnik&quot;</span>)</a>
+<a class="sourceLine" id="cb129-3" data-line-number="3">avgSalKn =<span class="st"> </span><span class="kw">c</span>(<span class="fl">6359.</span>, <span class="fl">5418.</span>, <span class="fl">5170.</span>, <span class="fl">4892.</span>, <span class="fl">5348.</span>)</a>
+<a class="sourceLine" id="cb129-4" data-line-number="4">population =<span class="st"> </span><span class="kw">c</span>(<span class="dv">790017</span>, <span class="dv">128384</span>, <span class="dv">167121</span>, <span class="dv">84104</span>, <span class="dv">28434</span>)</a>
+<a class="sourceLine" id="cb129-5" data-line-number="5">cityTax =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb129-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb129-7" data-line-number="7"><span class="co"># create a new data frame using the `data.frame` function</span></a>
+<a class="sourceLine" id="cb129-8" data-line-number="8"><span class="co"># name the variable `cities`</span></a>
+<a class="sourceLine" id="cb129-9" data-line-number="9"><span class="co"># use the same syntax as when creating a list</span></a>
+<a class="sourceLine" id="cb129-10" data-line-number="10"><span class="co"># use the names of the variables for names of list elements</span></a>
+<a class="sourceLine" id="cb129-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb129-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb129-13" data-line-number="13"><span class="co"># print the variable `cities`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">51000</span>, <span class="dv">21000</span>, <span class="dv">31000</span>, <span class="dv">2000</span>)
-cityName =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Zagreb&quot;</span>, <span class="st">&quot;Rijeka&quot;</span>, <span class="st">&quot;Split&quot;</span>, <span class="st">&quot;Osijek&quot;</span>, <span class="st">&quot;Dubrovnik&quot;</span>)
-avgSalKn =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6359</span>., <span class="dv">5418</span>., <span class="dv">5170</span>., <span class="dv">4892</span>., <span class="dv">5348</span>.)
-population =<span class="st"> </span><span class="kw">c</span>(<span class="dv">790017</span>, <span class="dv">128384</span>, <span class="dv">167121</span>, <span class="dv">84104</span>, <span class="dv">28434</span>)
-cityTax =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">10</span>)
-
-<span class="co"># create a new data frame using the `data.frame` function</span>
-<span class="co"># name the variable `cities`</span>
-<span class="co"># use the same syntax as when creating a list</span>
-<span class="co"># use the names of the variables for names of list elements</span>
-
-cities &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">zipCode =</span> zipCode,
-                      <span class="dt">cityName =</span> cityName,
-                      <span class="dt">avgSalKn =</span> avgSalKn,
-                      <span class="dt">population =</span> population,
-                      <span class="dt">cityTax =</span> cityTax)
-
-<span class="co"># print the variable `cities`</span>
-cities</code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">zipCode =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">51000</span>, <span class="dv">21000</span>, <span class="dv">31000</span>, <span class="dv">2000</span>)</a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">cityName =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Zagreb&quot;</span>, <span class="st">&quot;Rijeka&quot;</span>, <span class="st">&quot;Split&quot;</span>, <span class="st">&quot;Osijek&quot;</span>, <span class="st">&quot;Dubrovnik&quot;</span>)</a>
+<a class="sourceLine" id="cb130-3" data-line-number="3">avgSalKn =<span class="st"> </span><span class="kw">c</span>(<span class="fl">6359.</span>, <span class="fl">5418.</span>, <span class="fl">5170.</span>, <span class="fl">4892.</span>, <span class="fl">5348.</span>)</a>
+<a class="sourceLine" id="cb130-4" data-line-number="4">population =<span class="st"> </span><span class="kw">c</span>(<span class="dv">790017</span>, <span class="dv">128384</span>, <span class="dv">167121</span>, <span class="dv">84104</span>, <span class="dv">28434</span>)</a>
+<a class="sourceLine" id="cb130-5" data-line-number="5">cityTax =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb130-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb130-7" data-line-number="7"><span class="co"># create a new data frame using the `data.frame` function</span></a>
+<a class="sourceLine" id="cb130-8" data-line-number="8"><span class="co"># name the variable `cities`</span></a>
+<a class="sourceLine" id="cb130-9" data-line-number="9"><span class="co"># use the same syntax as when creating a list</span></a>
+<a class="sourceLine" id="cb130-10" data-line-number="10"><span class="co"># use the names of the variables for names of list elements</span></a>
+<a class="sourceLine" id="cb130-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb130-12" data-line-number="12">cities &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">zipCode =</span> zipCode,</a>
+<a class="sourceLine" id="cb130-13" data-line-number="13">                      <span class="dt">cityName =</span> cityName,</a>
+<a class="sourceLine" id="cb130-14" data-line-number="14">                      <span class="dt">avgSalKn =</span> avgSalKn,</a>
+<a class="sourceLine" id="cb130-15" data-line-number="15">                      <span class="dt">population =</span> population,</a>
+<a class="sourceLine" id="cb130-16" data-line-number="16">                      <span class="dt">cityTax =</span> cityTax)</a>
+<a class="sourceLine" id="cb130-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb130-18" data-line-number="18"><span class="co"># print the variable `cities`</span></a>
+<a class="sourceLine" id="cb130-19" data-line-number="19">cities</a></code></pre></div>
 <pre><code>##   zipCode  cityName avgSalKn population cityTax
 ## 1   10000    Zagreb     6359     790017      18
 ## 2   51000    Rijeka     5418     128384      15
@@ -382,21 +421,21 @@ cities</code></pre></div>
 <p>Let’s try to load the table from an external source now. Although R allows different forms of external data, we will assume that the data is obtained in a standard “CSV form” (CSV - <em>comma-separated values</em>). This form is one of the most popular data storage methods in a pure text format that has the advantage of being easy to create manually, and most data management tools implement logic to import/export data as a CSV file.</p>
 <p>Below we can see an example of a CSV file that matches the data frame created in the previous example. Suppose the file is named <code>cities.csv</code>. The data is separated by a comma (no spaces!), Every observation in your line, and the optional first line represents the column names.</p>
 <hr />
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode,cityName,avgSalKn,population,cityTax
-<span class="dv">10000</span>,Zagreb,<span class="fl">6359.00</span>,<span class="dv">790017</span>,<span class="dv">18</span> 
-<span class="dv">51000</span>,Rijeka,<span class="fl">5418.00</span>,<span class="dv">128384</span>,<span class="dv">15</span>
-<span class="dv">21000</span>,Split,<span class="fl">5170.00</span>,<span class="dv">167121</span>,<span class="dv">10</span>
-<span class="dv">31000</span>,Osijek,<span class="fl">4892.00</span>,<span class="dv">84104</span>,<span class="dv">13</span> 
-<span class="dv">20000</span>,Dubrovnik,<span class="fl">5348.00</span>,<span class="dv">28434</span>,<span class="dv">10</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">zipCode,cityName,avgSalKn,population,cityTax</a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="dv">10000</span>,Zagreb,<span class="fl">6359.00</span>,<span class="dv">790017</span>,<span class="dv">18</span> </a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="dv">51000</span>,Rijeka,<span class="fl">5418.00</span>,<span class="dv">128384</span>,<span class="dv">15</span></a>
+<a class="sourceLine" id="cb132-4" data-line-number="4"><span class="dv">21000</span>,Split,<span class="fl">5170.00</span>,<span class="dv">167121</span>,<span class="dv">10</span></a>
+<a class="sourceLine" id="cb132-5" data-line-number="5"><span class="dv">31000</span>,Osijek,<span class="fl">4892.00</span>,<span class="dv">84104</span>,<span class="dv">13</span> </a>
+<a class="sourceLine" id="cb132-6" data-line-number="6"><span class="dv">20000</span>,Dubrovnik,<span class="fl">5348.00</span>,<span class="dv">28434</span>,<span class="dv">10</span></a></code></pre></div>
 <hr />
 <p>One of the potential problems with CSV files is that they use the comma as separator (<em>delimiter</em>) of column elements, and in certain languages, as a standard, a “decimal comma” is used instead of a decimal point. Because of this fact, there is an “alternative” CSV standard that uses a semi-colon as a separator so that our CSV file in this case looks like this (let’s call it <code>citiesAlt.csv</code>):</p>
 <hr />
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zipCode;cityName;avgSalKn;population;cityTax
-<span class="dv">10000</span>;Zagreb;<span class="dv">6359</span>,<span class="dv">00</span>;<span class="dv">790017</span>;<span class="dv">18</span> 
-<span class="dv">51000</span>;Rijeka;<span class="dv">5418</span>,<span class="dv">00</span>;<span class="dv">128384</span>;<span class="dv">15</span>
-<span class="dv">21000</span>;Split;<span class="dv">5170</span>,<span class="dv">00</span>;<span class="dv">167121</span>;<span class="dv">10</span>
-<span class="dv">31000</span>;Osijek;<span class="dv">4892</span>,<span class="dv">00</span>;<span class="dv">84104</span>;<span class="dv">13</span> 
-<span class="dv">20000</span>;Dubrovnik;<span class="dv">5348</span>,<span class="dv">00</span>;<span class="dv">28434</span>;<span class="dv">10</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">zipCode;cityName;avgSalKn;population;cityTax</a>
+<a class="sourceLine" id="cb133-2" data-line-number="2"><span class="dv">10000</span>;Zagreb;<span class="dv">6359</span>,<span class="dv">00</span>;<span class="dv">790017</span>;<span class="dv">18</span> </a>
+<a class="sourceLine" id="cb133-3" data-line-number="3"><span class="dv">51000</span>;Rijeka;<span class="dv">5418</span>,<span class="dv">00</span>;<span class="dv">128384</span>;<span class="dv">15</span></a>
+<a class="sourceLine" id="cb133-4" data-line-number="4"><span class="dv">21000</span>;Split;<span class="dv">5170</span>,<span class="dv">00</span>;<span class="dv">167121</span>;<span class="dv">10</span></a>
+<a class="sourceLine" id="cb133-5" data-line-number="5"><span class="dv">31000</span>;Osijek;<span class="dv">4892</span>,<span class="dv">00</span>;<span class="dv">84104</span>;<span class="dv">13</span> </a>
+<a class="sourceLine" id="cb133-6" data-line-number="6"><span class="dv">20000</span>;Dubrovnik;<span class="dv">5348</span>,<span class="dv">00</span>;<span class="dv">28434</span>;<span class="dv">10</span></a></code></pre></div>
 <hr />
 <p>Since the decimal point is a standard in the Republic of Croatia, in working with CSV files we have to be careful which of the two standard records is used. Luckily, the R language offers support functions for both standards, so we do not have to adapt the input files specifically, just be careful what function we will choose.</p>
 <p>Suppose we have these two files in the workbook:</p>
@@ -406,7 +445,9 @@ cities</code></pre></div>
 </ul>
 <p>(If we do not have these files available, we can easily create them with the help of plain text editors (eg <em>Notepad</em> or <em>gedit</em>) and copying the above rows.)</p>
 <hr />
-<p>To create data frames from CSV files we use the following functions: - <code>read.csv</code> - for “normal” CSV files with a comma as separator - <code>read.csv2</code> - for an alternative CSV standard that use semi-colons</p>
+<p>To create data frames from CSV files we use the following functions:
+- <code>read.csv</code> - for “normal” CSV files with a comma as separator
+- <code>read.csv2</code> - for an alternative CSV standard that use semi-colons</p>
 <p>The main input parameter of these functions is the path to the CSV file that we load. Functions also have a rich set of additional parameters that allow them to be adapted to different scenarios, and if we get some of the “exotic” forms of CSV files, it is worth looking at the <code>read.table</code> function which is very flexible with respect to the number of different parameters and data load settings. Functions <code>read.csv</code> and<code>read.csv2</code> are actually derived from the <code>read.table</code> function by defaulting certain parameters to standard CSV features.</p>
 <hr />
 <p>Some of the parameters and associated values of <code>read.csv</code> (or <code>read.table</code>) functions that are useful to know are:</p>
@@ -420,21 +461,21 @@ cities</code></pre></div>
 </ul>
 <p>Let’s try to load data from available CSV files now. This data will not require special parameters, and will only be loaded by providing the path to the associated files (one that uses the comma and the other that uses the semi-colon as a separator).</p>
 <hr />
-<p><strong>Exercise 4.2 - reading CSV files</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load data from files `cities.csv` and` citiesAlt.csv`</span>
-<span class="co"># save data in variables called `cities2` and` cities3` </span>
-
-<span class="co"># print `cities2` and` cities3` </span></code></pre></div>
+<p><strong>Zadatak 4.2 - reading CSV files</strong></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="co"># load data from files `cities.csv` and` citiesAlt.csv`</span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="co"># save data in variables called `cities2` and` cities3` </span></a>
+<a class="sourceLine" id="cb134-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb134-4" data-line-number="4"><span class="co"># print `cities2` and` cities3` </span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load data from files `cities.csv` and` citiesAlt.csv`</span>
-<span class="co"># save data in variables called `cities2` and` cities3` </span>
-cities2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cities.csv&quot;</span>)
-cities3 &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;citiesAlt.csv&quot;</span>)
-
-<span class="co"># print `cities2` and` cities3` </span>
-cities2
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-cities3 </code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># load data from files `cities.csv` and` citiesAlt.csv`</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="co"># save data in variables called `cities2` and` cities3` </span></a>
+<a class="sourceLine" id="cb135-3" data-line-number="3">cities2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;cities.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb135-4" data-line-number="4">cities3 &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;citiesAlt.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb135-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb135-6" data-line-number="6"><span class="co"># print `cities2` and` cities3` </span></a>
+<a class="sourceLine" id="cb135-7" data-line-number="7">cities2</a>
+<a class="sourceLine" id="cb135-8" data-line-number="8"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb135-9" data-line-number="9">cities3 </a></code></pre></div>
 <pre><code>##   zipCode  cityName avgSalKn population cityTax
 ## 1   10000    Zagreb     6359     790017      18
 ## 2   51000    Rijeka     5418     128384      15
@@ -463,35 +504,35 @@ cities3 </code></pre></div>
 </ul>
 <p>Let’s try some of these functions:</p>
 <hr />
-<p><strong>Exercise 4.3 - working with data frames</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the dimensions of the data frame `cities`</span>
-
-
-<span class="co"># print the table structure of `cities`</span>
-
-
-<span class="co"># print the first few rows of the data frame `cities`</span>
-
-
-<span class="co"># print summarized statistical information about  `cities` </span></code></pre></div>
+<p><strong>Zadatak 4.3 - working with data frames</strong></p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="co"># print the dimensions of the data frame `cities`</span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb137-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb137-4" data-line-number="4"><span class="co"># print the table structure of `cities`</span></a>
+<a class="sourceLine" id="cb137-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb137-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb137-7" data-line-number="7"><span class="co"># print the first few rows of the data frame `cities`</span></a>
+<a class="sourceLine" id="cb137-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb137-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb137-10" data-line-number="10"><span class="co"># print summarized statistical information about  `cities` </span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the dimensions of the data frame `cities`</span>
-<span class="kw">dim</span>(cities)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print the table structure of `cities`</span>
-<span class="kw">str</span>(cities)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print the first few rows of the data frame `cities`</span>
-<span class="kw">head</span>(cities)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print summarized statistical information about  `cities` </span>
-<span class="kw">summary</span>(cities)</code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="co"># print the dimensions of the data frame `cities`</span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="kw">dim</span>(cities)</a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb138-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb138-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb138-6" data-line-number="6"><span class="co"># print the table structure of `cities`</span></a>
+<a class="sourceLine" id="cb138-7" data-line-number="7"><span class="kw">str</span>(cities)</a>
+<a class="sourceLine" id="cb138-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb138-9" data-line-number="9"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb138-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb138-11" data-line-number="11"><span class="co"># print the first few rows of the data frame `cities`</span></a>
+<a class="sourceLine" id="cb138-12" data-line-number="12"><span class="kw">head</span>(cities)</a>
+<a class="sourceLine" id="cb138-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb138-14" data-line-number="14"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb138-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb138-16" data-line-number="16"><span class="co"># print summarized statistical information about  `cities` </span></a>
+<a class="sourceLine" id="cb138-17" data-line-number="17"><span class="kw">summary</span>(cities)</a></code></pre></div>
 <pre><code>## [1] 5 5
 ## -----------
 ## &#39;data.frame&#39;:    5 obs. of  5 variables:
@@ -535,36 +576,36 @@ cities3 </code></pre></div>
 <p>Here we are actually quite flexible - we can, for example, first get certain matrix rows with the help of location indexing and then only single column with the help of <code>$</code>. In practice, one of the most common combinations is the conditional selection of rows with the named selection of columns (<em>SQL</em> experts will recognize this as a standard combination of <em>WHERE</em> and <em>SELECT</em>).</p>
 <p>Let’s try to apply our knowledge of index vectors, matrices, and lists.</p>
 <hr />
-<p><strong>Exercise 4.4 - selecting rows and columns</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the table `cities` (for reference)</span>
-
-<span class="co"># print the first three rows, the third and fifth column</span>
-
-<span class="co"># print column &quot;cityTax&quot;</span>
-
-<span class="co"># print zipCodes and city names of all cities which </span>
-<span class="co"># have cityTax greater than 12% and a population of more than 100,000</span></code></pre></div>
+<p><strong>Zadatak 4.4 - selecting rows and columns</strong></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="co"># print the table `cities` (for reference)</span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="co"># print the first three rows, the third and fifth column</span></a>
+<a class="sourceLine" id="cb140-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb140-5" data-line-number="5"><span class="co"># print column &quot;cityTax&quot;</span></a>
+<a class="sourceLine" id="cb140-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb140-7" data-line-number="7"><span class="co"># print zipCodes and city names of all cities which </span></a>
+<a class="sourceLine" id="cb140-8" data-line-number="8"><span class="co"># have cityTax greater than 12% and a population of more than 100,000</span></a></code></pre></div>
 <div class="fold s o">
 
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the table `cities` (for reference)</span>
-cities
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print the first three rows, the third and fifth column</span>
-
-cities[<span class="dv">1</span>:<span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)]
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print column &quot;cityTax&quot;</span>
-cities$cityTax
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print zipCodes and city names of all cities which </span>
-<span class="co"># have cityTax greater than 12% and a population of more than 100,000</span>
-cities[cities$cityTax &gt;<span class="st"> </span><span class="dv">12</span> &amp;<span class="st"> </span>cities$population &gt;<span class="st"> </span><span class="dv">100000</span>, <span class="kw">c</span>(<span class="st">&quot;zipCode&quot;</span>, <span class="st">&quot;cityName&quot;</span>)]</code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="co"># print the table `cities` (for reference)</span></a>
+<a class="sourceLine" id="cb141-2" data-line-number="2">cities</a>
+<a class="sourceLine" id="cb141-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb141-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb141-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb141-6" data-line-number="6"><span class="co"># print the first three rows, the third and fifth column</span></a>
+<a class="sourceLine" id="cb141-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb141-8" data-line-number="8">cities[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb141-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb141-10" data-line-number="10"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb141-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb141-12" data-line-number="12"><span class="co"># print column &quot;cityTax&quot;</span></a>
+<a class="sourceLine" id="cb141-13" data-line-number="13">cities<span class="op">$</span>cityTax</a>
+<a class="sourceLine" id="cb141-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb141-15" data-line-number="15"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb141-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb141-17" data-line-number="17"><span class="co"># print zipCodes and city names of all cities which </span></a>
+<a class="sourceLine" id="cb141-18" data-line-number="18"><span class="co"># have cityTax greater than 12% and a population of more than 100,000</span></a>
+<a class="sourceLine" id="cb141-19" data-line-number="19">cities[cities<span class="op">$</span>cityTax <span class="op">&gt;</span><span class="st"> </span><span class="dv">12</span> <span class="op">&amp;</span><span class="st"> </span>cities<span class="op">$</span>population <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>, <span class="kw">c</span>(<span class="st">&quot;zipCode&quot;</span>, <span class="st">&quot;cityName&quot;</span>)]</a></code></pre></div>
 <pre><code>##   zipCode  cityName avgSalKn population cityTax
 ## 1   10000    Zagreb     6359     790017      18
 ## 2   51000    Rijeka     5418     128384      15
@@ -584,9 +625,9 @@ cities[cities$cityTax &gt;<span class="st"> </span><span class="dv">12</span> &a
 ## 2   51000   Rijeka</code></pre>
 <hr />
 <p>Notice the similarity between the last expression and SQL query:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SELECT zipCode, cityName
-FROM cities
-WHERE cities.cityTax &gt;<span class="st"> </span><span class="dv">12</span> AND cities.population &gt;<span class="st"> </span><span class="dv">100000</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">SELECT zipCode, cityName</a>
+<a class="sourceLine" id="cb143-2" data-line-number="2">FROM cities</a>
+<a class="sourceLine" id="cb143-3" data-line-number="3">WHERE cities.cityTax <span class="op">&gt;</span><span class="st"> </span><span class="dv">12</span> AND cities.population <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span></a></code></pre></div>
 <p>Choosing columns and rows is not difficult if we are well acquainted with index vector knowledge, but as it can be seen in the last example of syntax, it is often not too readable (as compared to, for example, the SQL syntax that performs the same job). For this reason, there are different R extensions that greatly facilitate this work, which we will elaborate in detail in one of the future lessons.</p>
 <hr />
 </div>
@@ -595,48 +636,48 @@ WHERE cities.cityTax &gt;<span class="st"> </span><span class="dv">12</span> AND
 <p>To add and delete rows and columns, remember that the data frame is a kind of hybrid of a matrix and a list, ie if we know how to add rows and columns to a matrix or add new elements in a list, then we can add data to the data frame in an equivalent way. When working with data frames, adding new columns is a bit more common than adding rows.</p>
 <p>As we have said, we add columns to the data frame in the same way as we add list elements - while paying attention that the added column has the same number of elements as the other columns. New columns are often derived from existing columns to create new binary indicators, the results of arithmetic data expressions using other columns, etc.</p>
 <hr />
-<p><strong>Exercise 4.5 - adding new columns to a data frame</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add the logical column` highCityTax` to the  `cities` table</span>
-<span class="co"># which will indicate whether the cityTax is greater than 12%</span>
-
-
-<span class="co"># assume the following (imaginary) way of calculating city tax income</span>
-<span class="co"># - cities have about 60% of working population</span>
-<span class="co"># - each worker pays a tax that is roughly equal to 10% of net salary</span>
-<span class="co"># - income from city tax per worker is (cityTaxa percentage)*(tax income)</span>
-<span class="co">#</span>
-<span class="co"># add a `monthlyTaxIncome` column which will use the average salary, city tax </span>
-<span class="co"># rate and population to estimate hte monthly tax income of the cities</span>
-<span class="co"># (in million Kns)</span>
-<span class="co"># i broja stanovnika procijeniti koliki prihod pojedino cities dobija od cityTaxa </span>
-<span class="co"># round up to two decimals ( using the `round` function,</span>
-<span class="co">#  .e.g. : round(100.12345, 2) ==&gt;  100.12  )</span>
-
-
-<span class="co"># print `cities`</span></code></pre></div>
+<p><strong>Zadatak 4.5 - adding new columns to a data frame</strong></p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="co"># add the logical column` highCityTax` to the  `cities` table</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="co"># which will indicate whether the cityTax is greater than 12%</span></a>
+<a class="sourceLine" id="cb144-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb144-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb144-5" data-line-number="5"><span class="co"># assume the following (imaginary) way of calculating city tax income</span></a>
+<a class="sourceLine" id="cb144-6" data-line-number="6"><span class="co"># - cities have about 60% of working population</span></a>
+<a class="sourceLine" id="cb144-7" data-line-number="7"><span class="co"># - each worker pays a tax that is roughly equal to 10% of net salary</span></a>
+<a class="sourceLine" id="cb144-8" data-line-number="8"><span class="co"># - income from city tax per worker is (cityTaxa percentage)*(tax income)</span></a>
+<a class="sourceLine" id="cb144-9" data-line-number="9"><span class="co">#</span></a>
+<a class="sourceLine" id="cb144-10" data-line-number="10"><span class="co"># add a `monthlyTaxIncome` column which will use the average salary, city tax </span></a>
+<a class="sourceLine" id="cb144-11" data-line-number="11"><span class="co"># rate and population to estimate hte monthly tax income of the cities</span></a>
+<a class="sourceLine" id="cb144-12" data-line-number="12"><span class="co"># (in million Kns)</span></a>
+<a class="sourceLine" id="cb144-13" data-line-number="13"><span class="co"># i broja stanovnika procijeniti koliki prihod pojedino cities dobija od cityTaxa </span></a>
+<a class="sourceLine" id="cb144-14" data-line-number="14"><span class="co"># round up to two decimals ( using the `round` function,</span></a>
+<a class="sourceLine" id="cb144-15" data-line-number="15"><span class="co">#  .e.g. : round(100.12345, 2) ==&gt;  100.12  )</span></a>
+<a class="sourceLine" id="cb144-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb144-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb144-18" data-line-number="18"><span class="co"># print `cities`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add the logical column` highCityTax` to the  `cities` table</span>
-<span class="co"># which will indicate whether the cityTax is greater than 12%</span>
-cities$highCityTax &lt;-<span class="st"> </span>cities$cityTax &gt;<span class="st"> </span><span class="dv">12</span>
-
-
-<span class="co"># assume the following (imaginary) way of calculating city tax income</span>
-<span class="co"># - cities have about 60% of working population</span>
-<span class="co"># - each worker pays a tax that is roughly equal to 10% of net salary</span>
-<span class="co"># - income from city tax per worker is (cityTaxa percentage)*(tax income)</span>
-<span class="co">#</span>
-<span class="co"># add a `monthlyTaxIncome` column which will use the average salary, city tax </span>
-<span class="co"># rate and population to estimate hte monthly tax income of the cities</span>
-<span class="co"># (in million Kns)</span>
-<span class="co"># i broja stanovnika procijeniti koliki prihod pojedino cities dobija od cityTaxa </span>
-<span class="co"># round up to two decimals ( using the `round` function,</span>
-<span class="co">#  .e.g. : round(100.12345, 2) ==&gt;  100.12  )</span>
-cities$monthlyTaxIncome&lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">0.6</span> *<span class="st"> </span>cities$population *<span class="st"> </span><span class="fl">0.01</span> *<span class="st"> </span>
-<span class="st">                          </span>cities$avgSalKn  *<span class="st"> </span><span class="fl">0.01</span> *<span class="st"> </span>cities$cityTax /<span class="st"> </span><span class="fl">1e6</span> , <span class="dv">2</span>)
-
-
-<span class="co"># print `cities`</span>
-cities</code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="co"># add the logical column` highCityTax` to the  `cities` table</span></a>
+<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="co"># which will indicate whether the cityTax is greater than 12%</span></a>
+<a class="sourceLine" id="cb145-3" data-line-number="3">cities<span class="op">$</span>highCityTax &lt;-<span class="st"> </span>cities<span class="op">$</span>cityTax <span class="op">&gt;</span><span class="st"> </span><span class="dv">12</span></a>
+<a class="sourceLine" id="cb145-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb145-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb145-6" data-line-number="6"><span class="co"># assume the following (imaginary) way of calculating city tax income</span></a>
+<a class="sourceLine" id="cb145-7" data-line-number="7"><span class="co"># - cities have about 60% of working population</span></a>
+<a class="sourceLine" id="cb145-8" data-line-number="8"><span class="co"># - each worker pays a tax that is roughly equal to 10% of net salary</span></a>
+<a class="sourceLine" id="cb145-9" data-line-number="9"><span class="co"># - income from city tax per worker is (cityTaxa percentage)*(tax income)</span></a>
+<a class="sourceLine" id="cb145-10" data-line-number="10"><span class="co">#</span></a>
+<a class="sourceLine" id="cb145-11" data-line-number="11"><span class="co"># add a `monthlyTaxIncome` column which will use the average salary, city tax </span></a>
+<a class="sourceLine" id="cb145-12" data-line-number="12"><span class="co"># rate and population to estimate hte monthly tax income of the cities</span></a>
+<a class="sourceLine" id="cb145-13" data-line-number="13"><span class="co"># (in million Kns)</span></a>
+<a class="sourceLine" id="cb145-14" data-line-number="14"><span class="co"># i broja stanovnika procijeniti koliki prihod pojedino cities dobija od cityTaxa </span></a>
+<a class="sourceLine" id="cb145-15" data-line-number="15"><span class="co"># round up to two decimals ( using the `round` function,</span></a>
+<a class="sourceLine" id="cb145-16" data-line-number="16"><span class="co">#  .e.g. : round(100.12345, 2) ==&gt;  100.12  )</span></a>
+<a class="sourceLine" id="cb145-17" data-line-number="17">cities<span class="op">$</span>monthlyTaxIncome&lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">0.6</span> <span class="op">*</span><span class="st"> </span>cities<span class="op">$</span>population <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb145-18" data-line-number="18"><span class="st">                          </span>cities<span class="op">$</span>avgSalKn  <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>cities<span class="op">$</span>cityTax <span class="op">/</span><span class="st"> </span><span class="fl">1e6</span> , <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb145-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb145-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb145-21" data-line-number="21"><span class="co"># print `cities`</span></a>
+<a class="sourceLine" id="cb145-22" data-line-number="22">cities</a></code></pre></div>
 <pre><code>##   zipCode  cityName avgSalKn population cityTax highCityTax
 ## 1   10000    Zagreb     6359     790017      18        TRUE
 ## 2   51000    Rijeka     5418     128384      15        TRUE
@@ -654,32 +695,32 @@ cities</code></pre></div>
 <p>You can also add rows and columns similar to adding rows and columns to a matrix - with the <code>rbind</code> and<code>cbind</code> functions. For <code>rbind</code> we usually add a new data frame with rows that have the appropriate order and type of elements, while we can add a completely new vector with <code>cbind</code>, keeping in mind that the number of elements corresponds to the number of rows of the original data frame.</p>
 <p>Let’s try these functions on small “artificial” data frames to better demonstrate their functionality.</p>
 <hr />
-<p><strong>Exercise 4.6 - data frames and <code>rbind</code>/<code>cbind</code> functions</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="dt">c =</span> <span class="kw">c</span>(T, F, T))
-df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">c =</span> <span class="dv">3</span>)
-
-<span class="co"># make a data frame which has `df1` and `df2` as rows</span>
-<span class="co"># name it `df12`</span>
-
-
-<span class="co"># add a `firstNames` columns containing names Ivo, Ana, Pero and Stipe</span>
-<span class="co"># use `cbind`</span>
-
-<span class="co"># print `df12`</span></code></pre></div>
+<p><strong>Zadatak 4.6 - data frames and <code>rbind</code>/<code>cbind</code> functions</strong></p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="dt">c =</span> <span class="kw">c</span>(T, F, T))</a>
+<a class="sourceLine" id="cb147-2" data-line-number="2">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">c =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb147-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb147-4" data-line-number="4"><span class="co"># make a data frame which has `df1` and `df2` as rows</span></a>
+<a class="sourceLine" id="cb147-5" data-line-number="5"><span class="co"># name it `df12`</span></a>
+<a class="sourceLine" id="cb147-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb147-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb147-8" data-line-number="8"><span class="co"># add a `firstNames` columns containing names Ivo, Ana, Pero and Stipe</span></a>
+<a class="sourceLine" id="cb147-9" data-line-number="9"><span class="co"># use `cbind`</span></a>
+<a class="sourceLine" id="cb147-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb147-11" data-line-number="11"><span class="co"># print `df12`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="dt">c =</span> <span class="kw">c</span>(T, F, T))
-df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">c =</span> <span class="dv">3</span>)
-
-<span class="co"># make a data frame which has `df1` and `df2` as rows</span>
-<span class="co"># name it `df12`</span>
-df12 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2)
-
-<span class="co"># add a `firstNames` columns containing names Ivo, Ana, Pero and Stipe</span>
-<span class="co"># use `cbind`</span>
-df12 &lt;-<span class="st"> </span><span class="kw">cbind</span>(df12, <span class="dt">firstNames =</span> <span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Stipe&quot;</span>))
-
-<span class="co"># print `df12`</span>
-df12</code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="dt">c =</span> <span class="kw">c</span>(T, F, T))</a>
+<a class="sourceLine" id="cb148-2" data-line-number="2">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">c =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb148-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb148-4" data-line-number="4"><span class="co"># make a data frame which has `df1` and `df2` as rows</span></a>
+<a class="sourceLine" id="cb148-5" data-line-number="5"><span class="co"># name it `df12`</span></a>
+<a class="sourceLine" id="cb148-6" data-line-number="6">df12 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2)</a>
+<a class="sourceLine" id="cb148-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb148-8" data-line-number="8"><span class="co"># add a `firstNames` columns containing names Ivo, Ana, Pero and Stipe</span></a>
+<a class="sourceLine" id="cb148-9" data-line-number="9"><span class="co"># use `cbind`</span></a>
+<a class="sourceLine" id="cb148-10" data-line-number="10">df12 &lt;-<span class="st"> </span><span class="kw">cbind</span>(df12, <span class="dt">firstNames =</span> <span class="kw">c</span>(<span class="st">&quot;Ivo&quot;</span>, <span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Pero&quot;</span>, <span class="st">&quot;Stipe&quot;</span>))</a>
+<a class="sourceLine" id="cb148-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb148-12" data-line-number="12"><span class="co"># print `df12`</span></a>
+<a class="sourceLine" id="cb148-13" data-line-number="13">df12</a></code></pre></div>
 <pre><code>##   a b c firstNames
 ## 1 1 A 1        Ivo
 ## 2 2 B 0        Ana
@@ -692,26 +733,27 @@ df12</code></pre></div>
 <li>deleting rows and columns can be done by using two-dimensional indexing of rows and columns that we want to “keep”</li>
 <li>deleting columns can be done by assigning the value <code>NULL</code> to the selected column</li>
 </ul>
-<p>Let’s try this in the example. ***</p>
-<p><strong>Exercise 4.7 - deleting rows and columns</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># delete the first row and second column from `df12`</span>
-<span class="co"># use the indexing method</span>
-
-
-<span class="co"># delete the `firstNames` column by using the `NULL` method</span>
-
-
-<span class="co"># print `df12`</span></code></pre></div>
+<p>Let’s try this in the example.
+***</p>
+<p><strong>Zadatak 4.7 - deleting rows and columns</strong></p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co"># delete the first row and second column from `df12`</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="co"># use the indexing method</span></a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb150-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb150-5" data-line-number="5"><span class="co"># delete the `firstNames` column by using the `NULL` method</span></a>
+<a class="sourceLine" id="cb150-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb150-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb150-8" data-line-number="8"><span class="co"># print `df12`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># delete the first row and second column from `df12`</span>
-<span class="co"># use the indexing method</span>
-df12 &lt;-<span class="st"> </span>df12[-<span class="dv">1</span>, -<span class="dv">4</span>]    
-
-<span class="co"># delete the `firstNames` column by using the `NULL` method</span>
-df12$firstNames &lt;-<span class="st"> </span><span class="ot">NULL</span>
-
-<span class="co"># print `df12`</span>
-df12</code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="co"># delete the first row and second column from `df12`</span></a>
+<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="co"># use the indexing method</span></a>
+<a class="sourceLine" id="cb151-3" data-line-number="3">df12 &lt;-<span class="st"> </span>df12[<span class="op">-</span><span class="dv">1</span>, <span class="dv">-4</span>]    </a>
+<a class="sourceLine" id="cb151-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb151-5" data-line-number="5"><span class="co"># delete the `firstNames` column by using the `NULL` method</span></a>
+<a class="sourceLine" id="cb151-6" data-line-number="6">df12<span class="op">$</span>firstNames &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb151-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb151-8" data-line-number="8"><span class="co"># print `df12`</span></a>
+<a class="sourceLine" id="cb151-9" data-line-number="9">df12</a></code></pre></div>
 <pre><code>##   a b c
 ## 2 2 B 0
 ## 3 3 C 1
@@ -727,48 +769,48 @@ df12</code></pre></div>
 <p>Factors in R are often the subject of discussion since it is a construct that can facilitate data processing but also cause problems, especially if we are not aware that at some point we are working with a factor (this scenario is actually easily avoided, as we will explain at the end of this chapter).</p>
 <hr />
 <p>To begin with, we will show you what factors are, with the help of a simple example. Let’s imagine that the next character vector describes the blood pressure level in ten patients:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,
-          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,</a>
+<a class="sourceLine" id="cb153-2" data-line-number="2">          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)</a></code></pre></div>
 <p>This is obviously a “categorical” variable since it can take one of three discrete values - <code>low</code>, <code>normal</code> and <code>high</code>. Thus, this vector is a typical candidate for “factorizing”, ie for converting to a <code>factor</code> class object. We create these vectors by using the <code>factor</code> function to which we forward the character vector of category names as a parameter.</p>
 <hr />
-<p><strong>Exercise 4.8 - factorizing a character vector</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,
-          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)
-
-<span class="co"># print the variable `bloodPressure`</span>
-
-<span class="co"># print its class</span>
-
-<span class="co"># create a variable `bloodPressure.f` by factorizing</span>
-<span class="co"># the variable `bloodPressure`</span>
-
-<span class="co"># print the variable `bloodPressure.f`</span>
-
-<span class="co"># print its class</span></code></pre></div>
+<p><strong>Zadatak 4.8 - factorizing a character vector</strong></p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,</a>
+<a class="sourceLine" id="cb154-2" data-line-number="2">          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)</a>
+<a class="sourceLine" id="cb154-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb154-4" data-line-number="4"><span class="co"># print the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb154-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb154-6" data-line-number="6"><span class="co"># print its class</span></a>
+<a class="sourceLine" id="cb154-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb154-8" data-line-number="8"><span class="co"># create a variable `bloodPressure.f` by factorizing</span></a>
+<a class="sourceLine" id="cb154-9" data-line-number="9"><span class="co"># the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb154-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb154-11" data-line-number="11"><span class="co"># print the variable `bloodPressure.f`</span></a>
+<a class="sourceLine" id="cb154-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb154-13" data-line-number="13"><span class="co"># print its class</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,
-          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)
-
-
-<span class="co"># print the variable `bloodPressure`</span>
-bloodPressure
-
-<span class="co"># print its class</span>
-<span class="kw">class</span>(bloodPressure)
-
-
-
-<span class="co"># create a variable `bloodPressure.f` by factorizing</span>
-<span class="co"># the variable `bloodPressure`</span>
-bloodPressure.f &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># print the variable `bloodPressure.f`</span>
-bloodPressure.f
-
-<span class="co"># print its class</span>
-<span class="kw">class</span>(bloodPressure.f)</code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">bloodPressure &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>,</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">          <span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;normal&quot;</span>)</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb155-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb155-5" data-line-number="5"><span class="co"># print the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb155-6" data-line-number="6">bloodPressure</a>
+<a class="sourceLine" id="cb155-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb155-8" data-line-number="8"><span class="co"># print its class</span></a>
+<a class="sourceLine" id="cb155-9" data-line-number="9"><span class="kw">class</span>(bloodPressure)</a>
+<a class="sourceLine" id="cb155-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb155-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb155-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb155-13" data-line-number="13"><span class="co"># create a variable `bloodPressure.f` by factorizing</span></a>
+<a class="sourceLine" id="cb155-14" data-line-number="14"><span class="co"># the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb155-15" data-line-number="15">bloodPressure.f &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure)</a>
+<a class="sourceLine" id="cb155-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb155-17" data-line-number="17"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb155-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb155-19" data-line-number="19"><span class="co"># print the variable `bloodPressure.f`</span></a>
+<a class="sourceLine" id="cb155-20" data-line-number="20">bloodPressure.f</a>
+<a class="sourceLine" id="cb155-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb155-22" data-line-number="22"><span class="co"># print its class</span></a>
+<a class="sourceLine" id="cb155-23" data-line-number="23"><span class="kw">class</span>(bloodPressure.f)</a></code></pre></div>
 <pre><code>##  [1] &quot;low&quot;    &quot;high&quot;   &quot;high&quot;   &quot;normal&quot; &quot;normal&quot; &quot;low&quot;    &quot;high&quot;  
 ##  [8] &quot;low&quot;    &quot;normal&quot; &quot;normal&quot;
 ## [1] &quot;character&quot;
@@ -779,44 +821,44 @@ bloodPressure.f
 </div>
 <hr />
 <p>We see that the factor print was given an additional attribute <code>Levels</code>. This means that its actually a categorical variable with lsited exact categories it is allowed to take. If we try to add a new value to a factor that is not present in the current categories (e.g., “very high”) we get a warning, and instead of the category we have specified, a new item will have the value of <code>NA</code>.</p>
-<p>This is sometimes not the scenario we want. If we know in advance that the character vector we categorize does not contain all the possible categories that may generally appear, we have the option of adding the <code>levels</code> parameter in which we will explicitly specify a series of&quot; possible “categories with the help of the vector vector.</p>
+<p>This is sometimes not the scenario we want. If we know in advance that the character vector we categorize does not contain all the possible categories that may generally appear, we have the option of adding the <code>levels</code> parameter in which we will explicitly specify a series of&quot; possible &quot;categories with the help of the vector vector.</p>
 <hr />
-<p><strong>Exercise 4.9 - using the <code>levels</code> attribute</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add an 11th element to `bloodPressure.f` called &quot;very low&quot; </span>
-
-<span class="co"># print the variable `bloodPressure.f`</span>
-
-<span class="co"># create a variable `bloodPressure.f2` by factorizing</span>
-<span class="co"># the variable `bloodPressure`</span>
-<span class="co"># add the `levels` attribute which will also contain</span>
-<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
-
-<span class="co"># add an 11th element to `bloodPressure.f2` called &quot;very low&quot; </span>
-
-<span class="co"># print the variable `bloodPressure.f2`</span></code></pre></div>
+<p><strong>Zadatak 4.9 - using the <code>levels</code> attribute</strong></p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="co"># add an 11th element to `bloodPressure.f` called &quot;very low&quot; </span></a>
+<a class="sourceLine" id="cb157-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb157-3" data-line-number="3"><span class="co"># print the variable `bloodPressure.f`</span></a>
+<a class="sourceLine" id="cb157-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb157-5" data-line-number="5"><span class="co"># create a variable `bloodPressure.f2` by factorizing</span></a>
+<a class="sourceLine" id="cb157-6" data-line-number="6"><span class="co"># the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb157-7" data-line-number="7"><span class="co"># add the `levels` attribute which will also contain</span></a>
+<a class="sourceLine" id="cb157-8" data-line-number="8"><span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span></a>
+<a class="sourceLine" id="cb157-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb157-10" data-line-number="10"><span class="co"># add an 11th element to `bloodPressure.f2` called &quot;very low&quot; </span></a>
+<a class="sourceLine" id="cb157-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb157-12" data-line-number="12"><span class="co"># print the variable `bloodPressure.f2`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add an 11th element to `bloodPressure.f` called &quot;very low&quot; </span>
-bloodPressure.f[<span class="dv">11</span>] &lt;-<span class="st"> &quot;very low&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="co"># add an 11th element to `bloodPressure.f` called &quot;very low&quot; </span></a>
+<a class="sourceLine" id="cb158-2" data-line-number="2">bloodPressure.f[<span class="dv">11</span>] &lt;-<span class="st"> &quot;very low&quot;</span></a></code></pre></div>
 <pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 11, value = &quot;very low&quot;): invalid factor
 ## level, NA generated</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the variable `bloodPressure.f`</span>
-bloodPressure.f
-
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># create a variable `bloodPressure.f2` by factorizing</span>
-<span class="co"># the variable `bloodPressure`</span>
-<span class="co"># add the `levels` attribute which will also contain</span>
-<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
-bloodPressure.f2 &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure,
-        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;very low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;very high&quot;</span>))
-
-<span class="co"># add an 11th element to `bloodPressure.f2` called &quot;very low&quot; </span>
-bloodPressure.f2[<span class="dv">11</span>] &lt;-<span class="st"> &quot;very low&quot;</span>
-
-<span class="co"># print the variable `bloodPressure.f2`</span>
-bloodPressure.f2</code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="co"># print the variable `bloodPressure.f`</span></a>
+<a class="sourceLine" id="cb160-2" data-line-number="2">bloodPressure.f</a>
+<a class="sourceLine" id="cb160-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb160-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb160-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb160-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb160-7" data-line-number="7"><span class="co"># create a variable `bloodPressure.f2` by factorizing</span></a>
+<a class="sourceLine" id="cb160-8" data-line-number="8"><span class="co"># the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb160-9" data-line-number="9"><span class="co"># add the `levels` attribute which will also contain</span></a>
+<a class="sourceLine" id="cb160-10" data-line-number="10"><span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span></a>
+<a class="sourceLine" id="cb160-11" data-line-number="11">bloodPressure.f2 &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure,</a>
+<a class="sourceLine" id="cb160-12" data-line-number="12">        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;very low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;very high&quot;</span>))</a>
+<a class="sourceLine" id="cb160-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb160-14" data-line-number="14"><span class="co"># add an 11th element to `bloodPressure.f2` called &quot;very low&quot; </span></a>
+<a class="sourceLine" id="cb160-15" data-line-number="15">bloodPressure.f2[<span class="dv">11</span>] &lt;-<span class="st"> &quot;very low&quot;</span></a>
+<a class="sourceLine" id="cb160-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb160-17" data-line-number="17"><span class="co"># print the variable `bloodPressure.f2`</span></a>
+<a class="sourceLine" id="cb160-18" data-line-number="18">bloodPressure.f2</a></code></pre></div>
 <pre><code>##  [1] low    high   high   normal normal low    high   low    normal normal
 ## [11] &lt;NA&gt;  
 ## Levels: high low normal
@@ -829,11 +871,11 @@ bloodPressure.f2</code></pre></div>
 <p>What is the advantage of using factors? Why not leave the variables in the original, “character” form? The reason for the factoring of categorical columns, ie variables, is that certain statistical and visualization functions “know” how to correctly interpret and use factors and treat them differently from ordinary “character” columns. For this reason, it is a very good long-term strategy that, at the beginning of R’s learning, we are used to factorizing columns that are really categorical variables (but we also note that we must not factorize columns that are not categorical variables, which can happen if we are not careful).</p>
 <p>One of the frequently asked questions about the category variables is - how are individual categories represented? The answer to this question is provided by the <code>table</code> function to which we pass the selected factor.</p>
 <hr />
-<p><strong>Exercise 4.10 - the <code>table</code> function</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print how are the categories represented in `bloodPressure.f2`</span></code></pre></div>
+<p><strong>Zadatak 4.10 - the <code>table</code> function</strong></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="co"># print how are the categories represented in `bloodPressure.f2`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print how are the categories represented in `bloodPressure.f2`</span>
-<span class="kw">table</span>(bloodPressure.f2)</code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="co"># print how are the categories represented in `bloodPressure.f2`</span></a>
+<a class="sourceLine" id="cb163-2" data-line-number="2"><span class="kw">table</span>(bloodPressure.f2)</a></code></pre></div>
 <pre><code>## bloodPressure.f2
 ##  very low       low    normal      high very high 
 ##         1         3         4         3         0</code></pre>
@@ -842,48 +884,48 @@ bloodPressure.f2</code></pre></div>
 <hr />
 <p>The categorical variable in our examples actually has the so-called ordinal nature. Ordinal category variables means that the categories have a natural order (“low” blood pressure is lower than “normal” which in turn is lower than “high”). If desired, this fact can be “embedded” in the initialization factor by simply adding the <code>order</code> parameter set to <code>TRUE</code>. The advantage of the ordinal factor is that it allows us to compare factor values with the help of comparative operators.</p>
 <hr />
-<p><strong>Exercise 4.11 - ordinal factor</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a variable `bloodPressure.f3` by factorizing</span>
-<span class="co"># the variable `bloodPressure`</span>
-<span class="co"># add the `levels` attribute which will also contain</span>
-<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
-<span class="co"># also set the `order` paramater to `TRUE`</span>
-<span class="co"># watch out for category ordering!</span>
-
-
-<span class="co"># print the variable `bloodPressure.f3`</span>
-
-
-<span class="co"># check if it is in fact the ordinal factor now</span>
-<span class="co"># use the `is.ordered` function</span>
-
-
-<span class="co"># check if the first patient has lower blood pressure</span>
-<span class="co"># than the third</span></code></pre></div>
+<p><strong>Zadatak 4.11 - ordinal factor</strong></p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="co"># create a variable `bloodPressure.f3` by factorizing</span></a>
+<a class="sourceLine" id="cb165-2" data-line-number="2"><span class="co"># the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb165-3" data-line-number="3"><span class="co"># add the `levels` attribute which will also contain</span></a>
+<a class="sourceLine" id="cb165-4" data-line-number="4"><span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span></a>
+<a class="sourceLine" id="cb165-5" data-line-number="5"><span class="co"># also set the `order` paramater to `TRUE`</span></a>
+<a class="sourceLine" id="cb165-6" data-line-number="6"><span class="co"># watch out for category ordering!</span></a>
+<a class="sourceLine" id="cb165-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb165-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb165-9" data-line-number="9"><span class="co"># print the variable `bloodPressure.f3`</span></a>
+<a class="sourceLine" id="cb165-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb165-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb165-12" data-line-number="12"><span class="co"># check if it is in fact the ordinal factor now</span></a>
+<a class="sourceLine" id="cb165-13" data-line-number="13"><span class="co"># use the `is.ordered` function</span></a>
+<a class="sourceLine" id="cb165-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb165-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb165-16" data-line-number="16"><span class="co"># check if the first patient has lower blood pressure</span></a>
+<a class="sourceLine" id="cb165-17" data-line-number="17"><span class="co"># than the third</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a variable `bloodPressure.f3` by factorizing</span>
-<span class="co"># the variable `bloodPressure`</span>
-<span class="co"># add the `levels` attribute which will also contain</span>
-<span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span>
-<span class="co"># also set the `order` paramater to `TRUE`</span>
-<span class="co"># watch out for category ordering!</span>
-bloodPressure.f3 &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure,
-        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;very low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;very high&quot;</span>),
-        <span class="dt">order =</span> <span class="ot">TRUE</span>)
-
-
-<span class="co"># print the variable `bloodPressure.f3`</span>
-bloodPressure.f3
-
-
-<span class="co"># check if it is in fact the ordinal factor now</span>
-<span class="co"># use the `is.ordered` function</span>
-<span class="kw">is.ordered</span>(bloodPressure.f3)
-
-
-<span class="co"># check if the first patient has lower blood pressure</span>
-<span class="co"># than the third</span>
-bloodPressure.f3[<span class="dv">1</span>] &lt;<span class="st"> </span>bloodPressure.f3[<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="co"># create a variable `bloodPressure.f3` by factorizing</span></a>
+<a class="sourceLine" id="cb166-2" data-line-number="2"><span class="co"># the variable `bloodPressure`</span></a>
+<a class="sourceLine" id="cb166-3" data-line-number="3"><span class="co"># add the `levels` attribute which will also contain</span></a>
+<a class="sourceLine" id="cb166-4" data-line-number="4"><span class="co"># values &quot;very low&quot; and &quot;very high&quot;</span></a>
+<a class="sourceLine" id="cb166-5" data-line-number="5"><span class="co"># also set the `order` paramater to `TRUE`</span></a>
+<a class="sourceLine" id="cb166-6" data-line-number="6"><span class="co"># watch out for category ordering!</span></a>
+<a class="sourceLine" id="cb166-7" data-line-number="7">bloodPressure.f3 &lt;-<span class="st"> </span><span class="kw">factor</span>(bloodPressure,</a>
+<a class="sourceLine" id="cb166-8" data-line-number="8">        <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;very low&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;very high&quot;</span>),</a>
+<a class="sourceLine" id="cb166-9" data-line-number="9">        <span class="dt">order =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb166-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb166-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb166-12" data-line-number="12"><span class="co"># print the variable `bloodPressure.f3`</span></a>
+<a class="sourceLine" id="cb166-13" data-line-number="13">bloodPressure.f3</a>
+<a class="sourceLine" id="cb166-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb166-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb166-16" data-line-number="16"><span class="co"># check if it is in fact the ordinal factor now</span></a>
+<a class="sourceLine" id="cb166-17" data-line-number="17"><span class="co"># use the `is.ordered` function</span></a>
+<a class="sourceLine" id="cb166-18" data-line-number="18"><span class="kw">is.ordered</span>(bloodPressure.f3)</a>
+<a class="sourceLine" id="cb166-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb166-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb166-21" data-line-number="21"><span class="co"># check if the first patient has lower blood pressure</span></a>
+<a class="sourceLine" id="cb166-22" data-line-number="22"><span class="co"># than the third</span></a>
+<a class="sourceLine" id="cb166-23" data-line-number="23">bloodPressure.f3[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>bloodPressure.f3[<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>##  [1] low    high   high   normal normal low    high   low    normal normal
 ## Levels: very low &lt; low &lt; normal &lt; high &lt; very high
 ## [1] TRUE
@@ -899,16 +941,16 @@ bloodPressure.f3[<span class="dv">1</span>] &lt;<span class="st"> </span>bloodPr
 </ul>
 <p>Although these steps R works out automatically, the internal factor structure can be determined by converting the factor into a pure numeric or pure character type.</p>
 <hr />
-<p><strong>Exercise 4.12 - internal structure of a factor</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print `bloodPressure.f3` converted to character</span>
-
-<span class="co"># print `bloodPressure.f3` converted to numeric</span></code></pre></div>
+<p><strong>Zadatak 4.12 - internal structure of a factor</strong></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="co"># print `bloodPressure.f3` converted to character</span></a>
+<a class="sourceLine" id="cb168-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb168-3" data-line-number="3"><span class="co"># print `bloodPressure.f3` converted to numeric</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print `bloodPressure.f3` converted to character</span>
-<span class="kw">as.character</span>(bloodPressure.f3)
-
-<span class="co"># print `bloodPressure.f3` converted to numeric</span>
-<span class="kw">as.numeric</span>(bloodPressure.f3)</code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="co"># print `bloodPressure.f3` converted to character</span></a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">as.character</span>(bloodPressure.f3)</a>
+<a class="sourceLine" id="cb169-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb169-4" data-line-number="4"><span class="co"># print `bloodPressure.f3` converted to numeric</span></a>
+<a class="sourceLine" id="cb169-5" data-line-number="5"><span class="kw">as.numeric</span>(bloodPressure.f3)</a></code></pre></div>
 <pre><code>##  [1] &quot;low&quot;    &quot;high&quot;   &quot;high&quot;   &quot;normal&quot; &quot;normal&quot; &quot;low&quot;    &quot;high&quot;  
 ##  [8] &quot;low&quot;    &quot;normal&quot; &quot;normal&quot;
 ##  [1] 2 4 4 3 3 2 4 2 3 3</code></pre>
@@ -1001,6 +1043,7 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -1035,9 +1078,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

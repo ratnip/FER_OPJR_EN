@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s program in R</title>
   <meta name="description" content="R Coursebook">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s program in R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Damir Pintar">
 
 
-<meta name="date" content="2017-11-15">
+<meta name="date" content="2019-01-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -116,41 +116,67 @@ pre.plot {
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -250,6 +276,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="apply.html"><a href="apply.html#other-functions-from-the-apply-family-and-the-available-alternatives"><i class="fa fa-check"></i><b>8.4</b> Other functions from the <code>apply</code> family and the available alternatives</a></li>
 <li class="chapter" data-level="" data-path="apply.html"><a href="apply.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="part"><span><b>II Data management and visualizations</b></span></li>
+<li class="chapter" data-level="9" data-path="pipe.html"><a href="pipe.html"><i class="fa fa-check"></i><b>9</b> Pipeline operator and tidy data - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="10" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>10</b> Dates and strings - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="11" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>11</b> Managing data frames with <code>dplyr</code> package - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="12" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>12</b> Visualising data with <code>ggplot2</code> package - UNDER CONSTRUCTION</a></li>
+<li class="part"><span><b>III Machine learning and predictive analytics</b></span></li>
+<li class="chapter" data-level="13" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>13</b> Linear regression analysis - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="14" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html"><i class="fa fa-check"></i><b>14</b> Introduction to Predictive Modeling</a><ul>
+<li class="chapter" data-level="14.1" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#what-is-predictive-modeling"><i class="fa fa-check"></i><b>14.1</b> What is predictive modeling?</a></li>
+<li class="chapter" data-level="14.2" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#creating-training-and-test-datasets"><i class="fa fa-check"></i><b>14.2</b> Creating training and test datasets</a></li>
+<li class="chapter" data-level="14.3" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#classification-predictive-models---knn-classification"><i class="fa fa-check"></i><b>14.3</b> Classification Predictive Models - kNN Classification</a></li>
+<li class="chapter" data-level="14.4" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#package-caret-and-predictive-modeling"><i class="fa fa-check"></i><b>14.4</b> Package <code>caret</code> and predictive modeling</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -281,73 +320,73 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="how-to-define-a-function" class="section level2">
 <h2><span class="header-section-number">7.1</span> How to define a function</h2>
 <p>In the general case, the definition of a new function looks like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">function_name &lt;-<span class="st"> </span>function(input arguments) {
-    function_body
-    return_statement
-}</code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">function_name &lt;-<span class="st"> </span><span class="cf">function</span>(input arguments) {</a>
+<a class="sourceLine" id="cb230-2" data-line-number="2">    function_body</a>
+<a class="sourceLine" id="cb230-3" data-line-number="3">    return_statement</a>
+<a class="sourceLine" id="cb230-4" data-line-number="4">}</a></code></pre></div>
 <p>We can notice that in the function definition we use the operator <code>&lt;-</code>. This is not a coincidence - the definition of a function is nothing else than creating a `function ’object that we then associate with a particular variable; the name of the variable is actually the “name” of the function.</p>
 <p>In R we do not define the types of input and output arguments. Input arguments have the name and optional default value. The function formally returns one value, which is not necessarily restrictive if we want to return more values -we simply encapsulate them in the form of a vector or list. The <code>return</code> keyword is optional - the function returns the result of the last expression in the function, so it is often enough to specify only the variable that represents the return value as the last order of the function.</p>
 <p>Finally, if we want to increase the robustness of the function in such a way that we reject the execution of the logic within a function if certain conditions are not satisfied, we can use the <code>stopifnot</code> function. This function calculates the default logical expression and terminates the function if the specified condition <em>is not true</em>.</p>
 <hr />
-<p><strong>Exercise 7.1 - first user defined function</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write the function `parallelMax` which requires two numeric vectors as input</span>
-<span class="co"># and returns a vector of the same size containing the larger </span>
-<span class="co"># between two corresponding elements of the original vectors</span>
-<span class="co"># if one or both vectors aren&#39;t numeric or aren&#39;t the same size</span>
-<span class="co"># the function must throw an error</span>
-<span class="co"># do not use loops!</span>
-
-<span class="co"># execute this new function over the following vector pairs</span>
-<span class="co"># c(T, F, T) i c(1, 2, 3)</span>
-<span class="co"># c(1, 2, 3, 4) i c(5, 6, 7)</span>
-<span class="co"># c(1, 2, 3) i c(0, 4, 2)</span>
-
-<span class="co"># (second part of the exercise should be tested inside the console!)</span></code></pre></div>
+<p><strong>Zadatak 7.1 - first user defined function</strong></p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="co"># write the function `parallelMax` which requires two numeric vectors as input</span></a>
+<a class="sourceLine" id="cb231-2" data-line-number="2"><span class="co"># and returns a vector of the same size containing the larger </span></a>
+<a class="sourceLine" id="cb231-3" data-line-number="3"><span class="co"># between two corresponding elements of the original vectors</span></a>
+<a class="sourceLine" id="cb231-4" data-line-number="4"><span class="co"># if one or both vectors aren&#39;t numeric or aren&#39;t the same size</span></a>
+<a class="sourceLine" id="cb231-5" data-line-number="5"><span class="co"># the function must throw an error</span></a>
+<a class="sourceLine" id="cb231-6" data-line-number="6"><span class="co"># do not use loops!</span></a>
+<a class="sourceLine" id="cb231-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb231-8" data-line-number="8"><span class="co"># execute this new function over the following vector pairs</span></a>
+<a class="sourceLine" id="cb231-9" data-line-number="9"><span class="co"># c(T, F, T) i c(1, 2, 3)</span></a>
+<a class="sourceLine" id="cb231-10" data-line-number="10"><span class="co"># c(1, 2, 3, 4) i c(5, 6, 7)</span></a>
+<a class="sourceLine" id="cb231-11" data-line-number="11"><span class="co"># c(1, 2, 3) i c(0, 4, 2)</span></a>
+<a class="sourceLine" id="cb231-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb231-13" data-line-number="13"><span class="co"># (second part of the exercise should be tested inside the console!)</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write the function `parallelMax` which requires two numeric vectors as input</span>
-<span class="co"># and returns a vector of the same size containing the larger </span>
-<span class="co"># between two corresponding elements of the original vectors</span>
-<span class="co"># if one or both vectors aren&#39;t numeric or aren&#39;t the same size</span>
-<span class="co"># the function must throw an error</span>
-<span class="co"># do not use loops!</span>
-
-parallelMax &lt;-<span class="st"> </span>function(a, b) {
-    <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(a) &amp;&amp;<span class="st"> </span><span class="kw">is.numeric</span>(b) &amp;&amp;<span class="st"> </span><span class="kw">length</span>(a) ==<span class="st"> </span><span class="kw">length</span>(b));
-    <span class="kw">ifelse</span>(a &gt;<span class="st"> </span>b, a, b)
-}</code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="co"># write the function `parallelMax` which requires two numeric vectors as input</span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="co"># and returns a vector of the same size containing the larger </span></a>
+<a class="sourceLine" id="cb232-3" data-line-number="3"><span class="co"># between two corresponding elements of the original vectors</span></a>
+<a class="sourceLine" id="cb232-4" data-line-number="4"><span class="co"># if one or both vectors aren&#39;t numeric or aren&#39;t the same size</span></a>
+<a class="sourceLine" id="cb232-5" data-line-number="5"><span class="co"># the function must throw an error</span></a>
+<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="co"># do not use loops!</span></a>
+<a class="sourceLine" id="cb232-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb232-8" data-line-number="8">parallelMax &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {</a>
+<a class="sourceLine" id="cb232-9" data-line-number="9">    <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(a) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">is.numeric</span>(b) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">length</span>(a) <span class="op">==</span><span class="st"> </span><span class="kw">length</span>(b));</a>
+<a class="sourceLine" id="cb232-10" data-line-number="10">    <span class="kw">ifelse</span>(a <span class="op">&gt;</span><span class="st"> </span>b, a, b)</a>
+<a class="sourceLine" id="cb232-11" data-line-number="11">}</a></code></pre></div>
 </div>
 <hr />
 <p>When calling a function, we can optionally specify the parameter names, and R will even allow the mixing of named and unnamed parameters (although this is not something we should often use in practice). When R connects the sent values with formal parameters, the named parameters will have priority and will be resolved first, after which the unnamed parameters will be resolved in te order they were provided.</p>
 <p>We can see this in the next exercise, in which we will use the opportunity to showcase a very useful function - <code>paste</code>. This function concatenates character strings with the addition of a space separator (there is an alternative function <code>paste0</code> for joining without spaces).</p>
 <hr />
-<p><strong>Exercise 7.2 - function parameters</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">printABC &lt;-<span class="st"> </span>function(a, b, c) {
-   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A:&quot;</span>, a, <span class="st">&quot;B:&quot;</span>, b, <span class="st">&quot;C:&quot;</span>, c))   
-}
-
-<span class="co"># think before executing - what will be printed with the following command? </span>
-<span class="kw">printABC</span>(<span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
+<p><strong>Zadatak 7.2 - function parameters</strong></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">printABC &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</a>
+<a class="sourceLine" id="cb233-2" data-line-number="2">   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A:&quot;</span>, a, <span class="st">&quot;B:&quot;</span>, b, <span class="st">&quot;C:&quot;</span>, c))   </a>
+<a class="sourceLine" id="cb233-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb233-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb233-5" data-line-number="5"><span class="co"># think before executing - what will be printed with the following command? </span></a>
+<a class="sourceLine" id="cb233-6" data-line-number="6"><span class="kw">printABC</span>(<span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">printABC &lt;-<span class="st"> </span>function(a, b, c) {
-   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A:&quot;</span>, a, <span class="st">&quot;B:&quot;</span>, b, <span class="st">&quot;C:&quot;</span>, c))   
-}
-
-<span class="kw">printABC</span>(<span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">printABC &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</a>
+<a class="sourceLine" id="cb234-2" data-line-number="2">   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;A:&quot;</span>, a, <span class="st">&quot;B:&quot;</span>, b, <span class="st">&quot;C:&quot;</span>, c))   </a>
+<a class="sourceLine" id="cb234-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb234-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb234-5" data-line-number="5"><span class="kw">printABC</span>(<span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;A: 2 B: 1 C: 3&quot;</code></pre>
 </div>
 <hr />
 <p>In practice, we should stick to conventions to first use unnamed parameters, and then named. It is customary to set only those named parameters whose default value does not suit us, whereas strict ordering does not matter (although using the order provided in the function definition will increase the legibility of our code).</p>
 <p>If we want to write a function that receives an arbitrary number of arguments, we use the element <code>...</code>, i.e. the ellipsis. An example of this feature is the built-in <code>paste</code> function which can receive an arbitrary number of character strings. If we use the ellipsis in our functions, we should place them at the end of the list of input arguments, and within the function itself we simply convert it into a list, and then access its parameters in the way that suits us.</p>
 <hr />
-<p><strong>Exercise 7.3 - function with an arbitrary number of parameters</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">printParams &lt;-<span class="st"> </span>function(...) {
-   params &lt;-<span class="st"> </span><span class="kw">list</span>(...)
-   for (p in params) <span class="kw">print</span>(p)
-}
-
-<span class="co"># call the above function with any random parameters</span></code></pre></div>
+<p><strong>Zadatak 7.3 - function with an arbitrary number of parameters</strong></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">printParams &lt;-<span class="st"> </span><span class="cf">function</span>(...) {</a>
+<a class="sourceLine" id="cb236-2" data-line-number="2">   params &lt;-<span class="st"> </span><span class="kw">list</span>(...)</a>
+<a class="sourceLine" id="cb236-3" data-line-number="3">   <span class="cf">for</span> (p <span class="cf">in</span> params) <span class="kw">print</span>(p)</a>
+<a class="sourceLine" id="cb236-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb236-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb236-6" data-line-number="6"><span class="co"># call the above function with any random parameters</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">printParams</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">5</span>, T, <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(T, F)))</code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="kw">printParams</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">5</span>, T, <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(T, F)))</a></code></pre></div>
 <pre><code>## [1] 1 2 3
 ## [1] 5
 ## [1] TRUE
@@ -357,30 +396,30 @@ parallelMax &lt;-<span class="st"> </span>function(a, b) {
 </div>
 <hr />
 <p>Finally, let’s recall the chapter in which we talked about S3 objects and the fact that R does not have a formal system for creating and using objects, but it is recommended that you use a separate constructor function that replaces the “manual” matching of the object and the declaration of its class. Now that we know how to create our own functions, we can look at how a potential constructor of the ‘Person’ class would look.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># constructor of the `Person` class</span>
-
-Person &lt;-<span class="st"> </span>function(id, surname, weight) {
-
-    <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(id))
-    <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(surname))
-    <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(weight) &amp;&amp;<span class="st"> </span>weight &gt;<span class="st"> </span><span class="dv">0</span>)
-
-    p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id, <span class="dt">surname =</span> surname, <span class="dt">weight =</span> weight)
-    <span class="kw">class</span>(p) &lt;-<span class="st"> &quot;Person&quot;</span>
-
-    p
-}</code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1"><span class="co"># constructor of the `Person` class</span></a>
+<a class="sourceLine" id="cb239-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb239-3" data-line-number="3">Person &lt;-<span class="st"> </span><span class="cf">function</span>(id, surname, weight) {</a>
+<a class="sourceLine" id="cb239-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb239-5" data-line-number="5">    <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(id))</a>
+<a class="sourceLine" id="cb239-6" data-line-number="6">    <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(surname))</a>
+<a class="sourceLine" id="cb239-7" data-line-number="7">    <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(weight) <span class="op">&amp;&amp;</span><span class="st"> </span>weight <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb239-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb239-9" data-line-number="9">    p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id, <span class="dt">surname =</span> surname, <span class="dt">weight =</span> weight)</a>
+<a class="sourceLine" id="cb239-10" data-line-number="10">    <span class="kw">class</span>(p) &lt;-<span class="st"> &quot;Person&quot;</span></a>
+<a class="sourceLine" id="cb239-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb239-12" data-line-number="12">    p</a>
+<a class="sourceLine" id="cb239-13" data-line-number="13">}</a></code></pre></div>
 <p>Let’s try to create a new object of the <code>Person</code> class with the help of this constructor.</p>
 <hr />
-<p><strong>Exercise 7.4 - constructor function</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create `john`, a `Person` with the following characeristics:</span>
-<span class="co"># id: 1357135713, surname: Watson, weight: 76</span>
-
-<span class="co"># print `john`</span></code></pre></div>
+<p><strong>Zadatak 7.4 - constructor function</strong></p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="co"># create `john`, a `Person` with the following characeristics:</span></a>
+<a class="sourceLine" id="cb240-2" data-line-number="2"><span class="co"># id: 1357135713, surname: Watson, weight: 76</span></a>
+<a class="sourceLine" id="cb240-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb240-4" data-line-number="4"><span class="co"># print `john`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">john &lt;-<span class="st"> </span><span class="kw">Person</span>(<span class="st">&quot;135135713&quot;</span>, <span class="st">&quot;Watson&quot;</span>, <span class="dv">76</span>)
-
-john</code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">john &lt;-<span class="st"> </span><span class="kw">Person</span>(<span class="st">&quot;135135713&quot;</span>, <span class="st">&quot;Watson&quot;</span>, <span class="dv">76</span>)</a>
+<a class="sourceLine" id="cb241-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb241-3" data-line-number="3">john</a></code></pre></div>
 <pre><code>## $id
 ## [1] &quot;135135713&quot;
 ## 
@@ -402,52 +441,52 @@ john</code></pre></div>
 <p>The language R uses a hybrid principle known as <em>copy-on-modify</em>. With this principle, references are forwarded to the function, which allows us to transmit “large” variables without fear of unnecessary copying. But this is only valid if the function does not change the value of the resulting variables - at the moment when the function attempts to make any changes, copying the variable is carried out and the function continues to work on the copy. Because of this it is said that R as such does not support <em>call-by-reference</em> (one reason for introducing “reference class” objects, i.e. “RC object model” into language R, is precisely the introduction of this principle).</p>
 <p>Let’s check the above statements in a following example.</p>
 <hr />
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># attempt to change variables from the calling environment</span>
-
-f &lt;-<span class="st"> </span>function(x) {
-    x &lt;-<span class="st"> </span>x +<span class="st"> </span><span class="dv">1</span>
-}
-
-x &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="kw">f</span>(x)
-<span class="kw">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="co"># attempt to change variables from the calling environment</span></a>
+<a class="sourceLine" id="cb243-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb243-3" data-line-number="3">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb243-4" data-line-number="4">    x &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb243-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb243-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb243-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb243-8" data-line-number="8"><span class="kw">f</span>(x)</a>
+<a class="sourceLine" id="cb243-9" data-line-number="9"><span class="kw">print</span>(x)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <hr />
 <p>The function actually creates a new temporary environment within which it stores “local” variables. In the above example, the <code>f</code> function introduces a new <code>x</code> variable that masks the external variable <code>x</code> so that all changes no longer reflect the value of the external variable.</p>
 <p>It is important to note that the function could access an external variable even without sending it to the function, since by referencing the <code>x</code> variable that does not exist in the local environment the R search function will continue in the parent’s environment, which in this case would be the global environment. Attempting to change this variable would still fail - R would detect an attempt to change the variable and create a local copy of the same name.</p>
 <p>Does this mean that a function can never change variables from the calling environment? Of course not. One way to do this is to send a reference to the environment within which the object we are changing exists (or, alternatively, let the function itself get a reference to the global environment if the variable is there).</p>
 <hr />
-<p><strong>Exercise 7.5 - changing global environment variables</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># implement function `f` which gets a reference to the global environment</span>
-<span class="co"># and increases the &quot;outer&quot; `x` by 1</span>
-
-x &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="co"># call `f(x)` and then print `x`</span></code></pre></div>
+<p><strong>Zadatak 7.5 - changing global environment variables</strong></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1"><span class="co"># implement function `f` which gets a reference to the global environment</span></a>
+<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="co"># and increases the &quot;outer&quot; `x` by 1</span></a>
+<a class="sourceLine" id="cb245-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb245-4" data-line-number="4">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb245-5" data-line-number="5"><span class="co"># call `f(x)` and then print `x`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># implement function `f` which gets a reference to the global environment</span>
-<span class="co"># and increases the &quot;outer&quot; `x` by 1</span>
-f &lt;-<span class="st"> </span>function() {
-  e &lt;-<span class="st"> </span><span class="kw">globalenv</span>()
-  e$x &lt;-<span class="st"> </span>e$x +<span class="st"> </span><span class="dv">1</span>
-}
-
-x &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="co"># call `f(x)` and then print `x`</span>
-<span class="kw">f</span>()
-<span class="kw">print</span>(x)</code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1"><span class="co"># implement function `f` which gets a reference to the global environment</span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2"><span class="co"># and increases the &quot;outer&quot; `x` by 1</span></a>
+<a class="sourceLine" id="cb246-3" data-line-number="3">f &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb246-4" data-line-number="4">  e &lt;-<span class="st"> </span><span class="kw">globalenv</span>()</a>
+<a class="sourceLine" id="cb246-5" data-line-number="5">  e<span class="op">$</span>x &lt;-<span class="st"> </span>e<span class="op">$</span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb246-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb246-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb246-8" data-line-number="8">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb246-9" data-line-number="9"><span class="co"># call `f(x)` and then print `x`</span></a>
+<a class="sourceLine" id="cb246-10" data-line-number="10"><span class="kw">f</span>()</a>
+<a class="sourceLine" id="cb246-11" data-line-number="11"><span class="kw">print</span>(x)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 </div>
 <hr />
 <p>A simpler way of solving the above task would be using the <code>&lt;&lt;-</code> operator. This operator’s function is to change the variable of the given name that is located somewhere in the search path. R will follow the search path, and change the first occurrence of the specified variable. If the variable of this name does not exist anywhere in the search path, R will create a new variable in the first environment above the environment of the function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># operator `&lt;&lt;-`</span>
-f &lt;-<span class="st"> </span>function(x) {
-    x &lt;-<span class="st"> </span><span class="dv">6</span>
-    x &lt;&lt;-<span class="st"> </span><span class="dv">7</span>
-}
-
-x &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="kw">f</span>()
-x</code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="co"># operator `&lt;&lt;-`</span></a>
+<a class="sourceLine" id="cb248-2" data-line-number="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb248-3" data-line-number="3">    x &lt;-<span class="st"> </span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb248-4" data-line-number="4">    x &lt;&lt;-<span class="st"> </span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb248-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb248-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb248-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb248-8" data-line-number="8"><span class="kw">f</span>()</a>
+<a class="sourceLine" id="cb248-9" data-line-number="9">x</a></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>This operator is potentially unpredictable and we will achieve greater robustness using the <code>assign</code> or<code>$</code>operator with reference to the environment where the variable we want to change is.</p>
 <p>Finally, we must mention one feature of functions in R - the so-called. “lazy evaluation”. This simply means that R will not evaluate the received parameter until it is explicitly used. Up to that moment, this object is so-called. “promise” - R “knows” how to evaluate that object but it will not do so until it really needs it. This increases the efficiency of the language; if a parameter is used only in a conditional branch, then in scenarios when it is not needed it will not consume memory. But equally, we need to be careful because a lazy evaluation can lead to unexpected problems if we do not take into account its existence.</p>
@@ -456,74 +495,74 @@ x</code></pre></div>
 <h3><span class="header-section-number">7.1.2</span> Function as an object</h3>
 <p>We have already said that R has good support for the so-called “functional programming” which represents a programming paradigm that puts emphasis on designing functions without reliance on objects with interchangeable states. One of the characteristics of such languages are “first class functions”, which means that the language supports the definition of functions in such a way that they are equal objects to all other types of objects - they can be stored in a variable, used as an input argument of another function or as a return value, stored in other data structures, etc.</p>
 <p>Let us show this on a trivial example. We know that R offers the function <code>sum</code> within the <code>base</code> package, and this function calculates the arithmetic sum of the vector elements we send to it as an input parameter. But <code>sum</code> is actually <em>the name of the variable</em> that references the code that implements this function. If we want, we can very easily bind this function to some other variable by which we have effectively changed its name, or - better said - provided an alternative way of calling from a completely different environment.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sum2 &lt;-<span class="st"> </span>sum
-
-<span class="kw">sum2</span>(<span class="dv">1</span>:<span class="dv">10</span>)  <span class="co"># same as sum(1:10)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">sum2 &lt;-<span class="st"> </span>sum</a>
+<a class="sourceLine" id="cb250-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb250-3" data-line-number="3"><span class="kw">sum2</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)  <span class="co"># same as sum(1:10)</span></a></code></pre></div>
 <p>This is easiest to understand in a way that the function is simply an “callable variable”, whereby the “call” refers to the use of a syntax that includes a reference to the function and input arguments framed in parentheses, which will return some value after execution in the R environment.</p>
 <hr />
 <p>The function can also be a return value from another function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">funcCreator &lt;-<span class="st"> </span>function() {
-    f &lt;-<span class="st"> </span>function(x) x +<span class="st"> </span><span class="dv">1</span>
-    <span class="kw">return</span>(f)
-}
-
-newFunc &lt;-<span class="st"> </span><span class="kw">funcCreator</span>() <span class="co"># we get the &quot;add one&quot; function</span>
-<span class="kw">newFunc</span>(<span class="dv">5</span>)  </code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">funcCreator &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">    f &lt;-<span class="st"> </span><span class="cf">function</span>(x) x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb251-3" data-line-number="3">    <span class="kw">return</span>(f)</a>
+<a class="sourceLine" id="cb251-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb251-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb251-6" data-line-number="6">newFunc &lt;-<span class="st"> </span><span class="kw">funcCreator</span>() <span class="co"># we get the &quot;add one&quot; function</span></a>
+<a class="sourceLine" id="cb251-7" data-line-number="7"><span class="kw">newFunc</span>(<span class="dv">5</span>)  </a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>The function simply creats a new function and returns it to the calling program as it would have done with any other object. The return value is stored in the variable that is now “callable” - if we add brackets and parameters it will be executed in the way it is defined within the function that created it.</p>
 <p>Note that we could use the fact that the function returns the result of the last expression and define the function even shorter:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># shorter definition</span>
-funcCreator &lt;-<span class="st"> </span>function() {
-    function(x) x +<span class="st"> </span><span class="dv">1</span>
-}</code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="co"># shorter definition</span></a>
+<a class="sourceLine" id="cb253-2" data-line-number="2">funcCreator &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb253-3" data-line-number="3">    <span class="cf">function</span>(x) x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb253-4" data-line-number="4">}</a></code></pre></div>
 <p>These functions are often referred to as “factories” or “generators” of functions, and in contrast to the above example, in practice, the function generator often receives some parameters that determine how the returned function will behave.</p>
 <p>Try to create a function factory that returns the multiplication functions using a pre-set parameter.</p>
 <hr />
-<p><strong>Exercise 7.6 - function factory</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create the `multiplicationFactory` function that creates </span>
-<span class="co"># multiplication functions by the pre-set constant</span>
-
-<span class="co"># use the above function to create the `times2` function</span>
-<span class="co"># which doubles the received number</span>
-
-<span class="co"># call the `times2` function with parameter 3 and print out the result</span></code></pre></div>
+<p><strong>Zadatak 7.6 - function factory</strong></p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="co"># create the `multiplicationFactory` function that creates </span></a>
+<a class="sourceLine" id="cb254-2" data-line-number="2"><span class="co"># multiplication functions by the pre-set constant</span></a>
+<a class="sourceLine" id="cb254-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb254-4" data-line-number="4"><span class="co"># use the above function to create the `times2` function</span></a>
+<a class="sourceLine" id="cb254-5" data-line-number="5"><span class="co"># which doubles the received number</span></a>
+<a class="sourceLine" id="cb254-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb254-7" data-line-number="7"><span class="co"># call the `times2` function with parameter 3 and print out the result</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create the `multiplicationFactory` function that creates </span>
-<span class="co"># multiplication functions by the pre-set constant</span>
-multiplicationFactory &lt;-<span class="st"> </span>function(x) {
-  function(a) a*x
-}
-
-<span class="co"># use the above function to create the `times2` function</span>
-<span class="co"># which doubles the received number</span>
-times2 &lt;-<span class="st"> </span><span class="kw">multiplicationFactory</span>(<span class="dv">2</span>)
-
-<span class="co"># call the `times2` function with parameter 3 and print out the result</span>
-<span class="kw">times2</span>(<span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="co"># create the `multiplicationFactory` function that creates </span></a>
+<a class="sourceLine" id="cb255-2" data-line-number="2"><span class="co"># multiplication functions by the pre-set constant</span></a>
+<a class="sourceLine" id="cb255-3" data-line-number="3">multiplicationFactory &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb255-4" data-line-number="4">  <span class="cf">function</span>(a) a<span class="op">*</span>x</a>
+<a class="sourceLine" id="cb255-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb255-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb255-7" data-line-number="7"><span class="co"># use the above function to create the `times2` function</span></a>
+<a class="sourceLine" id="cb255-8" data-line-number="8"><span class="co"># which doubles the received number</span></a>
+<a class="sourceLine" id="cb255-9" data-line-number="9">times2 &lt;-<span class="st"> </span><span class="kw">multiplicationFactory</span>(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb255-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb255-11" data-line-number="11"><span class="co"># call the `times2` function with parameter 3 and print out the result</span></a>
+<a class="sourceLine" id="cb255-12" data-line-number="12"><span class="kw">times2</span>(<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 </div>
 <p>The <code>multiplicationFactory</code> function actually creates a “family” of functions that all provide the multiplication option with the selected number - i.e. parameter selected by the programmer itself. This way of managing functions may be initially confusing, but by using it in practice (which we will show in the next chapter), it is easy to notice the added flexibility and effectiveness of such an approach.</p>
 <hr />
 <p>If we define a function, and do not bind it to some variable, then we created the so-called “anonymous function”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># anonymous function</span>
-function(x) x *<span class="st"> </span>x </code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="co"># anonymous function</span></a>
+<a class="sourceLine" id="cb257-2" data-line-number="2"><span class="cf">function</span>(x) x <span class="op">*</span><span class="st"> </span>x </a></code></pre></div>
 <p>We can notice that each function is initially “anonymous”. If we return to the function definition syntax, we see that it is actually a combination of creating an anonymous function and binding it to a new variable. Of course, leaving the function anonymous as we did in the example above does not make much sense, just as it does not make sense to define a vector or list without creating a reference to that object - in that case the created object is not in any way usable because there are no links to it and will be quickly deleted by R within the “garbage collection” routine.</p>
 <p>We can ask ourselves - is there a scenario where the anonymous function is meaningful and useful? Explicit anonymous functions are used when a “disposable” function is needed, for example, as an argument for some other function. If the function we want to send as an argument is easy to define in a single line, and we do not plan to use it afterwards in the program, then it makes no sense to define it separately and assign it its own reference. An example of this will be seen in the <code>apply</code> family of functions.</p>
 <hr />
 <p>At the end of this section, we repeat the most important things - in R, the function is an object like any other, the only specificity is that it is an object that is “executable”, ie, which, using the function call syntax, does some work and returns some value. Even anonymous function can be executed (although only once, since we do not have a reference for future calls).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calling the anonymous function</span>
-(function(x) x +<span class="st"> </span><span class="dv">1</span>)(<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="co"># calling the anonymous function</span></a>
+<a class="sourceLine" id="cb258-2" data-line-number="2">(<span class="cf">function</span>(x) x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <hr />
 </div>
 <div id="generic-functions-1" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> Generic functions</h3>
 <p>We have already mentioned generic functions in the chapter on objects, but let’s briefly recall what they are all about. The programming language R is not based on the so-called “message exchange principle” of the object-oriented languages, where, for example, the drawing of the graph might be performed like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the usual OOP principle invokes object methods</span>
-<span class="kw">graph.draw</span>()</code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="co"># the usual OOP principle invokes object methods</span></a>
+<a class="sourceLine" id="cb260-2" data-line-number="2"><span class="kw">graph.draw</span>()</a></code></pre></div>
 <p>but like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># R just calls the method unto an object</span>
-<span class="kw">draw</span>(graph)</code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="co"># R just calls the method unto an object</span></a>
+<a class="sourceLine" id="cb261-2" data-line-number="2"><span class="kw">draw</span>(graph)</a></code></pre></div>
 <p>In the first case, a graph is an object that implements a special drawing method, and we have to call it in order to get the required graph image. In the second, there is an “external” function that “knows” how to draw a graph. This function is called a “generic function”.</p>
 <hr />
 <p>The properties of the generic function are as follows:</p>
@@ -544,105 +583,106 @@ function(x) x *<span class="st"> </span>x </code></pre></div>
 <p>And that’s all! R does not require any additional steps, the above is quite sufficient for R to recognize the new generic function and apply it to all objects for whose class this generic function is implemented in the form <code>gen_function_name.class_name</code> (or <code>gen_function_name.default</code> for all classes for which there is no special implementation).</p>
 <p>In the next exercise, let’s try to implement the generic <code>infoAbout</code> method for the <code>Person</code> class.</p>
 <hr />
-<p><strong>Exercise 7.7 - new generic function</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">peter &lt;-<span class="st"> </span><span class="kw">Person</span>(<span class="dt">id =</span> <span class="st">&quot;12345678&quot;</span>, <span class="dt">surname =</span> <span class="st">&quot;Parker&quot;</span>, <span class="dt">weight =</span> <span class="dv">78</span>)
-
-<span class="co"># create a new generic `infoAbout` function using the `UseMethod` function</span>
-infoAbout &lt;-<span class="st"> </span>function(x) <span class="kw">UseMethod</span>(<span class="st">&quot;infoAbout&quot;</span>)
-
-<span class="co"># implement a `infoAbout.Person` function which takes a `Person`</span>
-<span class="co"># and writes the following on screen</span>
-<span class="co"># ID: &lt;id&gt;, surname: &lt;surname&gt;, weight: &lt;weight&gt;</span>
-<span class="co"># use the `paste` function to prepare the printout</span>
-<span class="co"># and `cat` to put it on screen</span>
-
-<span class="co"># implement a `infoAbout.default` function</span>
-<span class="co"># which simply fowards the input parameter to the `cat` function</span>
-
-<span class="co"># call `infoAbout` with `peter` as parameter</span>
-
-<span class="co"># call `infoAbout` with `1:5` as parameter</span></code></pre></div>
+<p><strong>Zadatak 7.7 - new generic function</strong></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">peter &lt;-<span class="st"> </span><span class="kw">Person</span>(<span class="dt">id =</span> <span class="st">&quot;12345678&quot;</span>, <span class="dt">surname =</span> <span class="st">&quot;Parker&quot;</span>, <span class="dt">weight =</span> <span class="dv">78</span>)</a>
+<a class="sourceLine" id="cb262-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb262-3" data-line-number="3"><span class="co"># create a new generic `infoAbout` function using the `UseMethod` function</span></a>
+<a class="sourceLine" id="cb262-4" data-line-number="4">infoAbout &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">UseMethod</span>(<span class="st">&quot;infoAbout&quot;</span>)</a>
+<a class="sourceLine" id="cb262-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb262-6" data-line-number="6"><span class="co"># implement a `infoAbout.Person` function which takes a `Person`</span></a>
+<a class="sourceLine" id="cb262-7" data-line-number="7"><span class="co"># and writes the following on screen</span></a>
+<a class="sourceLine" id="cb262-8" data-line-number="8"><span class="co"># ID: &lt;id&gt;, surname: &lt;surname&gt;, weight: &lt;weight&gt;</span></a>
+<a class="sourceLine" id="cb262-9" data-line-number="9"><span class="co"># use the `paste` function to prepare the printout</span></a>
+<a class="sourceLine" id="cb262-10" data-line-number="10"><span class="co"># and `cat` to put it on screen</span></a>
+<a class="sourceLine" id="cb262-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb262-12" data-line-number="12"><span class="co"># implement a `infoAbout.default` function</span></a>
+<a class="sourceLine" id="cb262-13" data-line-number="13"><span class="co"># which simply fowards the input parameter to the `cat` function</span></a>
+<a class="sourceLine" id="cb262-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb262-15" data-line-number="15"><span class="co"># call `infoAbout` with `peter` as parameter</span></a>
+<a class="sourceLine" id="cb262-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb262-17" data-line-number="17"><span class="co"># call `infoAbout` with `1:5` as parameter</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># implement a `infoAbout.Person` function which takes a `Person`</span>
-<span class="co"># and writes the following on screen</span>
-<span class="co"># ID: &lt;id&gt;, surname: &lt;surname&gt;, weight: &lt;weight&gt;</span>
-<span class="co"># use the `paste` function to prepare the printout</span>
-<span class="co"># and `cat` to put it on screen</span>
-
-infoAbout.Person &lt;-<span class="st"> </span>function(p) {
-    rez &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;ID:&quot;</span>, p$id, <span class="st">&quot;, surname:&quot;</span>, p$surname, <span class="st">&quot;, weight:&quot;</span>, p$weight, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
-    <span class="kw">cat</span>(rez)
-}
-
-<span class="co"># implement a `infoAbout.default` function</span>
-<span class="co"># which simply fowards the input parameter to the `cat` function</span>
-infoAbout.default &lt;-<span class="st"> </span>function(x) <span class="kw">cat</span>(x)
-
-<span class="co"># call `infoAbout` with `peter` as parameter</span>
-<span class="kw">infoAbout</span>(peter)
-
-<span class="co"># call `infoAbout` with `1:5` as parameter</span>
-<span class="kw">infoAbout</span>(<span class="dv">1</span>:<span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="co"># implement a `infoAbout.Person` function which takes a `Person`</span></a>
+<a class="sourceLine" id="cb263-2" data-line-number="2"><span class="co"># and writes the following on screen</span></a>
+<a class="sourceLine" id="cb263-3" data-line-number="3"><span class="co"># ID: &lt;id&gt;, surname: &lt;surname&gt;, weight: &lt;weight&gt;</span></a>
+<a class="sourceLine" id="cb263-4" data-line-number="4"><span class="co"># use the `paste` function to prepare the printout</span></a>
+<a class="sourceLine" id="cb263-5" data-line-number="5"><span class="co"># and `cat` to put it on screen</span></a>
+<a class="sourceLine" id="cb263-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb263-7" data-line-number="7">infoAbout.Person &lt;-<span class="st"> </span><span class="cf">function</span>(p) {</a>
+<a class="sourceLine" id="cb263-8" data-line-number="8">    rez &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;ID:&quot;</span>, p<span class="op">$</span>id, <span class="st">&quot;, surname:&quot;</span>, p<span class="op">$</span>surname, <span class="st">&quot;, weight:&quot;</span>, p<span class="op">$</span>weight, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb263-9" data-line-number="9">    <span class="kw">cat</span>(rez)</a>
+<a class="sourceLine" id="cb263-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb263-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb263-12" data-line-number="12"><span class="co"># implement a `infoAbout.default` function</span></a>
+<a class="sourceLine" id="cb263-13" data-line-number="13"><span class="co"># which simply fowards the input parameter to the `cat` function</span></a>
+<a class="sourceLine" id="cb263-14" data-line-number="14">infoAbout.default &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cat</span>(x)</a>
+<a class="sourceLine" id="cb263-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb263-16" data-line-number="16"><span class="co"># call `infoAbout` with `peter` as parameter</span></a>
+<a class="sourceLine" id="cb263-17" data-line-number="17"><span class="kw">infoAbout</span>(peter)</a>
+<a class="sourceLine" id="cb263-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb263-19" data-line-number="19"><span class="co"># call `infoAbout` with `1:5` as parameter</span></a>
+<a class="sourceLine" id="cb263-20" data-line-number="20"><span class="kw">infoAbout</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## ID: 12345678 , surname: Parker , weight: 78 
 ## 1 2 3 4 5</code></pre>
 </div>
 <hr />
 <p>Of course, we did not necessarily have to create our own function to get the “print” functionality for our new class - it would probably be better to use already existing generic functions such as <code>print</code> or <code>cat</code>.</p>
 <hr />
-<p><strong>Exercise 7.8 - augmenting the existing generic functions</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make sure `print` is a generic function</span>
-<span class="co"># (print out its source code by referencing its name)</span>
-
-<span class="co"># augmnet the `print` function so it allows pretty printing</span>
-<span class="co"># of the `Person` class</span>
-<span class="co"># (you may use the already created `infoAbout.Person` class)</span>
-
-<span class="co"># call `print` with `peter` as parameter (or try the autoprint!)</span></code></pre></div>
+<p><strong>Zadatak 7.8 - augmenting the existing generic functions</strong></p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="co"># make sure `print` is a generic function</span></a>
+<a class="sourceLine" id="cb265-2" data-line-number="2"><span class="co"># (print out its source code by referencing its name)</span></a>
+<a class="sourceLine" id="cb265-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb265-4" data-line-number="4"><span class="co"># augmnet the `print` function so it allows pretty printing</span></a>
+<a class="sourceLine" id="cb265-5" data-line-number="5"><span class="co"># of the `Person` class</span></a>
+<a class="sourceLine" id="cb265-6" data-line-number="6"><span class="co"># (you may use the already created `infoAbout.Person` class)</span></a>
+<a class="sourceLine" id="cb265-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb265-8" data-line-number="8"><span class="co"># call `print` with `peter` as parameter (or try the autoprint!)</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make sure `print` is a generic function</span>
-<span class="co"># (print out its source code by referencing its name)</span>
-print
-
-<span class="co"># augmnet the `print` function so it allows pretty printing</span>
-<span class="co"># of the `Person` class</span>
-<span class="co"># (you may use the already created `infoAbout.Person` class)</span>
-print.Person &lt;-<span class="st"> </span>infoAbout.Person
-
-
-<span class="co"># call `print` with `peter` as parameter (or try the autoprint!)</span>
-<span class="kw">print</span>(peter)</code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="co"># make sure `print` is a generic function</span></a>
+<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="co"># (print out its source code by referencing its name)</span></a>
+<a class="sourceLine" id="cb266-3" data-line-number="3">print</a>
+<a class="sourceLine" id="cb266-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb266-5" data-line-number="5"><span class="co"># augmnet the `print` function so it allows pretty printing</span></a>
+<a class="sourceLine" id="cb266-6" data-line-number="6"><span class="co"># of the `Person` class</span></a>
+<a class="sourceLine" id="cb266-7" data-line-number="7"><span class="co"># (you may use the already created `infoAbout.Person` class)</span></a>
+<a class="sourceLine" id="cb266-8" data-line-number="8">print.Person &lt;-<span class="st"> </span>infoAbout.Person</a>
+<a class="sourceLine" id="cb266-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb266-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb266-11" data-line-number="11"><span class="co"># call `print` with `peter` as parameter (or try the autoprint!)</span></a>
+<a class="sourceLine" id="cb266-12" data-line-number="12"><span class="kw">print</span>(peter)</a></code></pre></div>
 <pre><code>## function (x, ...) 
 ## UseMethod(&quot;print&quot;)
-## &lt;bytecode: 0x00000000157bf410&gt;
+## &lt;bytecode: 0x000000001312e508&gt;
 ## &lt;environment: namespace:base&gt;
 ## ID: 12345678 , surname: Parker , weight: 78</code></pre>
 </div>
 <hr />
 <p>Finally, we demonstrate the ability of R to list all the currently known implementations of a generic method. To do this we simply use the <code>methods</code> function to which we pass the name of the method concerned. With the same function we can also check which generic functions implementations exist for a particular class. For this we use the <code>class</code> parameter to which we are passing the class name for which we are interested in finding generic functions implemented for it.</p>
 <hr />
-<p><strong>Exercise 7.9 - <code>methods</code> function</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all implementations of the `summary` function</span>
-
-<span class="co"># check with generic function implementations exist for the `factor` class</span></code></pre></div>
+<p><strong>Zadatak 7.9 - <code>methods</code> function</strong></p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1"><span class="co"># list all implementations of the `summary` function</span></a>
+<a class="sourceLine" id="cb268-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb268-3" data-line-number="3"><span class="co"># check with generic function implementations exist for the `factor` class</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all implementations of the `summary` function</span>
-<span class="co">#methods(summary)   # try on console!</span>
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------------------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># check with generic function implementations exist for the `factor` class</span>
-<span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;factor&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="co"># list all implementations of the `summary` function</span></a>
+<a class="sourceLine" id="cb269-2" data-line-number="2"><span class="co">#methods(summary)   # try on console!</span></a>
+<a class="sourceLine" id="cb269-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb269-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;-----------------------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb269-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb269-6" data-line-number="6"><span class="co"># check with generic function implementations exist for the `factor` class</span></a>
+<a class="sourceLine" id="cb269-7" data-line-number="7"><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;factor&quot;</span>)</a></code></pre></div>
 <pre><code>## -----------------------
-##  [1] /             [             [[            [[&lt;-          [&lt;-          
-##  [6] +             all.equal     Arith         as.character  as.data.frame
-## [11] as.Date       as.duration   as.interval   as.list       as.logical   
-## [16] as.period     as.POSIXlt    as.vector     as_date       as_datetime  
-## [21] cbind2        coerce        Compare       corresp       droplevels   
-## [26] format        histogram     initialize    is.na&lt;-       is_vector_s3 
-## [31] kronecker     length&lt;-      levels&lt;-      Logic         Math         
-## [36] Ops           plot          print         rbind2        recode       
-## [41] relevel       relist        rep           show          slotsFromS3  
-## [46] summary       Summary       type_sum      xtfrm        
+##  [1] -             /             [             [[            [[&lt;-         
+##  [6] [&lt;-           +             all.equal     Arith         as.character 
+## [11] as.data.frame as.Date       as.duration   as.interval   as.list      
+## [16] as.logical    as.period     as.POSIXlt    as.vector     as_date      
+## [21] as_datetime   as_factor     brief         cbind2        coerce       
+## [26] Compare       corresp       droplevels    fixed         format       
+## [31] histogram     initialize    is.na&lt;-       is_vector_s3  length&lt;-     
+## [36] levels&lt;-      Logic         Math          Ops           plot         
+## [41] print         rbind2        recode        relevel       relist       
+## [46] rep           scale_type    show          slotsFromS3   summary      
+## [51] Summary       type_sum      xtfrm        
 ## see &#39;?methods&#39; for accessing help and source code</code></pre>
 </div>
 <hr />
@@ -661,17 +701,17 @@ print.Person &lt;-<span class="st"> </span>infoAbout.Person
 <ol start="3" style="list-style-type: decimal">
 <li>Implement a constructor for the class <code>Employee</code> which inherits the <code>Person</code> class defined by the following constructor and print implemenation:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Person &lt;-<span class="st"> </span>function(id, surname, weight) {
-    p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id, <span class="dt">surname =</span> surname, <span class="dt">weight =</span> weight)
-    <span class="kw">class</span>(p) &lt;-<span class="st"> &quot;Person&quot;</span>
-
-    p
-}
-
-print.Person &lt;-<span class="st"> </span>function(p) {
-    rez &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;ID:&quot;</span>, p$id, <span class="st">&quot;, surname:&quot;</span>, p$surname, <span class="st">&quot;, weight:&quot;</span>, p$weight, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
-    <span class="kw">cat</span>(rez)
-}</code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">Person &lt;-<span class="st"> </span><span class="cf">function</span>(id, surname, weight) {</a>
+<a class="sourceLine" id="cb271-2" data-line-number="2">    p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">id =</span> id, <span class="dt">surname =</span> surname, <span class="dt">weight =</span> weight)</a>
+<a class="sourceLine" id="cb271-3" data-line-number="3">    <span class="kw">class</span>(p) &lt;-<span class="st"> &quot;Person&quot;</span></a>
+<a class="sourceLine" id="cb271-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb271-5" data-line-number="5">    p</a>
+<a class="sourceLine" id="cb271-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb271-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb271-8" data-line-number="8">print.Person &lt;-<span class="st"> </span><span class="cf">function</span>(p) {</a>
+<a class="sourceLine" id="cb271-9" data-line-number="9">    rez &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;ID:&quot;</span>, p<span class="op">$</span>id, <span class="st">&quot;, surname:&quot;</span>, p<span class="op">$</span>surname, <span class="st">&quot;, weight:&quot;</span>, p<span class="op">$</span>weight, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb271-10" data-line-number="10">    <span class="kw">cat</span>(rez)</a>
+<a class="sourceLine" id="cb271-11" data-line-number="11">}</a></code></pre></div>
 <p><code>Employee</code> has all the attributes of the <code>Person</code> class as well as the <code>superior</code> attribute which represents a reference to a employee who is his/her superior (if such exists, otherwise it should be <code>NA</code>).</p>
 <p>Create two objects of the <code>Employee</code> class (one superior to another) and print them with the <code>print</code> function. Then implement your own version of the generic function <code>print</code> for the <code>Employee</code> class that prints employee data and his/her superior employee data (if it exists, otherwise it prints a message that there is no superior employee). Reprint both employees with the <code>print</code> function.</p>
 <hr />
@@ -703,6 +743,7 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -737,9 +778,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

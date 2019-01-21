@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Let’s program in R</title>
+  <meta name="description" content="R Coursebook">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Let’s program in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Coursebook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Let’s program in R" />
+  
+  <meta name="twitter:description" content="R Coursebook" />
+  
+
+<meta name="author" content="Damir Pintar">
+
+
+<meta name="date" content="2019-01-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="regression.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<style type="text/css">
+.showopt {
+  background-color: #004c93;
+  color: #FFFFFF; 
+  width: 140px;
+  height: 4	0px;
+  text-align: center;
+  vertical-align: middle !important;
+  float: right;
+  font-family: sans-serif;
+  font-size:10 pt;
+  border-radius: 8px;
+}
+
+.showopt:hover {
+    background-color: #dfe4f2;
+    color: #004c93;
+}
+
+pre.plot {
+  background-color: white !important;
+}
+</style>
+
+<script>
+ $(document).ready(function() {
+
+  $chunks = $('.fold');
+
+  $chunks.each(function () {
+
+    // add button to source code chunks
+    if ( $(this).hasClass('s') ) {
+      $('pre.r', this).prepend("<div class=\"showopt\">Show solution</div><br style=\"line-height:22px;\"/>");
+      $('pre.r', this).children('code').attr('class', 'folded');
+    }
+
+    // add button to output chunks
+    if ( $(this).hasClass('o') ) {
+      $('pre:not(.r)', this).has('code').prepend("<div class=\"showopt\">Show results</div><br style=\"line-height:22px;\"/>");
+      $('pre:not(.r)', this).children('code:not(r)').addClass('folded');
+
+      // add button to plots
+      $(this).find('img').wrap('<pre class=\"plot\"></pre>');
+      $('pre.plot', this).prepend("<div class=\"showopt\">Show figure</div><br style=\"line-height:22px;\"/>");
+      $('pre.plot', this).children('img').addClass('folded');
+
+    }
+  });
+
+  // hide all chunks when document is loaded
+  $('.folded').css('display', 'none')
+
+  // function to toggle the visibility
+  $('.showopt').click(function() {
+    var label = $(this).html();
+    if (label.indexOf("Show") >= 0) {
+      $(this).html(label.replace("Show", "Hide"));
+    } else {
+      $(this).html(label.replace("Hide", "Show"));
+    }
+    $(this).siblings('code, img').slideToggle('fast', 'swing');
+  });
+});
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>(“Introduction to programming language R” course book)</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#foreword"><i class="fa fa-check"></i>Foreword</a></li>
+</ul></li>
+<li class="part"><span><b>I Basic elements of R</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#general-facts-about-r"><i class="fa fa-check"></i><b>1.1.1</b> General facts about R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#r-alternatives"><i class="fa fa-check"></i><b>1.1.2</b> R alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#installing-software-support"><i class="fa fa-check"></i><b>1.2</b> Installing Software Support</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#overview-of-the-development-interface-rstudio"><i class="fa fa-check"></i><b>1.3</b> Overview of the development interface * RStudio *</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#interactive-console"><i class="fa fa-check"></i><b>1.3.1</b> Interactive console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#writing-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Writing R scripts</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#r-markdown"><i class="fa fa-check"></i><b>1.3.3</b> * R Markdown *</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#how-to-use-this-coursebook"><i class="fa fa-check"></i><b>1.4</b> How to use this coursebook?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tipovi.html"><a href="tipovi.html"><i class="fa fa-check"></i><b>2</b> Basic data types and operators</a><ul>
+<li class="chapter" data-level="2.1" data-path="tipovi.html"><a href="tipovi.html#basic-data-types"><i class="fa fa-check"></i><b>2.1</b> Basic data types</a></li>
+<li class="chapter" data-level="2.2" data-path="tipovi.html"><a href="tipovi.html#operators"><i class="fa fa-check"></i><b>2.2</b> Operators</a></li>
+<li class="chapter" data-level="2.3" data-path="tipovi.html"><a href="tipovi.html#missing-unknown-and-non-existent-values"><i class="fa fa-check"></i><b>2.3</b> Missing, unknown, and non-existent values</a></li>
+<li class="chapter" data-level="" data-path="tipovi.html"><a href="tipovi.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vektori.html"><a href="vektori.html"><i class="fa fa-check"></i><b>3</b> Vectors, matrices and lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="vektori.html"><a href="vektori.html#vector"><i class="fa fa-check"></i><b>3.1</b> Vector</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vektori.html"><a href="vektori.html#create-a-vector"><i class="fa fa-check"></i><b>3.1.1</b> Create a vector</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vektori.html"><a href="vektori.html#operator"><i class="fa fa-check"></i><b>3.1.2</b> Operator <code>[</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="vektori.html"><a href="vektori.html#principle-of-vectorization-and-recycling"><i class="fa fa-check"></i><b>3.1.3</b> Principle of vectorization and recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vektori.html"><a href="vektori.html#index-vectors"><i class="fa fa-check"></i><b>3.2</b> Index vectors</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="vektori.html"><a href="vektori.html#location-indexing"><i class="fa fa-check"></i><b>3.2.1</b> Location Indexing</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vektori.html"><a href="vektori.html#conditional-indexing"><i class="fa fa-check"></i><b>3.2.2</b> Conditional indexing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vektori.html"><a href="vektori.html#label-based-indexing"><i class="fa fa-check"></i><b>3.2.3</b> Label-based indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vektori.html"><a href="vektori.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.3</b> Matrices and arrays</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="vektori.html"><a href="vektori.html#matrix-splicing"><i class="fa fa-check"></i><b>3.3.1</b> Matrix splicing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vektori.html"><a href="vektori.html#lists"><i class="fa fa-check"></i><b>3.4</b> Lists</a></li>
+<li class="chapter" data-level="" data-path="vektori.html"><a href="vektori.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="okviri.html"><a href="okviri.html"><i class="fa fa-check"></i><b>4</b> Data frames and factors</a><ul>
+<li class="chapter" data-level="4.1" data-path="okviri.html"><a href="okviri.html#data-frames"><i class="fa fa-check"></i><b>4.1</b> Data frames</a></li>
+<li class="chapter" data-level="4.2" data-path="okviri.html"><a href="okviri.html#selecting-rows-and-columns"><i class="fa fa-check"></i><b>4.2</b> Selecting rows and columns</a></li>
+<li class="chapter" data-level="4.3" data-path="okviri.html"><a href="okviri.html#adding-and-deleting-rows-and-columns"><i class="fa fa-check"></i><b>4.3</b> Adding and deleting rows and columns</a></li>
+<li class="chapter" data-level="4.4" data-path="okviri.html"><a href="okviri.html#factors"><i class="fa fa-check"></i><b>4.4</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="okviri.html"><a href="okviri.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>5</b> Flow control and objects</a><ul>
+<li class="chapter" data-level="5.1" data-path="control.html"><a href="control.html#flow-control-commands"><i class="fa fa-check"></i><b>5.1</b> Flow control commands</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="control.html"><a href="control.html#conditional-execution-of-commands"><i class="fa fa-check"></i><b>5.1.1</b> Conditional execution of commands</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="control.html"><a href="control.html#program-loops"><i class="fa fa-check"></i><b>5.2</b> Program Loops</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control.html"><a href="control.html#loop-repeat"><i class="fa fa-check"></i><b>5.2.1</b> Loop <code>repeat</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="control.html"><a href="control.html#while-loop"><i class="fa fa-check"></i><b>5.2.2</b> <code>while</code> loop</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control.html"><a href="control.html#for-loop"><i class="fa fa-check"></i><b>5.2.3</b> <code>for</code> loop</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control.html"><a href="control.html#object-models-in-r-language"><i class="fa fa-check"></i><b>5.3</b> Object models in R language</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="control.html"><a href="control.html#overview-of-the-s3-object-model"><i class="fa fa-check"></i><b>5.3.1</b> Overview of the S3 object model</a></li>
+<li class="chapter" data-level="5.3.2" data-path="control.html"><a href="control.html#generic-functions"><i class="fa fa-check"></i><b>5.3.2</b> Generic functions</a></li>
+<li class="chapter" data-level="5.3.3" data-path="control.html"><a href="control.html#conclusion-on-s3-objects"><i class="fa fa-check"></i><b>5.3.3</b> Conclusion on S3 objects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="control.html"><a href="control.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>6</b> Packages, built-in functions and environments</a><ul>
+<li class="chapter" data-level="6.1" data-path="packages.html"><a href="packages.html#working-with-packages"><i class="fa fa-check"></i><b>6.1</b> Working with packages</a></li>
+<li class="chapter" data-level="6.2" data-path="packages.html"><a href="packages.html#built-in-functions"><i class="fa fa-check"></i><b>6.2</b> Built-in functions</a></li>
+<li class="chapter" data-level="6.3" data-path="packages.html"><a href="packages.html#environments"><i class="fa fa-check"></i><b>6.3</b> Environments</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="user.html"><a href="user.html"><i class="fa fa-check"></i><b>7</b> User Defined Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="user.html"><a href="user.html#how-to-define-a-function"><i class="fa fa-check"></i><b>7.1</b> How to define a function</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="user.html"><a href="user.html#the-copy-on-modify-principle"><i class="fa fa-check"></i><b>7.1.1</b> The “copy-on-modify” principle</a></li>
+<li class="chapter" data-level="7.1.2" data-path="user.html"><a href="user.html#function-as-an-object"><i class="fa fa-check"></i><b>7.1.2</b> Function as an object</a></li>
+<li class="chapter" data-level="7.1.3" data-path="user.html"><a href="user.html#generic-functions-1"><i class="fa fa-check"></i><b>7.1.3</b> Generic functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="user.html"><a href="user.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="apply.html"><a href="apply.html"><i class="fa fa-check"></i><b>8</b> ‘Apply’ family of functions</a><ul>
+<li class="chapter" data-level="8.1" data-path="apply.html"><a href="apply.html#what-are-apply-functions"><i class="fa fa-check"></i><b>8.1</b> What are <code>apply</code> functions?</a></li>
+<li class="chapter" data-level="8.2" data-path="apply.html"><a href="apply.html#the-apply-function"><i class="fa fa-check"></i><b>8.2</b> The <code>apply</code> function</a></li>
+<li class="chapter" data-level="8.3" data-path="apply.html"><a href="apply.html#the-lapply-sapply-and-vapply-functions"><i class="fa fa-check"></i><b>8.3</b> The <code>lapply</code>, <code>sapply</code> and <code>vapply</code> functions</a></li>
+<li class="chapter" data-level="8.4" data-path="apply.html"><a href="apply.html#other-functions-from-the-apply-family-and-the-available-alternatives"><i class="fa fa-check"></i><b>8.4</b> Other functions from the <code>apply</code> family and the available alternatives</a></li>
+<li class="chapter" data-level="" data-path="apply.html"><a href="apply.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Data management and visualizations</b></span></li>
+<li class="chapter" data-level="9" data-path="pipe.html"><a href="pipe.html"><i class="fa fa-check"></i><b>9</b> Pipeline operator and tidy data - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="10" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>10</b> Dates and strings - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="11" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>11</b> Managing data frames with <code>dplyr</code> package - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="12" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>12</b> Visualising data with <code>ggplot2</code> package - UNDER CONSTRUCTION</a></li>
+<li class="part"><span><b>III Machine learning and predictive analytics</b></span></li>
+<li class="chapter" data-level="13" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>13</b> Linear regression analysis - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="14" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html"><i class="fa fa-check"></i><b>14</b> Introduction to Predictive Modeling</a><ul>
+<li class="chapter" data-level="14.1" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#what-is-predictive-modeling"><i class="fa fa-check"></i><b>14.1</b> What is predictive modeling?</a></li>
+<li class="chapter" data-level="14.2" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#creating-training-and-test-datasets"><i class="fa fa-check"></i><b>14.2</b> Creating training and test datasets</a></li>
+<li class="chapter" data-level="14.3" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#classification-predictive-models---knn-classification"><i class="fa fa-check"></i><b>14.3</b> Classification Predictive Models - kNN Classification</a></li>
+<li class="chapter" data-level="14.4" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#package-caret-and-predictive-modeling"><i class="fa fa-check"></i><b>14.4</b> Package <code>caret</code> and predictive modeling</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Let’s program in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="predictive_Modeling" class="section level1">
+<h1><span class="header-section-number">14</span> Introduction to Predictive Modeling</h1>
+<hr />
+<div id="what-is-predictive-modeling" class="section level2">
+<h2><span class="header-section-number">14.1</span> What is predictive modeling?</h2>
+<p>In the previous chapter, we have shown that with the help of linear regression we can investigate and model the interplay of two (or more) variables. If there is collinearity between the two observed variables, then their relation can be modeled with the help of a simple straight line equation, which then allows to estimate the value of the second variable from the known value of one of the variables. This is the basic idea of so-calle. “predictive modeling” - a process which relies on familiar inputs and developed predictive models to get information about unknown outputs, i.e. goals. Better models provide better, or more accurate results. Or, as defined by Kuhn and Johnson in his book “Applied Predictive Modeling”:</p>
+<p><em>Predictive modeling is a process of developing a mathematical tool or model that is able to create accurate predictions.</em></p>
+<p>Predictive modeling has numerous usage options in various domains eg:</p>
+<ul>
+<li>predicting the quantity of sold products or expected profits</li>
+<li>identification of users planning to cancel the subscription</li>
+<li>disease diagnostics</li>
+<li>real estate evaluation</li>
+<li>estimation of movies’s profits on opening weekened</li>
+<li>spam detection</li>
+<li>etc.</li>
+</ul>
+<p>When developing predictive models, it is very important to:</p>
+<ul>
+<li>have adequately prepared, high quality input data</li>
+<li>choose a suitable method for creating a model</li>
+<li>properly conduct the evaluation and validation process</li>
+</ul>
+<p>The role of analysts in this process is to conduct all the steps of analysis thoroughly and to avoid common traps and errors. Namely, predictive models can ultimately have poor performance for a number of reasons - poorly prepared data, poorly conducted validation, creating models which “overfit” the training data, etc.</p>
+<p>In this chapter, we will get acquainted with some of the basic guidelines we must adhere to during predictive modeling. We will also familiarize ourselves with R language packages that allow us to leave complex steps to the computer, that is, to approach predictive modelling from high-level perspective while the computer independently performs low-level data preparation, modeling, and validation steps.</p>
+</div>
+<div id="creating-training-and-test-datasets" class="section level2">
+<h2><span class="header-section-number">14.2</span> Creating training and test datasets</h2>
+<p>When we created linear models in the previous chapter, after the creation of the model, we looked at summarized model information with the help of <code>summary</code> function - estimation of predictor and target relationship, the value of residual standard error, the value of adjusted R-squared measure etc. This information has enabled us to evaluate the quality of developed models.</p>
+<p>But in the whole process we ignored one key thing - all of this information was based on <em>data used to create the model itself</em>. In other words, we have gained insight into how well a model works over <em>known data</em>, which the model has already seen during the model’s creation. As a rule, it is much more important to evaluate how well a model works over <em>unknown data</em>, i.e. to estimate the quality of predictions once the model gets completely new data. We say that we want models that <strong>generalize well</strong>, i.e. models that have learned generic features of the domain entities described in theobtained data, and not just the specifics of the dataset used to develop the model itself. This latter phenomenon is called “overfitting”.</p>
+<p>Very often, at the time of creating a model, we only have one dataset that we should also for training and model evaluation. As we have already said, using the same data for both purposes does not give us enough good information about how the model generalizes. A common procedure in this case is to <em>split the initial set into two parts - a training set and a test set</em>.</p>
+<p>How do you decide which observations to assign to which set? How many observations should be put into training, and how many in the testing set? As a rule, the training set and test set should have enough observations so that the obtained results could be statistically relevant so assuming a sufficiently large input dataset, splitting in two equal parts could be a satisfactory solution. However, in practice, we usually reserve more observations for training than for testing, so it is customary to use a <em>70:30 spluit</em>, so 70% observations go into the training set, and the rest go in the test set.</p>
+<p>As for the procedure of selecting observations (i.e. “sampling”), there are several common procedures:</p>
+<ul>
+<li>random selection</li>
+<li>stratified random selection (ensuring equal representation of certain categories in both sets)</li>
+<li>timestamp-based selection (if the time component is key, i.e. it is important to estimate how well past information predicts future events)</li>
+</ul>
+<p>Random selection is a most commonly used method while more sophisticated sampling methods can be chosen if there is a clear need for them based on the goals of the analysis.</p>
+<p>Let’s now apply this knowledge to the development of a linear regression model by comparing its effectiveness on the training set, and then on the test data. For this we will use a new set of data related to the characteristics and quality of wine, <code>wines.csv</code>. This set was created by adapting the “Wine Quality Data Set” from the UCI Machine Learning Repository, available at[this link] (<a href="https://archive.ics.uci.edu/ml/datasets/wine+quality" class="uri">https://archive.ics.uci.edu/ml/datasets/wine+quality</a>).</p>
+<p>In the next exercise, we’ll load this dataset and make some adjustments - we’ll categorize columns that obviously contain a category variable and remove rows with missing values. Lines with missing values often require a little more attention and a more sophisticated approach than simple removal, especially with larger amounts of missing values or potential additional information that these values denote. But in our case there are very few such rows, and when applying certain predictive modeling methods, they can create problems, so we will simply remove them. One of the quick ways to do this is by using the <code>complete.cases</code> function, which returns the indexes of all rows <em>which do not have any missing value</em> for the given data frame.</p>
+<p><strong>Zadatak 14.1 - <code>wine quality</code> dataset</strong></p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="co"># load data from the` wines.csv` file</span></a>
+<a class="sourceLine" id="cb304-2" data-line-number="2"><span class="co"># in a variable called `wine`</span></a>
+<a class="sourceLine" id="cb304-3" data-line-number="3"><span class="co"># examine the loaded data frame</span></a>
+<a class="sourceLine" id="cb304-4" data-line-number="4"><span class="co"># categorize columns as needed</span></a>
+<a class="sourceLine" id="cb304-5" data-line-number="5"><span class="co"># and remove rows with missing values </span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="co"># load data from the` wines.csv` file</span></a>
+<a class="sourceLine" id="cb305-2" data-line-number="2"><span class="co"># in a variable called `wine`</span></a>
+<a class="sourceLine" id="cb305-3" data-line-number="3"><span class="co"># examine the loaded data frame</span></a>
+<a class="sourceLine" id="cb305-4" data-line-number="4"><span class="co"># categorize columns as needed</span></a>
+<a class="sourceLine" id="cb305-5" data-line-number="5"><span class="co"># and remove rows with missing values </span></a>
+<a class="sourceLine" id="cb305-6" data-line-number="6">wine &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;wines.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F, <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
+<a class="sourceLine" id="cb305-7" data-line-number="7"><span class="kw">glimpse</span>(wine)</a>
+<a class="sourceLine" id="cb305-8" data-line-number="8">wine<span class="op">$</span>type &lt;-<span class="st"> </span><span class="kw">factor</span>(wine<span class="op">$</span>type)</a>
+<a class="sourceLine" id="cb305-9" data-line-number="9">wine &lt;-<span class="st"> </span>wine[<span class="kw">complete.cases</span>(wine),]</a></code></pre></div>
+<pre><code>## Observations: 6,497
+## Variables: 13
+## $ fixed.acidity        &lt;int&gt; 7, 63, 81, 72, 72, 81, 62, 7, 63, 81, 81,...
+## $ volatile.acidity     &lt;dbl&gt; 0.27, 0.30, 0.28, 0.23, 0.23, 0.28, 0.32,...
+## $ citric.acid          &lt;dbl&gt; 0.36, 0.34, 0.40, 0.32, 0.32, 0.40, 0.16,...
+## $ residual.sugar       &lt;dbl&gt; 20.70, 1.60, 6.90, 8.50, 8.50, 6.90, 7.00...
+## $ chlorides            &lt;dbl&gt; 0.045, 0.049, 0.050, 0.058, 0.058, 0.050,...
+## $ free.sulfur.dioxide  &lt;int&gt; 45, 14, 30, 47, 47, 30, 30, 45, 14, 28, 1...
+## $ total.sulfur.dioxide &lt;int&gt; 170, 132, 97, 186, 186, 97, 136, 170, 132...
+## $ density              &lt;dbl&gt; 1.0010, 0.9940, 0.9951, 0.9956, 0.9956, 0...
+## $ pH                   &lt;int&gt; 3, 33, 326, 319, 319, 326, 318, 3, 33, 32...
+## $ sulphates            &lt;dbl&gt; 0.45, 0.49, 0.44, 0.40, 0.40, 0.44, 0.47,...
+## $ alcohol              &lt;dbl&gt; 88, 95, 101, 99, 99, 101, 96, 88, 95, 11,...
+## $ quality              &lt;int&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 7,...
+## $ type                 &lt;chr&gt; &quot;white&quot;, &quot;white&quot;, &quot;white&quot;, &quot;white&quot;, &quot;whit...</code></pre>
+</div>
+<p>Suppose the attribute <code>quality</code> is the target variable and all the other columns are potential predictors.</p>
+<p>How do you split this set on the training set and test set using random selection? There are several ways to do this, and even specialized functions and packages for this purpose, but we will learn a simple and easy-to-understand method that uses the <code>sample</code> function. If we assume that <code>df</code> is the data frame that we want to split into a training and test set that we will store in <code>df.train</code> and <code>df.test</code> variables, then random selection can be done as follows:</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">train_size &lt;-<span class="st"> </span><span class="fl">0.7</span> <span class="op">*</span><span class="st"> </span><span class="kw">nrow</span>(df) <span class="op">%&gt;%</span><span class="st"> </span>round <span class="co"># about 70%</span></a>
+<a class="sourceLine" id="cb307-2" data-line-number="2">train_ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df), train_size) <span class="co"># indexes of training observations</span></a>
+<a class="sourceLine" id="cb307-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb307-4" data-line-number="4">df.train &lt;-<span class="st"> </span>df[train_ind, ]</a>
+<a class="sourceLine" id="cb307-5" data-line-number="5">df.test &lt;-<span class="st"> </span>df[<span class="op">-</span>train_ind, ]</a></code></pre></div>
+<p>Let’s apply this to our wines dataset and then train a linear regression model.</p>
+<p><strong>Zadatak 14.2 - Splitting the input dataset and training a model</strong></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb308-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb308-3" data-line-number="3"><span class="co"># split the `wine` dataframe into `wine.train` and `wine.test`</span></a>
+<a class="sourceLine" id="cb308-4" data-line-number="4"><span class="co"># using a random selection method and 70:30 ratio</span></a>
+<a class="sourceLine" id="cb308-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb308-6" data-line-number="6"><span class="co"># train a linear regression model using the `wine.train` set</span></a>
+<a class="sourceLine" id="cb308-7" data-line-number="7"><span class="co"># store the model in a variable called `linMod`</span></a>
+<a class="sourceLine" id="cb308-8" data-line-number="8"><span class="co"># target variable is `quality` and all other variables are predictors</span></a>
+<a class="sourceLine" id="cb308-9" data-line-number="9"><span class="co"># check the summary for the obtained model</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb309-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb309-3" data-line-number="3"><span class="co"># split the `wine` dataframe into `wine.train` and `wine.test`</span></a>
+<a class="sourceLine" id="cb309-4" data-line-number="4"><span class="co"># using a random selection method and 70:30 ratio</span></a>
+<a class="sourceLine" id="cb309-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb309-6" data-line-number="6">train_ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(wine), <span class="fl">0.7</span> <span class="op">*</span><span class="st"> </span><span class="kw">nrow</span>(wine) <span class="op">%&gt;%</span><span class="st"> </span>round)</a>
+<a class="sourceLine" id="cb309-7" data-line-number="7">wine.train &lt;-<span class="st"> </span>wine[train_ind, ]</a>
+<a class="sourceLine" id="cb309-8" data-line-number="8">wine.test &lt;-<span class="st"> </span>wine[<span class="op">-</span>train_ind, ]</a></code></pre></div>
+</div>
+<div class="fold s o">
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1"><span class="co"># train a linear regression model using the `wine.train` set</span></a>
+<a class="sourceLine" id="cb310-2" data-line-number="2"><span class="co"># store the model in a variable called `linMod`</span></a>
+<a class="sourceLine" id="cb310-3" data-line-number="3"><span class="co"># target variable is `quality` and all other variables are predictors</span></a>
+<a class="sourceLine" id="cb310-4" data-line-number="4"><span class="co"># check the summary for the obtained model</span></a>
+<a class="sourceLine" id="cb310-5" data-line-number="5">linMod &lt;-<span class="st"> </span><span class="kw">lm</span>(quality <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> wine.train)</a>
+<a class="sourceLine" id="cb310-6" data-line-number="6"><span class="kw">summary</span>(linMod)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = quality ~ ., data = wine.train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1979 -0.5375 -0.0454  0.5078  4.9346 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)           9.723e+01  4.451e+00  21.843  &lt; 2e-16 ***
+## fixed.acidity        -4.744e-04  4.133e-04  -1.148 0.251125    
+## volatile.acidity     -1.351e+00  1.011e-01 -13.366  &lt; 2e-16 ***
+## citric.acid           3.106e-01  9.469e-02   3.280 0.001047 ** 
+## residual.sugar        1.648e-03  4.832e-04   3.411 0.000654 ***
+## chlorides            -3.657e+00  4.188e-01  -8.733  &lt; 2e-16 ***
+## free.sulfur.dioxide   1.041e-04  2.445e-04   0.426 0.670234    
+## total.sulfur.dioxide  1.090e-04  9.830e-05   1.109 0.267442    
+## density              -9.150e+01  4.484e+00 -20.404  &lt; 2e-16 ***
+## pH                   -7.765e-05  1.259e-04  -0.617 0.537511    
+## sulphates             8.632e-01  9.224e-02   9.358  &lt; 2e-16 ***
+## alcohol               3.983e-16  3.991e-16   0.998 0.318384    
+## typewhite            -3.714e-01  4.514e-02  -8.229 2.44e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.7853 on 4533 degrees of freedom
+## Multiple R-squared:  0.1851, Adjusted R-squared:  0.183 
+## F-statistic: 85.82 on 12 and 4533 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>We see that the adjusted R-squared measure is relatively low and the average error is quite high, so linear regression is perhaps not the best option this scenario (or maybe the obtained characteristics of the wines are simply not good enough to predict its quality). In spite of this, we will now check how well the model works on unseen observations.</p>
+<p>In order to check the quality of our model, we have to choose the criterion to which we will adhere. For numeric goals we often use the <strong>RMSE</strong> measure (root mean square error):</p>
+<p><span class="math display">\[RMSE = \sqrt{\frac{\sum_{i = 1}^{n}(\widehat{y}_{i} - y_{i})}{n}}\]</span></p>
+<p>where <code>n</code> is the number of observations,<span class="math inline">\(\widehat{y}_{i}\)</span> prediction of the observation i and <span class="math inline">\(y_ {i}\)</span> actual value of the target variable of that observation.</p>
+<p>Although there are packages that contain this function, we can easily program it ourselves.</p>
+<p><strong>Zadatak 14.3 - Function for calculating the RMSE measure</strong></p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="co"># create a `rmse` function that will use prediction vector</span></a>
+<a class="sourceLine" id="cb312-2" data-line-number="2"><span class="co"># and a vector of actual target vales as parameters</span></a>
+<a class="sourceLine" id="cb312-3" data-line-number="3"><span class="co"># and calculate the RMSE measure according to the above formula</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="co"># create a `rmse` function that will use prediction vector</span></a>
+<a class="sourceLine" id="cb313-2" data-line-number="2"><span class="co"># and a vector of actual target vales as parameters</span></a>
+<a class="sourceLine" id="cb313-3" data-line-number="3"><span class="co"># and calculate the RMSE measure according to the above formula</span></a>
+<a class="sourceLine" id="cb313-4" data-line-number="4">rmse &lt;-<span class="st"> </span><span class="cf">function</span>(pred, act) <span class="kw">sqrt</span>(<span class="kw">mean</span>((pred <span class="op">-</span><span class="st"> </span>act) <span class="op">**</span><span class="st"> </span><span class="dv">2</span>))</a></code></pre></div>
+</div>
+<p>Let us now add prection columns to <code>wine.train</code> and<code>wine.test</code> datasets and then calculate the value of the RMSE measure for both.</p>
+<p><strong>Zadatak 14.4 - Model evaluation for the training and test set </strong></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1"><span class="co"># add a `predQualityLR` column to `wine.train` and `wine.test` </span></a>
+<a class="sourceLine" id="cb314-2" data-line-number="2"><span class="co"># using the `predict` function and the `linMod` model</span></a>
+<a class="sourceLine" id="cb314-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb314-4" data-line-number="4"><span class="co"># print the value of the RMSE measure for both sets</span></a>
+<a class="sourceLine" id="cb314-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb314-6" data-line-number="6"><span class="co"># remove the `predQualityLR` column from the `wine.train` dataset</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="co"># add a `predQualityLR` column to `wine.train` and `wine.test` </span></a>
+<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="co"># using the `predict` function and the `linMod` model</span></a>
+<a class="sourceLine" id="cb315-3" data-line-number="3">wine.train<span class="op">$</span>predQualityLR &lt;-<span class="st"> </span><span class="kw">predict</span>(linMod, wine.train)</a>
+<a class="sourceLine" id="cb315-4" data-line-number="4">wine.test<span class="op">$</span>predQualityLR &lt;-<span class="st"> </span><span class="kw">predict</span>(linMod, wine.test)</a>
+<a class="sourceLine" id="cb315-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb315-6" data-line-number="6"><span class="co"># print the value of the RMSE measure for both sets</span></a>
+<a class="sourceLine" id="cb315-7" data-line-number="7"><span class="kw">rmse</span>(wine.train<span class="op">$</span>predQualityLR, wine.train<span class="op">$</span>quality)</a>
+<a class="sourceLine" id="cb315-8" data-line-number="8"><span class="kw">rmse</span>(wine.test<span class="op">$</span>predQualityLR, wine.test<span class="op">$</span>quality)</a>
+<a class="sourceLine" id="cb315-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb315-10" data-line-number="10"><span class="co"># remove the `predQualityLR` column from the `wine.train` dataset</span></a>
+<a class="sourceLine" id="cb315-11" data-line-number="11">wine.train<span class="op">$</span>predQualityLR &lt;-<span class="st"> </span><span class="ot">NULL</span></a></code></pre></div>
+<pre><code>## [1] 0.7841708
+## [1] 0.8078178</code></pre>
+</div>
+<p>We see that the RMSE for the training set roughly corresponds to the residual standard error obtained in the model summary (a small difference is a result of the fact that we used the total number of observations, while in the calculation of the residual standard error we used the number of degrees of freedom - “dependent” variables, i.e. predictors). What is interesting is the fact that the value of RMSE measure of the test set is not dramatically larger than the RMSE measure, which means that the model works almost equally well (or badly) on new data.</p>
+<hr />
+</div>
+<div id="classification-predictive-models---knn-classification" class="section level2">
+<h2><span class="header-section-number">14.3</span> Classification Predictive Models - kNN Classification</h2>
+<p>The linear regression method allowed us to “guess” the numerical target variable. It is reasonable to ask the question - can we build a predictive model that will try to estimate the value of a categoric variable? This is an extremely important goal of predictive modeling since many domains have problems with determining the value of a particular category (the patient is ill or not, the device is corrupt or correct, the transaction is regular ora result of fraud, the client will default on the loan or not etc.)</p>
+<p>These are so-called “classification” problems for which - just as for the “regression” problems which use numerical goals - there is an extremely large set of developed methods. Very often, similar methods can be used for both purposes (sometimes with certain adjustments), so for example even if linear regression is not specifically suited for classification problems, its related “logistic regression” method is a very effective and popular approach to such a type of problem.</p>
+<p>In this section, we will focus on another, very popular classification method, which is very intuitive and easy to understand, but which allows us to inspect a number of interesting predictive modeling elements that we have not mentioned so far. It is a method called “k nearest neighbors”, or “kNN classification”.</p>
+<p>This method works in a very simple way. If we do not know the category of some observation, we simply find a number of observations which are the “closest” to that new observation. We then look at their categories, and then by majority vote determine which category to assign to the new observation. Let’s try to visualize this.</p>
+<p><strong>Zadatak 14.5 - Visualization of the main idea for the method of kNN classification </strong></p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1"><span class="co"># create a scatterplot for `wine.train` dataset</span></a>
+<a class="sourceLine" id="cb317-2" data-line-number="2"><span class="co"># put `chlorides` on `x` axis</span></a>
+<a class="sourceLine" id="cb317-3" data-line-number="3"><span class="co"># and `volatile.acidity` on `y` axis</span></a>
+<a class="sourceLine" id="cb317-4" data-line-number="4"><span class="co"># color point based on wine type</span></a>
+<a class="sourceLine" id="cb317-5" data-line-number="5"><span class="co"># set the transparency of the points to 0.5</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="co"># create a scatterplot for `wine.train` dataset</span></a>
+<a class="sourceLine" id="cb318-2" data-line-number="2"><span class="co"># put `chlorides` on `x` axis</span></a>
+<a class="sourceLine" id="cb318-3" data-line-number="3"><span class="co"># and `volatile.acidity` on `y` axis</span></a>
+<a class="sourceLine" id="cb318-4" data-line-number="4"><span class="co"># color point based on wine type</span></a>
+<a class="sourceLine" id="cb318-5" data-line-number="5"><span class="co"># set the transparency of the points to 0.5</span></a>
+<a class="sourceLine" id="cb318-6" data-line-number="6"><span class="kw">ggplot</span>(wine.train, <span class="kw">aes</span>(chlorides, volatile.acidity, <span class="dt">col =</span> type)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<p><img src="osnoveR_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+</div>
+<p>On the graph we can clearly see how the points form “clusters” of the same colors in certain areas. If we take a new observation regarding the wine of an unknown type, but the known values of the measures set on the x and y axes, by looking at its immediate neighborhood, we could conclude which type of wine the new wine belongs to. Observations deep within one of the “clouds” are very likely to belong to the type shown (although we see that there are exceptions!). On the other hand, observation within the “boundary” areas is much more likely to be misdiagnosed, and the different choice of neighboring numbers could result in different classification results.</p>
+<p>kNN classification is based on the <strong>concept of distance</strong>. Although there are different options for distance selection, we often rely on the so-called “Euclidean distance”, which is easily presented in the two- and three-dimensional Cartesian system by the shortest path between two points, and we can easily calculate its value using their coordinates and Pythagorean theorem. This distance is easily applied to n-dimensional spaces, so although we can not easily visualize points in a space whose dimension corresponds to the number of predictors, we can still easily calculate the value of the Euclidean distance between points.</p>
+<p>So, the way kNN classification works can be easily described as follows:</p>
+<ul>
+<li>the training set itself represents “domain knowledge”, that is, the predictive model itself</li>
+<li>for each new observation, we find <em>k</em> closest observations from the training set and assign the category to it by using the majority vote</li>
+</ul>
+<p>Although this process is relatively simple, there are some common questions which require answers. Firstly - how do we select the parameter <em>k</em>? Secondly, do we need to make some additional preparatory actions on the data set before we perform the kNN classification?</p>
+<p>Let’s deal with the second question first. Examine the graph we have drawn, more precisely its coordinate axes. We can see that the lengths of the axes do not necessarily scale to their numerical values equally, i.e. the unit interval on the x axis is not necessarily equal to the unit interval on y axis. This is normal and expected, since the values on axes do not necessarily have to use the same scale nor even the measuring unit. But there is one problem - when we use Euclidean distance, it treats all axes equally, which means that variables with larger ranges will automatically gain greater importance (e.g. the maximum value of the chlorides is around 0.611 while the maximum value of sulfur dioxide variable reaches over 3000!)</p>
+<p>Here we see the importance of <strong>data pre-processing </strong>. For kNN classification, <strong>normalization of numeric variables</strong> is recommended, i.e. the transformation of numeric variables in such a way that we deduct their average and divide them by standard deviation, which brings them all to the same scale. This process is somewhat more complex than it seems, because we have to make sure that <em>new observations are also normalized in the same way</em>. This means that we need to make sure both training and test numerical variables need to come from the same distribution. If we have enough data and both training and test observations are representative, then their means and standard deviations should be close enough so we can easily normalize each set independently. If we have small test sets, then the normalization of the test set should be done by remembering using the mean and standard deviation of the training set.</p>
+<p>To simplify this process somwhat, we will return to the original <code>wine</code> dataset and simply normalize the numeric columns beforehand, and then store it in the <code>wineNorm</code> variable (we can pretend that we knew means and standard deviations of populations of these variables beforehand so we used them to normalize both training and test set independetly). Then, we will split this set into sets of <code>wineNorm.train</code> and<code>wineNorm.test</code> analogously to the previous procedure.</p>
+<p>`r zadHead(“Normalization of numeric variables of the input dataset”)</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="co"># normalize all numeric columns of the `wine` data frame</span></a>
+<a class="sourceLine" id="cb319-2" data-line-number="2"><span class="co"># store the result in the `wineNorm` variable</span></a>
+<a class="sourceLine" id="cb319-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb319-4" data-line-number="4"><span class="co"># use the `train_ind` object to split `wineNorm` </span></a>
+<a class="sourceLine" id="cb319-5" data-line-number="5"><span class="co"># into `wineNorm.train` and `wineNorm.test`</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1"><span class="co"># normalize all the numeric columns of the `wine` data frame</span></a>
+<a class="sourceLine" id="cb320-2" data-line-number="2"><span class="co"># store the result in the `wineNorm` variable</span></a>
+<a class="sourceLine" id="cb320-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb320-4" data-line-number="4">wineNorm &lt;-<span class="st"> </span><span class="kw">lapply</span>(wine, <span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb320-5" data-line-number="5">  <span class="cf">if</span>(<span class="kw">is.numeric</span>(x))(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x)</a>
+<a class="sourceLine" id="cb320-6" data-line-number="6">  <span class="cf">else</span> x</a>
+<a class="sourceLine" id="cb320-7" data-line-number="7">})<span class="op">%&gt;%</span><span class="st"> </span>as.data.frame</a>
+<a class="sourceLine" id="cb320-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb320-9" data-line-number="9"><span class="co"># use the `train_ind` object to split `wineNorm` </span></a>
+<a class="sourceLine" id="cb320-10" data-line-number="10"><span class="co"># into `wineNorm.train` and `wineNorm.test`</span></a>
+<a class="sourceLine" id="cb320-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb320-12" data-line-number="12">wineNorm.train &lt;-<span class="st"> </span>wineNorm[train_ind,]</a>
+<a class="sourceLine" id="cb320-13" data-line-number="13">wineNorm.test &lt;-<span class="st"> </span>wineNorm[<span class="op">-</span>train_ind,]</a></code></pre></div>
+</div>
+<p>Let’s go back to the problem of selecting the value of the <code>k</code> parameter. How to pick the right value? Generally speaking, this problem is called “choosing a hyperparameter of a model,” since the model besides input data requires some additional input parameters to perform its function. Usually, when no mathematical method of calculating optimal hyperparameters exist, the only option we have is training models with various combinations of hyperparameters and finally selecting those hyperparameter which result in models showing the best performance. In this case, we often need another (third) part of the original dataset, usually called a “validation” dataset, which represents an additional step before testing the set in which we select the values of the hyperparameters for the “final” model. Specifically, for kNN classification:</p>
+<ul>
+<li>we train a larger number of models for different parameter values <code>k</code> over the training set</li>
+<li>with the help of the validation set, we find the model that has the best performance and choose its <code>k</code></li>
+<li>we use chosen <code>k</code> and the entire training and validation set to train the model</li>
+<li>we make a final evaluation on the test set</li>
+</ul>
+<p>Below we will use a simplified version of this process which uses only the training and test set while setting the <code>k</code> parameter arbitrarily to <code>5</code>. We will leave the entire process of possibly finding a better hyperparameter as an optional exercise. Likewise, as we will see at the end of this chapter, we often do not manually program instruction for finding best hyperparameters, but rather use high-level functions which allow us to only set things up declaratively, without having to deal with low-grade details about the implementation of the process itself.</p>
+<p>Let’s try to see if we can properly classify wine as “white” or “red” with the help of variables describing its chemical composition. We will use the kNN method, with the number of neighbors set to 5. Predictors will be all available variables except <code>quality</code> and<code>type</code>.</p>
+<p>For kNN classification the base R offers the <code>knn</code> function . For our needs we will use the <code>knn3</code> function from the<code>caret</code> package. The function <code>knn3</code> expands the basic <code>knn</code> function in a way that allows us to call it by following the standard programming conventions we have already learned when training linear regression models:</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1">model &lt;-<span class="st"> </span><span class="kw">selected_method</span>(formula, training_dataset, additional_parameters)</a>
+<a class="sourceLine" id="cb321-2" data-line-number="2">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model, test_dataset, additional_parameters)</a></code></pre></div>
+<p>In the case of the <code>knn3</code> function, an additional parameter in training the model is <code>k</code>, set to <code>5</code>. When creating predictions, we will set the <code>type</code> parameter to <code>class</code>, meaning we want to predict the class itself (alternative is <code>probs</code>, returning predicted probabilities for each class).</p>
+<p>Let’s try to create a kNN model with the help of <code>wineNorm.train</code> and then find wine type predictions for <code>wineNorm.test</code>.</p>
+<p><strong>Zadatak 14.6 - kNN Classification </strong></p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="co"># create the variable `kNN5Mod` which will be</span></a>
+<a class="sourceLine" id="cb322-2" data-line-number="2"><span class="co"># the result of calling `knn3` over the `wineNorm.train` set</span></a>
+<a class="sourceLine" id="cb322-3" data-line-number="3"><span class="co"># target variable is `type`</span></a>
+<a class="sourceLine" id="cb322-4" data-line-number="4"><span class="co"># predictors are all other variables except `quality`</span></a>
+<a class="sourceLine" id="cb322-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb322-6" data-line-number="6"><span class="co"># add a `predictedType` column to `wineNorm.test`</span></a>
+<a class="sourceLine" id="cb322-7" data-line-number="7"><span class="co"># which will store a result of calling the `predict` function</span></a>
+<a class="sourceLine" id="cb322-8" data-line-number="8"><span class="co"># with `kNN5Mod` as a model and `wineNorm.test` as new data</span></a>
+<a class="sourceLine" id="cb322-9" data-line-number="9"><span class="co"># set the `type` parameter to `class`</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="co"># create the variable `kNN5Mod` which will be</span></a>
+<a class="sourceLine" id="cb323-2" data-line-number="2"><span class="co"># the result of calling `knn3` over the `wineNorm.train` set</span></a>
+<a class="sourceLine" id="cb323-3" data-line-number="3"><span class="co"># target variable is `type`</span></a>
+<a class="sourceLine" id="cb323-4" data-line-number="4"><span class="co"># predictors are all other variables except `quality`</span></a>
+<a class="sourceLine" id="cb323-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb323-6" data-line-number="6"><span class="co">#library(caret) # if needed</span></a>
+<a class="sourceLine" id="cb323-7" data-line-number="7">kNN5Mod &lt;-<span class="st"> </span><span class="kw">knn3</span>(type <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>quality, <span class="dt">data =</span> wineNorm.train, <span class="dt">k =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb323-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb323-9" data-line-number="9"><span class="co"># add a `predictedType` column to `wineNorm.test`</span></a>
+<a class="sourceLine" id="cb323-10" data-line-number="10"><span class="co"># which will store a result of calling the `predict` function</span></a>
+<a class="sourceLine" id="cb323-11" data-line-number="11"><span class="co"># with `kNN5Mod` as a model and `wineNorm.test` as new data</span></a>
+<a class="sourceLine" id="cb323-12" data-line-number="12"><span class="co"># set the `type` parameter to `class`</span></a>
+<a class="sourceLine" id="cb323-13" data-line-number="13">wineNorm.test<span class="op">$</span>predictedType &lt;-<span class="st"> </span><span class="kw">predict</span>(kNN5Mod, wineNorm.test, <span class="dt">type =</span> <span class="st">&quot;class&quot;</span>)</a></code></pre></div>
+</div>
+<p>Note that we did not look for a model summary since we can not get too much information in this case. The kNN classifier can not provide us with some aggregated information about “learned” knowledge, it is just a “map of the domain space” that is then used for each new observation to determine which category it belongs to.</p>
+<p>How do we check the classifier’s performance? A typical procedure (with binary classifiers) is the creation of a so-calle “confusion matrix”. This simply means that we will create a table that will show how well the predicted values match the actual values. The easiest way to create this table is simply to call the <code>table</code> function with the prediction column and the actual value column as parameters.</p>
+<p><strong>Zadatak 14.7 - Simple Configuration Matrix </strong></p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="co"># print a confusion matrix by calling the `table` function</span></a>
+<a class="sourceLine" id="cb324-2" data-line-number="2"><span class="co"># over the appropriate columns of the `wineNorm.test` dataset</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1"><span class="co"># print a confusion matrix by calling the `table` function</span></a>
+<a class="sourceLine" id="cb325-2" data-line-number="2"><span class="co"># over the appropriate columns of the `wineNorm.test` dataset</span></a>
+<a class="sourceLine" id="cb325-3" data-line-number="3"><span class="kw">table</span>(wineNorm.test<span class="op">$</span>predictedType, wineNorm.test<span class="op">$</span>type)</a></code></pre></div>
+<pre><code>##        
+##          red white
+##   red    476    14
+##   white    9  1450</code></pre>
+</div>
+<p>Looking at the results we can intuitively conclude that in this case the classifier works extremely well, that is, white and red wines can be very easily classified by looking at their chemical properties. But we often want to describe the quality of the classifier using an objective, numerical measure. There are a number of such measures, and most of them can be directly calculated using values from the confusion matrix.</p>
+<p>Specifically, if we call the confusion matrix cells <em>TP</em>, <em>TN</em>, <em>FP</em>, <em>FN</em> (<em>true positive, true negative, false positive, false negative</em>), where we treat one class as “positive” and hence assigning the names of the corresponding cells depending on whether the classifier correctly guessed the class (main diagonal) or not (side diagonal). In this case, from the confusion matrix we can directly calculate the following measures:</p>
+<ul>
+<li><em>accuracy</em>: <span class="math inline">\(\frac{TP + TN}{TP + FP + TN + FN}\)</span></li>
+<li><em>sensitivity</em> (<em>recall</em>): <span class="math inline">\(\frac{TP}{TP + FN}\)</span></li>
+<li><em>precision</em>: <span class="math inline">\(\frac{TP}{TP + FP}\)</span></li>
+<li><em>false positive rate</em>/<em>false negative rate</em>: <span class="math inline">\(\frac{FP}{FP + TN}\)</span> ; <span class="math inline">\(\frac{FN}{TP + FN}\)</span></li>
+<li>etc.</li>
+</ul>
+<p>These are just some of the possible measures. Although accuracy may be the most logical choice (because we actually get a percentage of correctly guessed observations), we often have to be careful because it can give us a distorted picture of the classifier’s effectiveness, especially in when there is a huge disbalance in categories or when one type of error is far more dangerous than the other. A typical example is the diagnosis of rare diseases - if the disease occurs in only 0.1% of cases, then the trivial classifier, which for all observations diagnoses that the disease is not present, works well in 99.9% cases. Also, if it is a dangerous disease, then <em>FP</em> error (the disease is diagnosed although not present) is far less important than <em>FN</em> errors (the disease is present but is not recognized). In these cases, selecting another measure (eg “sensitivity” or “false negative rate”) is often a much better quality indicator of the classifier.</p>
+<p>We can very easily manually calculate all these measures using base R. However, the <code>confusionMatrix</code> function from the <code>caret</code> package (which also leverages the <code>e1071</code> package) gives us the same result as the <code>table</code> function but with the added convenience of computing a large number of measures that can help us evaluate the classifier’s quality.</p>
+<p><strong>Zadatak 14.8 - <code>confusionMatrix</code> function</strong></p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="co"># create a variable called `confMat` variable</span></a>
+<a class="sourceLine" id="cb327-2" data-line-number="2"><span class="co"># which will stort the result of the `confusionMatrix` function</span></a>
+<a class="sourceLine" id="cb327-3" data-line-number="3"><span class="co"># using the appropriate columns of the `wineNorm.test` dataset as parameters</span></a>
+<a class="sourceLine" id="cb327-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb327-5" data-line-number="5"><span class="co"># print the  `confMat` variable</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1"><span class="co"># create a variable called `confMat` variable</span></a>
+<a class="sourceLine" id="cb328-2" data-line-number="2"><span class="co"># which will stort the result of the `confusionMatrix` function</span></a>
+<a class="sourceLine" id="cb328-3" data-line-number="3"><span class="co"># using the appropriate columns of the `wineNorm.test` dataset as parameters</span></a>
+<a class="sourceLine" id="cb328-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb328-5" data-line-number="5"><span class="co">#library(e1071) # if needed</span></a>
+<a class="sourceLine" id="cb328-6" data-line-number="6"><span class="co">#library(caret) # if needed</span></a>
+<a class="sourceLine" id="cb328-7" data-line-number="7">confMat &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(wineNorm.test<span class="op">$</span>predictedType, wineNorm.test<span class="op">$</span>type)</a>
+<a class="sourceLine" id="cb328-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb328-9" data-line-number="9"><span class="co"># print the  `confMat` variable</span></a>
+<a class="sourceLine" id="cb328-10" data-line-number="10">confMat</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction  red white
+##      red    476    14
+##      white    9  1450
+##                                           
+##                Accuracy : 0.9882          
+##                  95% CI : (0.9823, 0.9925)
+##     No Information Rate : 0.7512          
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9685          
+##  Mcnemar&#39;s Test P-Value : 0.4042          
+##                                           
+##             Sensitivity : 0.9814          
+##             Specificity : 0.9904          
+##          Pos Pred Value : 0.9714          
+##          Neg Pred Value : 0.9938          
+##              Prevalence : 0.2488          
+##          Detection Rate : 0.2442          
+##    Detection Prevalence : 0.2514          
+##       Balanced Accuracy : 0.9859          
+##                                           
+##        &#39;Positive&#39; Class : red             
+## </code></pre>
+</div>
+<p>Since the variable <code>confMat</code> is an S3 object, with the help of the <code>unlist</code> function and the selection of the desired element, we can easily obtain only the numeric value of the measure we are interested in. This is useful if we want to integrate this function in our programming scripts.</p>
+</div>
+<div id="package-caret-and-predictive-modeling" class="section level2">
+<h2><span class="header-section-number">14.4</span> Package <code>caret</code> and predictive modeling</h2>
+<p>In the previous chapter we were already introduced to the <code>caret</code> package, more specifically some of its functions that help us with predictive modeling. This package actually offers a lot more than we have seen. Specifically, the <code>caret</code> package provides a set of tools to effectively perform all elements of the predictive modeling process:</p>
+<ul>
+<li>splitting data</li>
+<li>pre-processing of data</li>
+<li>feature selection</li>
+<li>adjusting the model with the help of re-sampling</li>
+<li>variable importance estimation</li>
+</ul>
+<p>As the <code>dplyr</code> package actually changes the way we use the R language to manage the data frames, so the<code>caret</code> package enables a thorough modification of the predictive modeling approach used when programming in R. The functions of the <code>caret</code> package not only provide a cleaner syntax for low-level jobs, they also give the possibility of leveraging high-level approach for predictive modeling, where we declare declarative calls for <em>what</em> we want to do, and let R do low-level jobs returning us the corresponding result.</p>
+<p>Details of this package can be found at [this link] (<a href="https://topepo.github.io/caret/index.html" class="uri">https://topepo.github.io/caret/index.html</a>), and below we will only give you a brief insight into some of the most useful features of this package.</p>
+<p>To demonstrate the declarative nature of predictive modeling with this package, we will look at two functions: <code>train</code> and<code>trainControl</code>.</p>
+<p>The <code>train</code> function is actually a generic interface to a large number of predictive models (a list of all the models currently supported by the function can be [found here] (<a href="http://topepo.github.io/caret/train-models-by-tag.html" class="uri">http://topepo.github.io/caret/train-models-by-tag.html</a>) . In a large number of cases, the this function call is not different from the call of the predictive modeling method functions we have learned so far, specifically <code>lm</code> and<code>knn3</code>. The biggest difference is that instead of calling a specific function, here we define the method of predictive modeling using the <code>method</code> parameter.</p>
+<p>Let’s try to train a linear regression model using the <code>train</code> function and the previously prepared <code>wine.train</code> dataset.</p>
+<p><strong>Zadatak 14.9 - <code>train</code> function and linear regression </strong></p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="co"># using the  `train` function from the `caret` package</span></a>
+<a class="sourceLine" id="cb330-2" data-line-number="2"><span class="co"># train a linear regression model using the `wine.train` dataset</span></a>
+<a class="sourceLine" id="cb330-3" data-line-number="3"><span class="co"># target variable is `quality` and all other variables are predictors</span></a>
+<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="co"># set the `method` `&quot;lm&quot;` </span></a>
+<a class="sourceLine" id="cb330-5" data-line-number="5"><span class="co"># store the resuling model in a variable called `linMod`</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="co"># using the  `train` function from the `caret` package</span></a>
+<a class="sourceLine" id="cb331-2" data-line-number="2"><span class="co"># train a linear regression model using the `wine.train` dataset</span></a>
+<a class="sourceLine" id="cb331-3" data-line-number="3"><span class="co"># target variable is `quality` and all other variables are predictors</span></a>
+<a class="sourceLine" id="cb331-4" data-line-number="4"><span class="co"># set the `method` `&quot;lm&quot;` </span></a>
+<a class="sourceLine" id="cb331-5" data-line-number="5"><span class="co"># store the resuling model in a variable called `linMod`</span></a>
+<a class="sourceLine" id="cb331-6" data-line-number="6">linMod &lt;-<span class="st"> </span><span class="kw">train</span>(quality <span class="op">~</span>., <span class="dt">data =</span> wine.train, <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb331-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb331-8" data-line-number="8"><span class="co"># read the summary of the obtained model</span></a>
+<a class="sourceLine" id="cb331-9" data-line-number="9"><span class="kw">summary</span>(linMod)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = .outcome ~ ., data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1979 -0.5375 -0.0454  0.5078  4.9346 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)           9.723e+01  4.451e+00  21.843  &lt; 2e-16 ***
+## fixed.acidity        -4.744e-04  4.133e-04  -1.148 0.251125    
+## volatile.acidity     -1.351e+00  1.011e-01 -13.366  &lt; 2e-16 ***
+## citric.acid           3.106e-01  9.469e-02   3.280 0.001047 ** 
+## residual.sugar        1.648e-03  4.832e-04   3.411 0.000654 ***
+## chlorides            -3.657e+00  4.188e-01  -8.733  &lt; 2e-16 ***
+## free.sulfur.dioxide   1.041e-04  2.445e-04   0.426 0.670234    
+## total.sulfur.dioxide  1.090e-04  9.830e-05   1.109 0.267442    
+## density              -9.150e+01  4.484e+00 -20.404  &lt; 2e-16 ***
+## pH                   -7.765e-05  1.259e-04  -0.617 0.537511    
+## sulphates             8.632e-01  9.224e-02   9.358  &lt; 2e-16 ***
+## alcohol               3.983e-16  3.991e-16   0.998 0.318384    
+## typewhite            -3.714e-01  4.514e-02  -8.229 2.44e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.7853 on 4533 degrees of freedom
+## Multiple R-squared:  0.1851, Adjusted R-squared:  0.183 
+## F-statistic: 85.82 on 12 and 4533 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>We see that we get the same result as when we called the <code>lm</code> function directly at the beginning of this chapter.</p>
+<p>Note that in this case we haven’t used a large number of parameters of the <code>train</code> function that we can see in the documentation. For example, using the <code>preprocess</code> parameter can automatically perform some data preparation procedures such as normalization, BoxCox transformation, imputation of missing values, and so on.</p>
+<p>Let’s create a little more complex predictive model now. First, let’s examine a “control object” we can create using a function called <code>trainControl</code>.
+This function provides us with a “control panel” which allows us to fine-tune all parameters related to the training of our predictive model. Some of these parameters relate to so-called “data re-sampling” - this means that we can get a better estimate of the behavior of developed predictive models if we perform a process called “cross-validation”, where the training set is split multiple times and then a model is trained over and over again, always using a separate holdover part as the test set. In this way we actually get a number of models, each with their own results, which give us information not only about the quality but also the stability of the model.</p>
+<p>Additionally, we have the option of tweaking additional parameters, such as which summary funcation we want to apply on the resulting model, or whether we want the model (in the case of classification) to return the probabilities or just the resulting category. When finally create such a “control object”, we can recycle it as much as we want in the future steps of predictive modeling without the need to enter a large number of training-related parameters every time.</p>
+<p>A simple control object can look like this:</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"><span class="co"># We use repeated cross-validation with 5 repeats</span></a>
+<a class="sourceLine" id="cb333-2" data-line-number="2">ctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatcv&quot;</span>,</a>
+<a class="sourceLine" id="cb333-3" data-line-number="3">                     <span class="dt">repeats =</span> <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## Warning: `repeats` has no meaning for this resampling method.</code></pre>
+<p>Finally, let’s try to use two slightly more advanced methods of predictive modeling - the random forest method (the <code>ranger</code> method from the package of a same name) and the support vector method (the<code>svmRadial</code> method from the <code>kernlab</code>) package. We will not go deeper into the details of these methods, just focus on how to call them with the help of the <code>trainCtrl</code> and<code>train</code> functions.</p>
+<p>In the following code we will also leverage a function called <code>expand.grid</code>. This function requires a vector different values of the hyperparameters we have provided, and will result in a dataframe containing all combinations of these hyperparameters. It is most commonly used in conjunction with the <code>tuneGrid</code> parameter to assign the candidate sets for predictive model hyperparameter - in this way, the <code>train</code> function will try out all combinations of the default parameters and (in conjunction with the cross validation method) select the parameters that showcase the best performance for the final model.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1"><span class="co">#library(ranger) # if needed</span></a>
+<a class="sourceLine" id="cb335-2" data-line-number="2"><span class="co">#library(kernlab) # if needed</span></a>
+<a class="sourceLine" id="cb335-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb335-4" data-line-number="4"><span class="co"># we will use the same control object for both models</span></a>
+<a class="sourceLine" id="cb335-5" data-line-number="5"><span class="co"># set `verboseIter` to TRUE</span></a>
+<a class="sourceLine" id="cb335-6" data-line-number="6"><span class="co"># for  better insight into training speed!</span></a>
+<a class="sourceLine" id="cb335-7" data-line-number="7">ctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(</a>
+<a class="sourceLine" id="cb335-8" data-line-number="8">  <span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>,</a>
+<a class="sourceLine" id="cb335-9" data-line-number="9">  <span class="dt">number =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb335-10" data-line-number="10">  <span class="dt">repeats =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb335-11" data-line-number="11">  <span class="dt">verboseIter =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb335-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb335-13" data-line-number="13"><span class="co"># random forest model</span></a>
+<a class="sourceLine" id="cb335-14" data-line-number="14">rfMod &lt;-<span class="st"> </span><span class="kw">train</span>(quality <span class="op">~</span>.,</a>
+<a class="sourceLine" id="cb335-15" data-line-number="15">                 <span class="dt">data =</span> wine.train,</a>
+<a class="sourceLine" id="cb335-16" data-line-number="16">                 <span class="dt">method =</span> <span class="st">&#39;ranger&#39;</span>,</a>
+<a class="sourceLine" id="cb335-17" data-line-number="17">                 <span class="dt">tuneLength =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb335-18" data-line-number="18">                 <span class="dt">trControl =</span> ctrl,</a>
+<a class="sourceLine" id="cb335-19" data-line-number="19">                 <span class="dt">num.trees =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb335-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb335-21" data-line-number="21"><span class="co"># support vector model</span></a>
+<a class="sourceLine" id="cb335-22" data-line-number="22"><span class="co"># we use a grid of hyperparameters</span></a>
+<a class="sourceLine" id="cb335-23" data-line-number="23"><span class="co"># and pre-process data with normalization</span></a>
+<a class="sourceLine" id="cb335-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb335-25" data-line-number="25">svm.grid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">C =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>), <span class="dt">sigma =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb335-26" data-line-number="26">svmMod &lt;-<span class="st"> </span><span class="kw">train</span>(quality <span class="op">~</span>.,</a>
+<a class="sourceLine" id="cb335-27" data-line-number="27">                   <span class="dt">data =</span> wine.train,</a>
+<a class="sourceLine" id="cb335-28" data-line-number="28">                   <span class="dt">method =</span> <span class="st">&quot;svmRadial&quot;</span>,</a>
+<a class="sourceLine" id="cb335-29" data-line-number="29">                   <span class="dt">trControl =</span> ctrl,</a>
+<a class="sourceLine" id="cb335-30" data-line-number="30">                   <span class="dt">tuneGrid =</span> svm.grid,</a>
+<a class="sourceLine" id="cb335-31" data-line-number="31">                   <span class="dt">preProcess =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>))</a></code></pre></div>
+<p>Finally, we make a simple evaluation of the model with the help of RMSE measures.</p>
+<p><strong>Zadatak 14.10 - Easy Model Evaluation</strong></p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="co"># with the help of the `predict` function and` rfMod` and `svmMod` models</span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="co"># add `predQualityRF` and `predQualitySVM` columns to `wine.test` dataset</span></a>
+<a class="sourceLine" id="cb336-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb336-4" data-line-number="4"><span class="co"># print the value of the RMSE measure for all obtained models</span></a></code></pre></div>
+<div class="fold s o">
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="co"># with the help of the `predict` function and` rfMod` and `svmMod` models</span></a>
+<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="co"># add `predQualityRF` and `predQualitySVM` columns to `wine.test` dataset</span></a>
+<a class="sourceLine" id="cb337-3" data-line-number="3">wine.test<span class="op">$</span>predQualityRF &lt;-<span class="st"> </span><span class="kw">predict</span>(rfMod, wine.test)</a>
+<a class="sourceLine" id="cb337-4" data-line-number="4">wine.test<span class="op">$</span>predQualitySVM &lt;-<span class="st"> </span><span class="kw">predict</span>(svmMod, wine.test)</a>
+<a class="sourceLine" id="cb337-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb337-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb337-7" data-line-number="7"><span class="co"># print the value of the RMSE measure for all obtained models</span></a>
+<a class="sourceLine" id="cb337-8" data-line-number="8"><span class="kw">cat</span>(<span class="st">&quot;RMSE Linear regression:&quot;</span>, <span class="kw">rmse</span>(wine.test<span class="op">$</span>predQualityLR, wine.test<span class="op">$</span>quality))</a>
+<a class="sourceLine" id="cb337-9" data-line-number="9"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">RMSE Random Forest:&quot;</span>, <span class="kw">rmse</span>(wine.test<span class="op">$</span>predQualityRF, wine.test<span class="op">$</span>quality))</a>
+<a class="sourceLine" id="cb337-10" data-line-number="10"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">RMSE Support Vectors:&quot;</span>, <span class="kw">rmse</span>(wine.test<span class="op">$</span>predQualitySVM, wine.test<span class="op">$</span>quality))</a></code></pre></div>
+<pre><code>## RMSE Linear regression: 0.8078178
+## RMSE Random Forest: 0.6772888
+## RMSE Support Vectors: 0.7011601</code></pre>
+</div>
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Programirajmo u R-u</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.fer.unizg.hr/en/damir.pintar" property="cc:attributionName" rel="cc:attributionURL">Damir Pintar</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://ratnip.github.io/FER_OPJR/" rel="dct:source">https://ratnip.github.io/FER_OPJR/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed",
+"edit": null,
+"download": null,
+"search": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

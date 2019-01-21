@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Let’s program in R</title>
   <meta name="description" content="R Coursebook">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Let’s program in R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Damir Pintar">
 
 
-<meta name="date" content="2017-11-15">
+<meta name="date" content="2019-01-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -116,41 +116,67 @@ pre.plot {
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -250,6 +276,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="apply.html"><a href="apply.html#other-functions-from-the-apply-family-and-the-available-alternatives"><i class="fa fa-check"></i><b>8.4</b> Other functions from the <code>apply</code> family and the available alternatives</a></li>
 <li class="chapter" data-level="" data-path="apply.html"><a href="apply.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="part"><span><b>II Data management and visualizations</b></span></li>
+<li class="chapter" data-level="9" data-path="pipe.html"><a href="pipe.html"><i class="fa fa-check"></i><b>9</b> Pipeline operator and tidy data - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="10" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>10</b> Dates and strings - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="11" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>11</b> Managing data frames with <code>dplyr</code> package - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="12" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>12</b> Visualising data with <code>ggplot2</code> package - UNDER CONSTRUCTION</a></li>
+<li class="part"><span><b>III Machine learning and predictive analytics</b></span></li>
+<li class="chapter" data-level="13" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>13</b> Linear regression analysis - UNDER CONSTRUCTION</a></li>
+<li class="chapter" data-level="14" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html"><i class="fa fa-check"></i><b>14</b> Introduction to Predictive Modeling</a><ul>
+<li class="chapter" data-level="14.1" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#what-is-predictive-modeling"><i class="fa fa-check"></i><b>14.1</b> What is predictive modeling?</a></li>
+<li class="chapter" data-level="14.2" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#creating-training-and-test-datasets"><i class="fa fa-check"></i><b>14.2</b> Creating training and test datasets</a></li>
+<li class="chapter" data-level="14.3" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#classification-predictive-models---knn-classification"><i class="fa fa-check"></i><b>14.3</b> Classification Predictive Models - kNN Classification</a></li>
+<li class="chapter" data-level="14.4" data-path="predictive-Modeling.html"><a href="predictive-Modeling.html#package-caret-and-predictive-modeling"><i class="fa fa-check"></i><b>14.4</b> Package <code>caret</code> and predictive modeling</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -319,31 +358,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Checking whether a variable is of a certain type can work with the <code>is.&lt;type_name&gt;</code> function. We will try this in the next exercise. Before we begin with solving, we introduce one new feature: in exercises where we print more things on the screen, it is useful to visually separate the different print segments so that we can easily understand which part of the code is referenced. For this purpose, we will use the <code>cat(&quot;-----------\n&quot;)</code> command that simply prints a dash of the line and goes to the new line. We could also use the <code>print()</code> function, but it always starts printing with the element index while the <code>cat</code> command is a “raw” print, which in this case is more appropriate.</p>
 <hr />
-<p><strong>Exercise 2.1 - checking data types</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#try the following commands:</span>
-<span class="co">#is.logical(FALSE)</span>
-<span class="co">#is.integer(2L)</span>
-<span class="co">#is.double(1.11)</span>
-
-<span class="co"># perform the following checks:</span>
-
-<span class="co"># is 5L numeric?</span>
-<span class="co"># is 3.14 numeric?</span>
-<span class="co"># is &quot;ABC&quot; character?</span>
-<span class="co"># is 4 + 2i complex?</span>
-<span class="co"># is 5 integer?</span></code></pre></div>
+<p><strong>Zadatak 2.1 - checking data types</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">#try the following commands:</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#is.logical(FALSE)</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#is.integer(2L)</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#is.double(1.11)</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co"># perform the following checks:</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co"># is 5L numeric?</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co"># is 3.14 numeric?</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co"># is &quot;ABC&quot; character?</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co"># is 4 + 2i complex?</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co"># is 5 integer?</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.logical</span>(<span class="ot">FALSE</span>)
-<span class="kw">is.integer</span>(2L)
-<span class="kw">is.double</span>(<span class="fl">1.11</span>)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="kw">is.numeric</span>(5L)
-<span class="kw">is.numeric</span>(<span class="fl">3.14</span>)
-<span class="kw">is.character</span>(<span class="st">&quot;ABC&quot;</span>)
-<span class="kw">is.complex</span>(<span class="dv">4</span> +<span class="st"> </span>2i)
-<span class="kw">is.integer</span>(<span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">is.logical</span>(<span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">is.integer</span>(2L)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">is.double</span>(<span class="fl">1.11</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw">is.numeric</span>(5L)</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="kw">is.numeric</span>(<span class="fl">3.14</span>)</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="kw">is.character</span>(<span class="st">&quot;ABC&quot;</span>)</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="kw">is.complex</span>(<span class="dv">4</span> <span class="op">+</span><span class="st"> </span>2i)</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="kw">is.integer</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE
 ## [1] TRUE
 ## [1] TRUE
@@ -362,24 +401,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>class</code> - ‘object type’, actually the value of <code>class</code> attribute</li>
 </ul>
 <hr />
-<p><strong>Exercise 2.2 - data type retrieval</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the types of the following constants: TRUE, 2L, F, 3.14, &quot;ABC&quot;</span>
-
-<span class="co"># print the classes of the same constants. Are there any differences?</span></code></pre></div>
+<p><strong>Zadatak 2.2 - data type retrieval</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># print the types of the following constants: TRUE, 2L, F, 3.14, &quot;ABC&quot;</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co"># print the classes of the same constants. Are there any differences?</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="ot">TRUE</span>)
-<span class="kw">typeof</span>(2L)
-<span class="kw">typeof</span>(F)
-<span class="kw">typeof</span>(<span class="fl">3.14</span>)
-<span class="kw">typeof</span>(<span class="st">&quot;ABC&quot;</span>)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="kw">class</span>(<span class="ot">TRUE</span>)
-<span class="kw">class</span>(2L)
-<span class="kw">class</span>(F)
-<span class="kw">class</span>(<span class="fl">3.14</span>)
-<span class="kw">class</span>(<span class="st">&quot;ABC&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">typeof</span>(2L)</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw">typeof</span>(F)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw">typeof</span>(<span class="fl">3.14</span>)</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="kw">typeof</span>(<span class="st">&quot;ABC&quot;</span>)</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="kw">class</span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="kw">class</span>(2L)</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="kw">class</span>(F)</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="kw">class</span>(<span class="fl">3.14</span>)</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="kw">class</span>(<span class="st">&quot;ABC&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;
 ## [1] &quot;integer&quot;
 ## [1] &quot;logical&quot;
@@ -395,24 +434,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <hr />
 <p>Data can be explicitly converted from one type to another using the function <code>as.&lt;type_name&gt;</code>:</p>
 <hr />
-<p><strong>Exercise 2.3 - conversion of data types</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># perform the following conversions and print the result</span>
-
-<span class="co">#  2.35 to integer</span>
-<span class="co">#  TRUE to ntomeric</span>
-<span class="co">#  100L to character</span>
-<span class="co">#  2.35 to character</span>
-<span class="co">#  2e2  to character</span>
-<span class="co">#  0 to logical</span>
-<span class="co">#  2.75  to logical</span></code></pre></div>
+<p><strong>Zadatak 2.3 - conversion of data types</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># perform the following conversions and print the result</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#  2.35 to integer</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#  TRUE to ntomeric</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#  100L to character</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#  2.35 to character</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#  2e2  to character</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#  0 to logical</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#  2.75  to logical</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="fl">2.35</span>)
-<span class="kw">as.numeric</span>(<span class="ot">TRUE</span>)
-<span class="kw">as.character</span>(100L)
-<span class="kw">as.character</span>(<span class="fl">2.35</span>)
-<span class="kw">as.character</span>(<span class="fl">2e2</span>)
-<span class="kw">as.logical</span>(<span class="dv">0</span>)
-<span class="kw">as.logical</span>(<span class="fl">2.75</span>)</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">as.integer</span>(<span class="fl">2.35</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">as.numeric</span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">as.character</span>(100L)</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="kw">as.character</span>(<span class="fl">2.35</span>)</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="kw">as.character</span>(<span class="fl">2e2</span>)</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="kw">as.logical</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="kw">as.logical</span>(<span class="fl">2.75</span>)</a></code></pre></div>
 <pre><code>## [1] 2
 ## [1] 1
 ## [1] &quot;100&quot;
@@ -424,21 +463,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <hr />
 <p><em>R</em> will implement implicit conversion if possible:</p>
 <hr />
-<p><strong>Exercise 2.4 - implicit conversion</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Write the following phrases and print the results:</span>
-
-<span class="co"># arithmetic operator between logical and numeric variables</span>
-<span class="co"># arithmetic operator between integer and numeric variables</span>
-<span class="co"># logical operator negation (!) applied to numeric variable</span></code></pre></div>
+<p><strong>Zadatak 2.4 - implicit conversion</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># Write the following phrases and print the results:</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># arithmetic operator between logical and numeric variables</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co"># arithmetic operator between integer and numeric variables</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co"># logical operator negation (!) applied to numeric variable</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># arithmetic operator between logical and numeric variables</span>
-<span class="ot">TRUE</span> +<span class="st"> </span><span class="dv">5</span>
-
-<span class="co"># arithmetic operator between integer and numeric variables</span>
-5L  +<span class="st"> </span><span class="fl">3.14</span>
-
-<span class="co"># logical operator negation (!) applied to numeric variable</span>
-!<span class="dv">25</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># arithmetic operator between logical and numeric variables</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="ot">TRUE</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co"># arithmetic operator between integer and numeric variables</span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">5L  <span class="op">+</span><span class="st"> </span><span class="fl">3.14</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="co"># logical operator negation (!) applied to numeric variable</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="op">!</span><span class="dv">25</span></a></code></pre></div>
 <pre><code>## [1] 6
 ## [1] 8.14
 ## [1] FALSE</code></pre>
@@ -457,30 +496,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><em>assignment</em> <code>&lt;-</code> or<code>=</code></li>
 </ul>
 <hr />
-<p><strong>Exercise 2.5 - operators</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># try the `5 / 2` and` 5%/% 2` expressions</span>
-
-<span class="co"># check how much &quot;square of 17&quot; and &quot;the remainder of 101 divided by 12&quot; are</span>
-
-<span class="co"># check what is the result of the following expressions: `17 &gt; 13`,`!TRUE`, `5 &amp;&amp; 0`,`0. || 2`</span></code></pre></div>
+<p><strong>Zadatak 2.5 - operators</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># try the `5 / 2` and` 5%/% 2` expressions</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co"># check how much &quot;square of 17&quot; and &quot;the remainder of 101 divided by 12&quot; are</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co"># check what is the result of the following expressions: `17 &gt; 13`,`!TRUE`, `5 &amp;&amp; 0`,`0. || 2`</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># try the `5 / 2` and` 5%/% 2` expressions</span>
-<span class="dv">5</span> /<span class="st"> </span><span class="dv">2</span>
-<span class="dv">5</span> %/%<span class="st"> </span><span class="dv">2</span>
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># check how much &quot;square of 17&quot; and &quot;the remainder of 101 divided by 12&quot; are</span>
-<span class="dv">17</span> ^<span class="st"> </span><span class="dv">2</span>
-<span class="dv">101</span> %%<span class="st"> </span><span class="dv">12</span>
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># check what is the result of the following expressions: `17 &gt; 13`,`!TRUE`, `5 &amp;&amp; 0`,`0. || 2`</span>
-<span class="dv">17</span>&gt;<span class="st"> </span><span class="dv">13</span>
-!<span class="st"> </span><span class="ot">TRUE</span>
-<span class="dv">5</span> &amp;&amp;<span class="st"> </span><span class="dv">0</span>
-<span class="dv">0</span>. ||<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># try the `5 / 2` and` 5%/% 2` expressions</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="dv">5</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="dv">5</span> <span class="op">%/%</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="co"># check how much &quot;square of 17&quot; and &quot;the remainder of 101 divided by 12&quot; are</span></a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="dv">17</span> <span class="op">^</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="dv">101</span> <span class="op">%%</span><span class="st"> </span><span class="dv">12</span></a>
+<a class="sourceLine" id="cb21-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb21-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb21-13" data-line-number="13"><span class="co"># check what is the result of the following expressions: `17 &gt; 13`,`!TRUE`, `5 &amp;&amp; 0`,`0. || 2`</span></a>
+<a class="sourceLine" id="cb21-14" data-line-number="14"><span class="dv">17</span><span class="op">&gt;</span><span class="st"> </span><span class="dv">13</span></a>
+<a class="sourceLine" id="cb21-15" data-line-number="15"><span class="op">!</span><span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb21-16" data-line-number="16"><span class="dv">5</span> <span class="op">&amp;&amp;</span><span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb21-17" data-line-number="17"><span class="fl">0.</span> <span class="op">||</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 2.5
 ## [1] 2
 ## -----------
@@ -498,83 +537,83 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Let’s try this command on the following task:</p>
 <hr />
 <p>`r zadHead(“conditional execution”) **</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Write a command that performs the following:</span>
-<span class="co"># &quot;if 100 is an even number print &#39;Success!&#39;&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co"># Write a command that performs the following:</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co"># &quot;if 100 is an even number print &#39;Success!&#39;&quot;</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="dv">100</span> %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>) <span class="kw">print</span>(<span class="st">&quot;Success!&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="cf">if</span> (<span class="dv">100</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="kw">print</span>(<span class="st">&quot;Success!&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;Success!&quot;</code></pre>
 </div>
 <hr />
 <p>We have noted above that we have two types of logical operators for “and” and “or”. We will explain the difference later, for now it is enough to say that we are almost exclusively using <code>&amp;&amp;</code> i <code>||</code> (“C++” operators!) with the conditional execution of commands or program loops.</p>
 <p>Likewise, we have already mentioned that R offers two assignment operators, <code>&lt;-</code> and<code>=</code>. Let’s see if there are anz obvious differences between them.</p>
 <hr />
-<p><strong>Exercise 2.6 - assignment operators</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create variables x and y and assign the number 5, one with the operator &lt;-,</span>
-<span class="co"># the other with the operator =</span>
-<span class="co"># print variables on the screen</span>
-<span class="co"># Do you notice any difference between these two operators?</span></code></pre></div>
+<p><strong>Zadatak 2.6 - assignment operators</strong></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># create variables x and y and assign the number 5, one with the operator &lt;-,</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co"># the other with the operator =</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="co"># print variables on the screen</span></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co"># Do you notice any difference between these two operators?</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">5</span>
-y =<span class="st"> </span><span class="dv">5</span>
-x
-y</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">y =<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">x</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">y</a></code></pre></div>
 <pre><code>## [1] 5
 ## [1] 5</code></pre>
 </div>
 <hr />
 <p>As we could testify, there is no noticeable difference between operator <code>&lt;-</code> and<code>=</code>. There are some minor differences, but they do not have any impact on the normal use of this operator in practice. In the literature, both versions can be seen for assigning values, but we will primarily and consistently use <code>&lt;-</code>, mostly because the code is visually more distinctive than the other programming languages.</p>
 <p>When assigning, we keep in mind that on the left there is so-called “left value” (<em>lvalue</em>). This is interpreted in the programmer’s sense as “something in which the calculated value can be stored”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x +<span class="st"> </span><span class="dv">1</span> &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># error !!!]</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">x <span class="op">+</span><span class="st"> </span><span class="dv">1</span> &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># error !!!]</span></a></code></pre></div>
 <p>As a rule, in R as <em>lvalue </em> we can most commonly see a variable, though sometimes there may be a function call. This perhaps initially confusing feature will be clarified later.</p>
 <hr />
 <p>Naming the variables mostly follows the rules from other programming languages - letters, numbers, subfolders, and points are allowed. The first symbol must be a letter or a dot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.myVarijable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co">#OK</span>
-my.Variable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co">#OK</span>
-_myVariable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># not OK</span>
-123Variable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># not OK</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">.myVarijable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co">#OK</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">my.Variable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co">#OK</span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">_myVariable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># not OK</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">123Variable &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># not OK</span></a></code></pre></div>
 <p>In practice for complex name variables we need to select one of the following conventions:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVariable &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#  camelcase</span>
-my_Variable &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># underscore seperation or</span>
-my.variable &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># point separation</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">myVariable &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#  camelcase</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">my_Variable &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># underscore seperation or</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">my.variable &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># point separation</span></a></code></pre></div>
 <p>It is important that we do not mix conventions in a program code, ie, after the selection, be consistent.</p>
 <p>If we insist on strange names using special characters, then we have to put them under the so called “left single apostrophes” (* backticks *):</p>
 <hr />
-<p><strong>Exercise 2.7 - variable name with special characters</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Enter an arbitrary name with special characters inside the left apostrophes</span>
-<span class="co"># and print the value of the variable</span>
-<span class="co"># `` &lt;- 2</span></code></pre></div>
+<p><strong>Zadatak 2.7 - variable name with special characters</strong></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># Enter an arbitrary name with special characters inside the left apostrophes</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co"># and print the value of the variable</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="co"># `` &lt;- 2</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">!% ^$*@ __ =</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="dv">2</span>
-<span class="st">`</span><span class="dt">!% ^$*@ __ =</span><span class="st">`</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="st">`</span><span class="dt">!% ^$*@ __ =</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">`</span><span class="dt">!% ^$*@ __ =</span><span class="st">`</span></a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <p>Such a way of naming variables is not too useful in practice, but has its purpose - since the operators in R are actually functions (whose names are literally <code>+</code>, <code>**</code> etc.) using left backticks we can directly reference them in their the original form, which can be very practical in the so-called functional programming (which we will talk about in one of the future lessons).</p>
 <hr />
-<p>Assigning values to new variable names we actually create new variables in the working environment (called the “global environment”“). All variables we have created so far can be seen with the <code>ls()</code> function. If we want to delete some variables, just give their names in the call function <code>rm()</code> (eg <code>rm (x, y, z)</code>). To delete * all * variables from the working environment, we use the call <code>rm(list=ls ())</code>, but we have to be careful (no”undo“!).</p>
+<p>Assigning values to new variable names we actually create new variables in the working environment (called the “global environment”“). All variables we have created so far can be seen with the <code>ls()</code> function. If we want to delete some variables, just give their names in the call function <code>rm()</code> (eg <code>rm (x, y, z)</code>). To delete * all * variables from the working environment, we use the call <code>rm(list=ls ())</code>, but we have to be careful (no”undo&quot;!).</p>
 <hr />
-<p><strong>Exercise 2.8 - printing and deleting global environment variables</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print all of the global environment variables that have been created so far</span>
-
-<span class="co"># delete some of the above-written variables - eg rm(x, y, z)</span>
-<span class="co"># list all remaining variables</span>
-
-<span class="co"># delete ALL variables from the global environment</span>
-<span class="co"># (cautiously with this call in practice!)</span>
-<span class="co"># Make sure the global environment is empty</span></code></pre></div>
+<p><strong>Zadatak 2.8 - printing and deleting global environment variables</strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># print all of the global environment variables that have been created so far</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co"># delete some of the above-written variables - eg rm(x, y, z)</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co"># list all remaining variables</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co"># delete ALL variables from the global environment</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co"># (cautiously with this call in practice!)</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="co"># Make sure the global environment is empty</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print all of the global environment variables that have been created so far</span>
-<span class="kw">ls</span>()
-
-<span class="co"># delete some of the above-written variables - eg rm(x, y, z)</span>
-<span class="co"># list all remaining variables</span>
-<span class="kw">rm</span>(x, y)
-<span class="kw">ls</span>()
-
-<span class="co"># delete ALL variables from the global environment</span>
-<span class="co"># (cautiously with this call in practice!)</span>
-<span class="co"># Make sure the global environment is empty</span>
-<span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
-<span class="kw">ls</span>()</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># print all of the global environment variables that have been created so far</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw">ls</span>()</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co"># delete some of the above-written variables - eg rm(x, y, z)</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co"># list all remaining variables</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="kw">rm</span>(x, y)</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="kw">ls</span>()</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb36-9" data-line-number="9"><span class="co"># delete ALL variables from the global environment</span></a>
+<a class="sourceLine" id="cb36-10" data-line-number="10"><span class="co"># (cautiously with this call in practice!)</span></a>
+<a class="sourceLine" id="cb36-11" data-line-number="11"><span class="co"># Make sure the global environment is empty</span></a>
+<a class="sourceLine" id="cb36-12" data-line-number="12"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb36-13" data-line-number="13"><span class="kw">ls</span>()</a></code></pre></div>
 </div>
 <hr />
 <p>Finally, whenever we need help with some function, we have the following options available:</p>
@@ -584,14 +623,14 @@ my.variable &lt;-<span class="st"> </span><span class="dv">3</span> <span class=
 <li>Write <code>example (&lt;function_name&gt;)</code> where we get a list of examples of using the function and the results obtained</li>
 </ul>
 <p>The following code snippet shows how to use the above methods (due to space savings, we do not show their result).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#program code for `ls` function</span>
-ls
-
-<span class="co"># help for `ls` function</span>
-?ls <span class="co"># or help(ls)</span>
-
-<span class="co"># examples of using the `ls` function</span>
-<span class="kw">example</span>(ls)</code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co">#program code for `ls` function</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">ls</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="co"># help for `ls` function</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">?ls <span class="co"># or help(ls)</span></a>
+<a class="sourceLine" id="cb37-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="co"># examples of using the `ls` function</span></a>
+<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="kw">example</span>(ls)</a></code></pre></div>
 <hr />
 </div>
 <div id="missing-unknown-and-non-existent-values" class="section level2">
@@ -603,36 +642,36 @@ ls
 <li><code>NULL</code> - non-existent value, literally “nothing”</li>
 </ul>
 <hr />
-<p><strong>Exercise 2.9 - working with NA, NaN and NULL</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># how much is &quot;5 + unknown number&quot; </span>
-
-
-<span class="co"># how much is &quot;5 + non-existent number&quot; </span>
-
-
-<span class="co"># check classes of the following:</span>
-   <span class="co"># NA</span>
-   <span class="co"># arithmetic operation between numeric and NA</span>
-   <span class="co"># NaN</span>
-   <span class="co"># NULL</span></code></pre></div>
+<p><strong>Zadatak 2.9 - working with NA, NaN and NULL</strong></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># how much is &quot;5 + unknown number&quot; </span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="co"># how much is &quot;5 + non-existent number&quot; </span></a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb38-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="co"># check classes of the following:</span></a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">   <span class="co"># NA</span></a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">   <span class="co"># arithmetic operation between numeric and NA</span></a>
+<a class="sourceLine" id="cb38-10" data-line-number="10">   <span class="co"># NaN</span></a>
+<a class="sourceLine" id="cb38-11" data-line-number="11">   <span class="co"># NULL</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># how much is &quot;5 + unknown number&quot; </span>
-<span class="dv">5</span> +<span class="st"> </span><span class="ot">NaN</span>
-
-<span class="co"># how much is &quot;5 + non-existent number&quot; </span>
-<span class="dv">5</span> +<span class="st"> </span><span class="ot">NA</span>
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># check classes of the following:</span>
-   <span class="co"># NA</span>
-   <span class="co"># arithmetic operation between numeric and NA</span>
-   <span class="co"># NaN</span>
-   <span class="co"># NULL</span>
-<span class="kw">class</span>(<span class="ot">NA</span>) <span class="co"># logical type is &quot;weakest&quot;!</span>
-<span class="kw">class</span>(<span class="dv">5</span> +<span class="st"> </span><span class="ot">NA</span>)
-<span class="kw">class</span>(<span class="ot">NaN</span>)
-<span class="kw">class</span>(<span class="ot">NULL</span>)</code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co"># how much is &quot;5 + unknown number&quot; </span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="ot">NaN</span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co"># how much is &quot;5 + non-existent number&quot; </span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb39-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb39-9" data-line-number="9"><span class="co"># check classes of the following:</span></a>
+<a class="sourceLine" id="cb39-10" data-line-number="10">   <span class="co"># NA</span></a>
+<a class="sourceLine" id="cb39-11" data-line-number="11">   <span class="co"># arithmetic operation between numeric and NA</span></a>
+<a class="sourceLine" id="cb39-12" data-line-number="12">   <span class="co"># NaN</span></a>
+<a class="sourceLine" id="cb39-13" data-line-number="13">   <span class="co"># NULL</span></a>
+<a class="sourceLine" id="cb39-14" data-line-number="14"><span class="kw">class</span>(<span class="ot">NA</span>) <span class="co"># logical type is &quot;weakest&quot;!</span></a>
+<a class="sourceLine" id="cb39-15" data-line-number="15"><span class="kw">class</span>(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb39-16" data-line-number="16"><span class="kw">class</span>(<span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb39-17" data-line-number="17"><span class="kw">class</span>(<span class="ot">NULL</span>)</a></code></pre></div>
 <pre><code>## [1] NaN
 ## [1] NA
 ## -----------
@@ -644,33 +683,33 @@ ls
 <hr />
 <p>Checking missing valuesis similar to checking data types - we use the <code>is.na</code>,<code>is.nan</code> and <code>is.null</code> functions. We have to keep in mind that <code>NaN</code> is a subclass of <code>NA</code> and that <code>NULL</code> is a completely separate class. This is especially important for <em>SQL</em> users - what is <code>NULL</code> in SQL is<code>NA</code> in R and that is what we normally use in practice, whereas <code>NULL</code> has very specific applications and is not so commonly used the program code.</p>
 <hr />
-<p><strong>Exercise 2.10 - check NA, NaN and NULL </strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># which of the following is NA?   NA, NaN, NULL, &quot;&quot;, 0</span>
-
-<span class="co"># which of the following is NaN?   NA, NaN, NULL</span>
-
-<span class="co"># which of the following is NULL?   NA, NaN, NULL</span></code></pre></div>
+<p><strong>Zadatak 2.10 - check NA, NaN and NULL </strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># which of the following is NA?   NA, NaN, NULL, &quot;&quot;, 0</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co"># which of the following is NaN?   NA, NaN, NULL</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co"># which of the following is NULL?   NA, NaN, NULL</span></a></code></pre></div>
 <div class="fold s o">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># which of the following is NA?   NA, NaN, NULL, &quot;&quot;, 0</span>
-<span class="kw">is.na</span>(<span class="ot">NA</span>)
-<span class="kw">is.na</span>(<span class="ot">NaN</span>)
-<span class="kw">is.na</span>(<span class="ot">NULL</span>)
-<span class="kw">is.na</span>(<span class="st">&quot;&quot;</span>)
-<span class="kw">is.na</span>(<span class="dv">0</span>)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># which of the following is NaN?   NA, NaN, NULL</span>
-<span class="kw">is.nan</span>(<span class="ot">NA</span>)
-<span class="kw">is.nan</span>(<span class="ot">NaN</span>)
-<span class="kw">is.nan</span>(<span class="ot">NULL</span>)
-
-<span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)
-
-<span class="co"># which of the following is NULL?   NA, NaN, NULL</span>
-<span class="kw">is.null</span>(<span class="ot">NA</span>)
-<span class="kw">is.null</span>(<span class="ot">NaN</span>)
-<span class="kw">is.null</span>(<span class="ot">NULL</span>)</code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co"># which of the following is NA?   NA, NaN, NULL, &quot;&quot;, 0</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">is.na</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="kw">is.na</span>(<span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="kw">is.na</span>(<span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="kw">is.na</span>(<span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="kw">is.na</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb42-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb42-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="co"># which of the following is NaN?   NA, NaN, NULL</span></a>
+<a class="sourceLine" id="cb42-11" data-line-number="11"><span class="kw">is.nan</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb42-12" data-line-number="12"><span class="kw">is.nan</span>(<span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb42-13" data-line-number="13"><span class="kw">is.nan</span>(<span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb42-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb42-15" data-line-number="15"><span class="kw">cat</span>(<span class="st">&quot;-----------</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb42-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb42-17" data-line-number="17"><span class="co"># which of the following is NULL?   NA, NaN, NULL</span></a>
+<a class="sourceLine" id="cb42-18" data-line-number="18"><span class="kw">is.null</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb42-19" data-line-number="19"><span class="kw">is.null</span>(<span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb42-20" data-line-number="20"><span class="kw">is.null</span>(<span class="ot">NULL</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE
 ## [1] TRUE
 ## logical(0)
@@ -693,7 +732,7 @@ ls
 <li>logical expression results may not necessarily result in a <code>NA</code> value depending on whether the term depends on<code>NA</code> or not (eg <code>TRUE || NA</code> has the result of <code>TRUE</code>, but <code>FALSE || NA</code> has result <code>NA</code>)</li>
 </ul>
 <p>With this last one, we must be especially careful as the NA in the conditional term results in a mistake:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="ot">NA</span> &lt;<span class="dv">2</span>) <span class="kw">print</span> (<span class="st">&quot;Success!&quot;</span>) <span class="co"># error !!</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="cf">if</span> (<span class="ot">NA</span> <span class="op">&lt;</span><span class="dv">2</span>) <span class="kw">print</span> (<span class="st">&quot;Success!&quot;</span>) <span class="co"># error !!</span></a></code></pre></div>
 <p>In this lesson we have come to know the basic elements of the language R. In working with R, we usually work with complex types of data that we will learn in the following - namely, vectors, matrices, data frames and lists.</p>
 <hr />
 </div>
@@ -702,12 +741,12 @@ ls
 <ol style="list-style-type: decimal">
 <li>What is the result of the following commands? Consider a possible result before executing.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.complex</span>(<span class="dv">2</span>)
-<span class="kw">as.integer</span>(-<span class="fl">3.25</span>)
-<span class="kw">as.logical</span>(<span class="st">&quot;0&quot;</span>)
-<span class="kw">as.numeric</span>(<span class="ot">TRUE</span>)
-<span class="kw">as.character</span>(<span class="fl">11.5</span> +<span class="st"> </span>2i)
-<span class="kw">as.numeric</span>(<span class="st">&quot;ABC&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">as.complex</span>(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">as.integer</span>(<span class="op">-</span><span class="fl">3.25</span>)</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">as.logical</span>(<span class="st">&quot;0&quot;</span>)</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="kw">as.numeric</span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="kw">as.character</span>(<span class="fl">11.5</span> <span class="op">+</span><span class="st"> </span>2i)</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="kw">as.numeric</span>(<span class="st">&quot;ABC&quot;</span>)</a></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>How do the following expressions look like in R:</li>
 </ol>
@@ -751,6 +790,7 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -785,9 +825,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

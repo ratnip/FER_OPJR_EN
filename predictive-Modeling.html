@@ -579,7 +579,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Note that we did not look for a model summary since we can not get too much information in this case. The kNN classifier can not provide us with some aggregated information about “learned” knowledge, it is just a “map of the domain space” that is then used for each new observation to determine which category it belongs to.</p>
 <p>How do we check the classifier’s performance? A typical procedure (with binary classifiers) is the creation of a so-calle “confusion matrix”. This simply means that we will create a table that will show how well the predicted values match the actual values. The easiest way to create this table is simply to call the <code>table</code> function with the prediction column and the actual value column as parameters.</p>
-<p><strong>Zadatak 14.7 - Simple Configuration Matrix </strong></p>
+<p><strong>Zadatak 14.7 - Simple Confusion Matrix </strong></p>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="co"># print a confusion matrix by calling the `table` function</span></a>
 <a class="sourceLine" id="cb324-2" data-line-number="2"><span class="co"># over the appropriate columns of the `wineNorm.test` dataset</span></a></code></pre></div>
 <div class="fold s o">

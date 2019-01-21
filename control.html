@@ -545,7 +545,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## function (object, ...) 
 ## standardGeneric(&quot;summary&quot;)
-## &lt;environment: 0x0000000015bedd60&gt;
+## &lt;environment: 0x0000000015bed330&gt;
 ## Methods may be defined for arguments: object
 ## Use  showMethods(&quot;summary&quot;)  for currently available ones.
 ## function (object, maxsum = 100L, ...) 
@@ -566,7 +566,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##         c(tt, `NA&#39;s` = sum(nas))
 ##     else tt
 ## }
-## &lt;bytecode: 0x000000001ed38670&gt;
+## &lt;bytecode: 0x000000001ed2d558&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p>By understanding the principle of generic functions, we have completed a picture of S3 objects. The most important thing we have to adopt is that in this model functions are not part of the object itself, they are defined separately, and the link between the object and its “method” is only in the function name by which R “links” the generic function and that object. Although this principle is primitive and vulnerable to faults in the hands of inattentive developers, it is easy to use and very effective. Finally, let’s note that this approach is not entirely unique to the language R - similar principles can be found in other programming languages. It is specific to R in that the principle is used openly and almost exclusively.</p>
 <p>Objects and generic functions will be re-visited when we learn to create our own functions, which will enable us to create both the constructors of our objects and their generic functions.</p>
